@@ -1,0 +1,10 @@
+{
+  "dankBatteryAlerts": {
+    "enabled": true,
+    "criticalThreshold": 10
+  },
+  "dockerManager": {
+    "enabled": true,
+    "terminalApp": "ghostty --hold"
+  }
+}

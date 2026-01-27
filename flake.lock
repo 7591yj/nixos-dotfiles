@@ -1,0 +1,244 @@
+{
+  "nodes": {
+    "darwin-aarch-src": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-WPcybhApAhHbRamMQLa5v2lpkW/QM/GJY72U/Um/PjM=",
+        "type": "file",
+        "url": "https://github.com/imputnet/helium-macos/releases/download/0.7.5.1/helium_0.7.5.1_arm64-macos.dmg"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/imputnet/helium-macos/releases/download/0.7.5.1/helium_0.7.5.1_arm64-macos.dmg"
+      }
+    },
+    "darwin-x86-src": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-pz1+QjqorfrDRNkNCkGautu45rlyKxXuMHcFPCOxHno=",
+        "type": "file",
+        "url": "https://github.com/imputnet/helium-macos/releases/download/0.7.5.1/helium_0.7.5.1_x86_64-macos.dmg"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/imputnet/helium-macos/releases/download/0.7.5.1/helium_0.7.5.1_x86_64-macos.dmg"
+      }
+    },
+    "dms-plugin-registry": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1769389686,
+        "narHash": "sha256-Fpj3161QZHcTcTd71AVlyMMwPs8Y6q7idVGRVQj0enQ=",
+        "owner": "AvengeMedia",
+        "repo": "dms-plugin-registry",
+        "rev": "88a1f4e7fa3b14d4617a57140e944fbc572d106b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AvengeMedia",
+        "repo": "dms-plugin-registry",
+        "type": "github"
+      }
+    },
+    "firefox-addons": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dir": "pkgs/firefox-addons",
+        "lastModified": 1769400223,
+        "narHash": "sha256-YJRz6mriRWr5wGftEwm8KFRKtu6ZgsX21NYeXVKGd9M=",
+        "owner": "rycee",
+        "repo": "nur-expressions",
+        "rev": "25dae404070232baab384b281dbdc8eb70f37ad0",
+        "type": "gitlab"
+      },
+      "original": {
+        "dir": "pkgs/firefox-addons",
+        "owner": "rycee",
+        "repo": "nur-expressions",
+        "type": "gitlab"
+      }
+    },
+    "helium-browser": {
+      "inputs": {
+        "darwin-aarch-src": "darwin-aarch-src",
+        "darwin-x86-src": "darwin-x86-src",
+        "linux-aarch-src": "linux-aarch-src",
+        "linux-x86-src": "linux-x86-src",
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1765913362,
+        "narHash": "sha256-rBhQH+gIBo5U+nf9nrnaqGTzlsxpRWn2h7iEGb3G7ZI=",
+        "owner": "invra",
+        "repo": "helium",
+        "rev": "96afab61e4a181fb000d59c940bcda285fd7c010",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "invra",
+        "repo": "helium",
+        "type": "gitlab"
+      }
+    },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1769397130,
+        "narHash": "sha256-TTM4KV9IHwa181X7afBRbhLJIrgynpDjAXJFMUOWfyU=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "c37679d37bdbecf11bbe3c5eb238d89ca4f60641",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "master",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "home-manager_2": {
+      "inputs": {
+        "nixpkgs": [
+          "zen-browser",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1769397130,
+        "narHash": "sha256-TTM4KV9IHwa181X7afBRbhLJIrgynpDjAXJFMUOWfyU=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "c37679d37bdbecf11bbe3c5eb238d89ca4f60641",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "linux-aarch-src": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-UvE2OPGvbkep9BPJ7mcEbSt47luIsYJRQlQTV9UYKbw=",
+        "type": "file",
+        "url": "https://github.com/imputnet/helium-linux/releases/download/0.7.5.1/helium-0.7.5.1-arm64.AppImage"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/imputnet/helium-linux/releases/download/0.7.5.1/helium-0.7.5.1-arm64.AppImage"
+      }
+    },
+    "linux-x86-src": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-6xzcXs/Ec7filuzynh7qjS47HliVu2hFzg5Ql0+r1Jk=",
+        "type": "file",
+        "url": "https://github.com/imputnet/helium-linux/releases/download/0.7.5.1/helium-0.7.5.1-x86_64.AppImage"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/imputnet/helium-linux/releases/download/0.7.5.1/helium-0.7.5.1-x86_64.AppImage"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1765472234,
+        "narHash": "sha256-9VvC20PJPsleGMewwcWYKGzDIyjckEz8uWmT0vCDYK0=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "2fbfb1d73d239d2402a8fe03963e37aab15abe8b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1769170682,
+        "narHash": "sha256-oMmN1lVQU0F0W2k6OI3bgdzp2YOHWYUAw79qzDSjenU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c5296fdd05cfa2c187990dd909864da9658df755",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "quickshell": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1768985439,
+        "narHash": "sha256-qkU4r+l+UPz4dutMMRZSin64HuVZkEv9iFpu9yMWVY0=",
+        "ref": "refs/heads/master",
+        "rev": "191085a8821b35680bba16ce5411fc9dbe912237",
+        "revCount": 731,
+        "type": "git",
+        "url": "https://git.outfoxxed.me/quickshell/quickshell"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.outfoxxed.me/quickshell/quickshell"
+      }
+    },
+    "root": {
+      "inputs": {
+        "dms-plugin-registry": "dms-plugin-registry",
+        "firefox-addons": "firefox-addons",
+        "helium-browser": "helium-browser",
+        "home-manager": "home-manager",
+        "nixpkgs": "nixpkgs_2",
+        "quickshell": "quickshell",
+        "zen-browser": "zen-browser"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "home-manager": "home-manager_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1769383295,
+        "narHash": "sha256-NPoMjIh57tDuRY6BG/SKwyxHicyICvQRLQgu9jHR46A=",
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
+        "rev": "337d5df89d17caf32d39f3efc9a868beded6933a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
