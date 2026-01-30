@@ -157,18 +157,6 @@ overview {
     }
 }
 
-spawn-at-startup "polkit-gnome-authentication-agent-1"
-spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
-// spawn-at-startup "fcitx5"
-// 
-// environment {
-//   XDG_CURRENT_DESKTOP "niri"
-//   GTK_IM_MODULE "fcitx"
-//   QT_IM_MODULE "fcitx"
-//   XMODIFIERS "@im=fcitx"
-//   SDL_IM_MODULE "fcitx"
-// }
-
 hotkey-overlay {
     skip-at-startup
 }

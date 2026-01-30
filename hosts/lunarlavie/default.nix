@@ -25,6 +25,7 @@
     ../../nixos/modules/fonts.nix
 
     ../../nixos/modules/keyring.nix
+    ../../nixos/modules/polkit-agent.nix
     ../../nixos/modules/laptop.nix
     ../../nixos/modules/printing.nix
 

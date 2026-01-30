@@ -6,7 +6,6 @@
     ../modules/git.nix
     ../modules/bash.nix
     ../modules/xdg-dotfiles.nix
-    ../modules/polkit-agent.nix
     ../modules/neovim.nix
   ];
 

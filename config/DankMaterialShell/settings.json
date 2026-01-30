@@ -223,9 +223,9 @@
   },
   "bluetoothDevicePins": {
     "preferredDevice": [
+      "AC:07:75:D6:0E:C7",
       "F3:45:A6:2E:D9:5B",
-      "C0:00:C0:77:3C:04",
-      "C0:00:C0:77:3B:04"
+      "C0:00:C0:77:3C:04"
     ]
   },
   "audioInputDevicePins": {},
