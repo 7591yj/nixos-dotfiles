@@ -1,21 +1,5 @@
-# dev toolchain
-cmake
-ninja
-diffutils
-reflector
-pv
-duf
-
 # language tooling
 rustup
-nodejs
-pnpm
-uv
-
-# network
-rsync
-ethtool
-ufw
 
 # storage
 lvm2 # PV/VG/LV abstraction, resizing, etc.

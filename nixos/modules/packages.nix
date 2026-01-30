@@ -9,48 +9,80 @@
     })
   ];
   environment.systemPackages = with pkgs; [
-    wget
+    # version control
     git
-    tmux
-
-    unzipNLS
-    unrar
-    p7zip
-
-    usbutils
-
-    upower
-    evremap
-
-    libsecret
-    tailscale
     gh
+
+    # shell
     eza
+    tmux
     bat
     tree
-    yazi-unwrapped
+    less
 
+    # finder
     ripgrep
     fd
     fzf
 
+    # editor
     neovim
-    less
+
+    # system info
     fastfetchMinimal
     man
     man-pages
 
-    mozc
+    # dev toolchain
+    cmakeWithGui
+    ninja
+    diffutils
+    pv
+    duf
 
+    # language tooling
+    nodejs
+    pnpm
+    bun
+    uv
+
+    # network
+    tailscale
+    rsync
+    wget
+
+    # archives
+    unzipNLS
+    unrar
+    p7zip
+    yazi-unwrapped
+
+    # usb
+    usbutils
+
+    # power
+    upower
+    brightnessctl
+
+    # graphics
     xwayland-satellite
 
-    whitesur-cursors
-    whitesur-gtk-theme
-    whitesur-icon-theme
+    # media
+    gst_all_1.gst-plugins-rs
 
+    # input
+    evremap
+    mozc
+
+    # security
+    libsecret
     polkit
     polkit_gnome
     ghostty
-    brightnessctl
+
+    # theme
+    whitesur-cursors
+    whitesur-gtk-theme
+    whitesur-icon-theme
   ];
 }

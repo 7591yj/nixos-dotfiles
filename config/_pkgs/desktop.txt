@@ -1,21 +1,5 @@
-gst-plugin-pipewire
-
-# printer
-system-config-printer
-cups-filters
-cups-pdf
-
 # power 
 rtkit
-
-# media
-gst-libav
-gst-plugins-bad
-gst-plugins-ugly
-ffmpegthumbnailer
-
-# image
-libopenraw
 
 # vm
 virtualbox

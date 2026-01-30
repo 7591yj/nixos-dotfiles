@@ -41,6 +41,8 @@ in
     # misc
     proton-pass
     btrfs-assistant
+    ffmpegthumbnailer
+    libopenraw
   ];
 
   programs.zen-browser = {
