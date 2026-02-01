@@ -15,13 +15,31 @@
       gA = "git add .";
       gp = "git pull origin main";
       gP = "git push origin main";
-
-      nrfb =
-        "nixos-rebuild --sudo switch --flake $HOME/nixos-dotfiles#$(hostname)";
     };
 
     initExtra = ''
       [[ $- != *i* ]] && return
+
+      nixx() {
+        case "$1" in
+          rebuild)
+            nixos-rebuild --sudo switch --flake "$HOME/nixos-dotfiles#$(hostname)"
+            ;;
+          garbage-save)
+            nix-env --delete-generations +3
+            ;;
+          garbage)
+            nix-collect-garbage -d
+            ;;
+          optimise)
+            nix store optimise
+            ;;
+          *)
+            echo "Usage: nixx {rebuild|garbage}" >&2
+            return 1
+            ;;
+        esac
+      }
       
       export UV_PYTHON_PREFERENCE=system
 

@@ -1,17 +1,3 @@
-# language tooling
 rustup
 
-# storage
-lvm2 # PV/VG/LV abstraction, resizing, etc.
-cryptsetup # encryption, keyslots, etc.
-dosfstools
-e2fsprogs # ext4
-exfatprogs
-f2fs-tools
-nfs-utils
 snapper
-btrfs-progs
-
-# boot
-efibootmgr
-
