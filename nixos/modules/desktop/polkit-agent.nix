@@ -6,7 +6,7 @@
   systemd.user.services.polkit-gnome-authentication-agent-1 = {
     description = "polkit-gnome-authentication-agent-1";
     wantedBy = [ "default.target" ];
-    
+
     serviceConfig = {
       ExecStart = ''
         /usr/bin/env XDG_CURRENT_DESKTOP=GNOME \

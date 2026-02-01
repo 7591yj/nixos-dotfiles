@@ -17,11 +17,13 @@
       gP = "git push origin main";
 
       nrfb =
-        "sudo nixos-rebuild switch --flake $HOME/nixos-dotfiles#lunarlavie";
+        "nixos-rebuild --sudo switch --flake $HOME/nixos-dotfiles#$(hostname)";
     };
 
     initExtra = ''
       [[ $- != *i* ]] && return
+      
+      export UV_PYTHON_PREFERENCE=system
 
       eval "$(starship init bash)"
       eval "$(zoxide init bash)"

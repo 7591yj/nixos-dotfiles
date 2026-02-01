@@ -30,39 +30,51 @@
     helium-browser.url = "gitlab:invra/helium";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
   let
-   system = "x86_64-linux";
+    mkHost = {
+      hostname,
+      system ? "x86_64-linux",
+      homeProfile ? null  # { user, profile } | null (server)
+    }:
+    nixpkgs.lib.nixosSystem {
+      inherit system;
+      specialArgs = { inherit inputs; };
+      modules = [
+        ({ ... }: { nixpkgs.config.allowUnfree = true; })
+        ./hosts/${hostname}
+      ] ++ (if homeProfile != null then [
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = { inherit inputs; };
+            sharedModules = [
+              inputs.zen-browser.homeModules.beta
+            ];
+            users.${homeProfile.user} =
+              import ./home/profiles/${homeProfile.profile}.nix;
+            backupFileExtension = "backup";
+          };
+        }
+      ] else []);
+    };
   in
   {
-   nixosConfigurations.lunarlavie = nixpkgs.lib.nixosSystem {
-     inherit system;
+    nixosConfigurations = {
+      lunarlavie = mkHost {
+        hostname = "lunarlavie";
+        homeProfile = {
+          user = "u7591yj";
+          profile = "u7591yj-lunarlavie";
+        };
+      };
 
-     specialArgs = { inherit inputs; };
-
-     modules = [
-      ({ ... }: { nixpkgs.config.allowUnfree = true; })
-      
-      ./hosts/lunarlavie
-
-      home-manager.nixosModules.home-manager
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-
-          extraSpecialArgs = { inherit inputs; };
-
-          sharedModules = [
-            inputs.zen-browser.homeModules.beta
-          ];
-
-          users.u7591yj = 
-            import ./home/profiles/u7591yj-lunarlavie.nix;
-          backupFileExtension = "backup";
-        };  
-      }
-     ];
-   };
- };
+      hawknavi = mkHost {
+        hostname = "hawknavi";
+        # server; no homeProfile
+      };
+    };
+  };
 }

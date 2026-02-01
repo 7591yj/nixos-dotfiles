@@ -1,36 +1,23 @@
 { inputs, ... }:
 
 {
+  boot.initrd.luks.devices.luksroot = {
+    device = "/dev/disk/by-uuid/8f4e044b-3d7a-4bfb-b8bc-eab9fdb36645";
+    preLVM = true;
+    allowDiscards = true;
+  };
+
   imports = [
     ./hardware-configuration.nix
+    ../../nixos/modules/roles/desktop.nix
 
-    inputs.dms-plugin-registry.modules.default
+    # hardware-specific
+    ../../nixos/modules/hardware/intel.nix
+    ../../nixos/modules/hardware/laptop.nix
 
-    ../../nixos/modules/boot.nix
-    ../../nixos/modules/networking.nix
-    ../../nixos/modules/locale.nix
-    ../../nixos/modules/nix.nix
-
-    ../../nixos/modules/users.nix
-
-    ../../nixos/modules/intel.nix
-    ../../nixos/modules/bluetooth.nix
-    ../../nixos/modules/pipewire.nix
-
-    ../../nixos/modules/desktop-niri.nix
-    ../../nixos/modules/dms.nix
-    ../../nixos/modules/portals.nix
-
-    ../../nixos/modules/packages.nix
-    ../../nixos/modules/fonts.nix
-
-    ../../nixos/modules/keyring.nix
-    ../../nixos/modules/polkit-agent.nix
-    ../../nixos/modules/laptop.nix
-    ../../nixos/modules/printing.nix
-
-    ../../nixos/modules/tailscale.nix
-    ../../nixos/modules/flatpak.nix
+    # optional features
+    ../../nixos/modules/locale/evremap.nix
+    ../../nixos/modules/locale/input-fcitx5.nix
   ];
 
   nixpkgs.overlays = [

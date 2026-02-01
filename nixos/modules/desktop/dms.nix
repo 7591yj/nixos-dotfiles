@@ -1,9 +1,9 @@
-{ lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   programs.dms-shell = {
     enable = true;
-    quickshell.package = 
+    quickshell.package =
      inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.quickshell;
 
     systemd = {
@@ -39,8 +39,8 @@
   services.displayManager.dms-greeter = {
     enable = true;
     compositor.name = "niri";
-    configHome = "/home/u7591yj";
-    quickshell.package = 
+    configHome = "/home/${config.mySystem.username}";
+    quickshell.package =
       inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.quickshell;
   };
 

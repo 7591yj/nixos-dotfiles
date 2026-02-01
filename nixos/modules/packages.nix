@@ -14,6 +14,9 @@
     gh
 
     # shell
+    wezterm
+    ghostty
+
     eza
     tmux
     bat
@@ -44,6 +47,7 @@
     nodejs
     pnpm
     bun
+    python315
     uv
 
     # network
@@ -78,8 +82,7 @@
     libsecret
     polkit
     polkit_gnome
-    ghostty
-
+   
     # theme
     whitesur-cursors
     whitesur-gtk-theme
