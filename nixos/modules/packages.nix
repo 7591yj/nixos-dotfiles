@@ -15,7 +15,6 @@
 
     # shell
     wezterm
-    ghostty
 
     eza
     tmux

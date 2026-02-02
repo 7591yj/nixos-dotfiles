@@ -5,6 +5,6 @@
   },
   "dockerManager": {
     "enabled": true,
-    "terminalApp": "ghostty --hold"
+    "terminalApp": "wezterm"
   }
 }
