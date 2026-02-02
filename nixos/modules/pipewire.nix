@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  services.rtkit.enable = true;
+  security.rtkit.enable = true;
 
   services.pipewire = {
     enable = true;

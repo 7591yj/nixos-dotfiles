@@ -18,6 +18,7 @@
     # optional features
     ../../nixos/modules/locale/evremap.nix
     ../../nixos/modules/locale/input-fcitx5.nix
+    ../../nixos/modules/virtualbox.nix
   ];
 
   nixpkgs.overlays = [
