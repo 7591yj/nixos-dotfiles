@@ -30,19 +30,19 @@ in
     # kdePackages.kdenlive
 
     # gtk
-    nautilus
     showtime
     loupe
     papers
-    meld
     snapshot
     seahorse
 
     # misc
     proton-pass
     btrfs-assistant
+    localsend
     ffmpegthumbnailer
     libopenraw
+    claude-code
   ];
 
   programs.zen-browser = {

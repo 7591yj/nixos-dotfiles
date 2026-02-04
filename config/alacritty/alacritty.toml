@@ -1,0 +1,18 @@
+[window]
+opacity = 0.9
+blur = true
+padding.x = 10
+padding.y = 10
+
+[font]
+normal.family = "PlemolJP Console NF"
+italic.family = "PlemolJP Console NF"
+bold.family = "PlemolJP Console NF"
+bold_italic.family = "PlemolJP Console NF"
+size = 12
+
+[cursor]
+style.shape = "Block"
+
+[mouse]
+hide_when_typing = true

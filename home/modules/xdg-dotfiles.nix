@@ -7,7 +7,7 @@ let
   configs = {
     DankMaterialShell = "DankMaterialShell";
     fastfetch = "fastfetch";
-    wezterm = "wezterm";
+    alacritty = "alacritty";
     lazygit = "lazygit";
     niri = "niri";
     tmux = "tmux";

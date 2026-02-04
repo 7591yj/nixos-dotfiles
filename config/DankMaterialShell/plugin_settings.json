@@ -5,6 +5,6 @@
   },
   "dockerManager": {
     "enabled": true,
-    "terminalApp": "wezterm"
+    "terminalApp": "alacritty"
   }
 }

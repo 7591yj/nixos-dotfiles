@@ -14,7 +14,7 @@
     gh
 
     # shell
-    wezterm
+    alacritty-graphics
 
     eza
     tmux
@@ -35,19 +35,10 @@
     man
     man-pages
 
-    # dev toolchain
-    cmakeWithGui
-    ninja
+    # toolchain
     diffutils
     pv
     duf
-
-    # language tooling
-    nodejs
-    pnpm
-    bun
-    python315
-    uv
 
     # network
     tailscale
@@ -59,6 +50,7 @@
     unrar
     p7zip
     yazi-unwrapped
+    file
 
     # usb
     usbutils
