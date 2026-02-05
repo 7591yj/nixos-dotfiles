@@ -35,7 +35,7 @@
             nix store optimise
             ;;
           *)
-            echo "Usage: nixx {rebuild|garbage}" >&2
+            echo "Usage: nixx {rebuild|garbage|garbage-save|optimise}" >&2
             return 1
             ;;
         esac
