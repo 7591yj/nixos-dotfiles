@@ -5,19 +5,45 @@ let
 in
 {
   home.packages = with pkgs; [
+    # version control
+    git
+    gh
+
     # shell
+    alacritty-graphics
+
     blesh
-    zoxide
     starship
+
+    zoxide
+    eza
+    tmux
+    bat
+    tree
+    less
 
     lazygit
     ngrok
+
+    man
+    man-pages
+
+    # finder
+    yazi-unwrapped
+    ripgrep
+    fd
+    fzf
+
+    # editor
+    zed-editor
+
+    # system info
+    fastfetchMinimal
 
     # docs
     obsidian
     onlyoffice-desktopeditors
     anki-bin
-    zed-editor
 
     # communication
     telegram-desktop
@@ -30,7 +56,7 @@ in
     # kdePackages.kdenlive
 
     # gtk
-    showtime
+    celluloid
     loupe
     papers
     snapshot
@@ -43,6 +69,12 @@ in
     ffmpegthumbnailer
     libopenraw
     claude-code
+ 
+    # theme
+    whitesur-cursors
+    whitesur-gtk-theme
+    whitesur-icon-theme
+
   ];
 
   programs.zen-browser = {
