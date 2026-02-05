@@ -16,7 +16,7 @@
     ../../nixos/modules/hardware/laptop.nix
 
     # optional features
-    ../../nixos/modules/locale/evremap.nix
+    ../../nixos/modules/locale/kanata.nix
     ../../nixos/modules/locale/input-fcitx5.nix
   ];
 
