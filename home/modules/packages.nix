@@ -4,6 +4,13 @@ let
   system = pkgs.stdenv.hostPlatform.system;
 in
 {
+  nixpkgs.overlays = [
+    (final: prev: {
+      whitesur-icon-theme = prev.whitesur-icon-theme.override {
+        alternativeIcons = true;
+      };
+    })
+  ];
   home.packages = with pkgs; [
     # version control
     git
@@ -24,9 +31,6 @@ in
 
     lazygit
     ngrok
-
-    man
-    man-pages
 
     # finder
     yazi-unwrapped
@@ -74,7 +78,6 @@ in
     whitesur-cursors
     whitesur-gtk-theme
     whitesur-icon-theme
-
   ];
 
   programs.zen-browser = {
@@ -82,7 +85,6 @@ in
     profiles.default.extensions.packages = 
       with inputs.firefox-addons.packages.${system}; [
         ublock-origin
-        dearrow
         proton-pass
         refined-github
         return-youtube-dislikes

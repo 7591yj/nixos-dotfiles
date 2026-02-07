@@ -11,8 +11,12 @@
         ci = "commit";
         sw = "switch";
         co = "checkout";
-        s = "status";
+        st = "status";
+        lg = "log --oneline --graph --decorate";
       };
+      core.editor = "vim";
+      pull.rebase = true;
+      push.autoSetupRemote = true;
     };
   };
 

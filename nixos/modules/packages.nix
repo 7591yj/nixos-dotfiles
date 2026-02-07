@@ -1,13 +1,6 @@
 { pkgs, ... }:
 
 {
-  nixpkgs.overlays = [
-    (final: prev: {
-      whitesur-icon-theme = prev.whitesur-icon-theme.override {
-        alternativeIcons = true;
-      };
-    })
-  ];
   environment.systemPackages = with pkgs; [
     # toolchain
     diffutils
