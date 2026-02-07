@@ -2,6 +2,7 @@
   inputs = {
     # core
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,9 +35,10 @@
     mkHost = {
       hostname,
       system ? "x86_64-linux",
+      nixpkgsInput ? inputs.nixpkgs,
       homeProfile ? null  # { user, profile } | null (server)
     }:
-    nixpkgs.lib.nixosSystem {
+    nixpkgsInput.lib.nixosSystem {
       inherit system;
       specialArgs = { inherit inputs; };
       modules = [
@@ -72,6 +74,7 @@
 
       hawknavi = mkHost {
         hostname = "hawknavi";
+        nixpkgsInput = inputs.nixpkgs-stable;
         # server; no homeProfile
       };
     };
