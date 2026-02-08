@@ -69,8 +69,9 @@
   services.zfs.trim.enable = true;
 
   services.openssh.enable = true;
+  services.openssh.settings.PermitRootLogin = "no";
 
-  
+  users.users.root.hashedPassword = "!"; 
   users.users.u7591yj = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
