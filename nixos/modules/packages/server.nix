@@ -20,5 +20,6 @@
     rsync
     wget
     curl
+    tailscale
   ];
 }
