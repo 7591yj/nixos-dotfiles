@@ -13,5 +13,7 @@
     ../services/smartd.nix
 
     ../packages/server.nix
+
+    ../tailscale.nix
   ];
 }
