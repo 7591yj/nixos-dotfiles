@@ -11,38 +11,13 @@ in
       };
     })
   ];
+
   home.packages = with pkgs; [
-    # version control
-    git
-    gh
-
-    # shell
+    # terminal
     alacritty-graphics
-
-    blesh
-    starship
-
-    zoxide
-    eza
-    tmux
-    bat
-    tree
-    less
-
-    lazygit
-    ngrok
-
-    # finder
-    yazi-unwrapped
-    ripgrep
-    fd
-    fzf
 
     # editor
     zed-editor
-
-    # system info
-    fastfetchMinimal
 
     # docs
     obsidian
@@ -73,7 +48,7 @@ in
     ffmpegthumbnailer
     libopenraw
     claude-code
- 
+
     # theme
     whitesur-cursors
     whitesur-gtk-theme
@@ -82,7 +57,7 @@ in
 
   programs.zen-browser = {
     enable = true;
-    profiles.default.extensions.packages = 
+    profiles.default.extensions.packages =
       with inputs.firefox-addons.packages.${system}; [
         ublock-origin
         proton-pass

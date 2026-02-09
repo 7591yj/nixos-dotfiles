@@ -2,7 +2,8 @@
 
 {
   imports = [
-    ../modules/packages.nix
+    ../modules/packages/common.nix
+    ../modules/packages/desktop.nix
     ../modules/git.nix
     ../modules/bash.nix
     ../modules/xdg-dotfiles.nix

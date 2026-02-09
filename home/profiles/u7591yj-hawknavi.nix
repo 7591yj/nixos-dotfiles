@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../modules/packages/common.nix
     ../modules/git.nix
     ../modules/bash.nix
     ../modules/neovim.nix
