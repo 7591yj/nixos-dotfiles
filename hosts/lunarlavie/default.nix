@@ -18,6 +18,7 @@
     # optional features
     ../../nixos/modules/locale/kanata.nix
     ../../nixos/modules/locale/input-fcitx5.nix
+    ../../nixos/modules/virt-manager.nix
   ];
 
   nixpkgs.overlays = [
