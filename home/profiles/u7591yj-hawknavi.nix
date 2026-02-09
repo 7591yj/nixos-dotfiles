@@ -5,6 +5,7 @@
     ../modules/packages/common.nix
     ../modules/git.nix
     ../modules/bash.nix
+    ../modules/xdg-dotfiles.nix
     ../modules/neovim.nix
   ];
 
