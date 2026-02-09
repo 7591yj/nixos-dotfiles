@@ -1,8 +1,9 @@
-{ ... }:
+{ lib, ... }:
 
 {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot";
 
   imports = [
     ./hardware-configuration.nix
@@ -11,15 +12,16 @@
   ];
 
   networking.hostName = "hawknavi";
-  networking.hostId = "AAAAAAAA";
+  # get actual for baremetal
+  networking.hostId = "8425e349";
 
   boot.supportedFilesystems = [ "zfs" ];
 
-  boot.zfs.devNodes = "/dev/disk/by-id";
+  boot.zfs.devNodes = "/dev";
   boot.zfs.extraPools = [ "tank" ];
   boot.zfs.requestEncryptionCredentials = [ "rpool" "tank" ];
 
-  systemd.services.zfs-mount.enable = false;
+  boot.zfs.forceImportRoot = true;
 
   fileSystems."/" = {
     device = "rpool/system/root/nixos";
@@ -52,14 +54,16 @@
     options = [ "zfsutil" ];
   };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-partuuid/ESP-UUID";
+  fileSystems."/boot" = lib.mkForce {
+    # use id for baremetal 
+    device = "/dev/vda1";
     fsType = "vfat";
   };
 
   swapDevices = [
     {
-      device = "/dev/disk/by-partuuid/SWAP-UUID";
+      # use id for baremetal 
+      device = "/dev/vda2";
       randomEncryption = true;
     }
   ];
@@ -79,5 +83,6 @@
 
   security.sudo.wheelNeedsPassword = true;
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "25.11";
 }

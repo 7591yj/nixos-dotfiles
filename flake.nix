@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    home-manager-stable = {
+      url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
 
     # de
     quickshell = {
@@ -36,7 +40,8 @@
       hostname,
       system ? "x86_64-linux",
       nixpkgsInput ? inputs.nixpkgs,
-      homeProfile ? null  # { user, profile } | null (server)
+      homeManagerInput ? inputs.home-manager,
+      homeProfile ? null
     }:
     nixpkgsInput.lib.nixosSystem {
       inherit system;
@@ -45,7 +50,7 @@
         ({ ... }: { nixpkgs.config.allowUnfree = true; })
         ./hosts/${hostname}
       ] ++ (if homeProfile != null then [
-        home-manager.nixosModules.home-manager
+        homeManagerInput.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
@@ -75,7 +80,11 @@
       hawknavi = mkHost {
         hostname = "hawknavi";
         nixpkgsInput = inputs.nixpkgs-stable;
-        # server; no homeProfile
+        homeManagerInput = inputs.home-manager-stable;
+        homeProfile = {
+          user = "u7591yj";
+          profile = "u7591yj-hawknavi";
+        };
       };
     };
   };
