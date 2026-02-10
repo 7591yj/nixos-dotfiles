@@ -2,18 +2,21 @@
 
 {
   imports = [
+    # Core system
     ../boot.nix
     ../nix.nix
     ../users.nix
 
+    # Networking
     ../networking/server.nix
+    ../tailscale.nix
+    ../services/openssh.nix
+
+    # Locale
     ../locale/base.nix
 
-    ../services/openssh.nix
-    ../services/smartd.nix
-
+    # Applications
     ../packages/server.nix
-
-    ../tailscale.nix
+    ../services/smartd.nix
   ];
 }

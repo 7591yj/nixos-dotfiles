@@ -1,6 +1,7 @@
 { lib, ... }:
 
 {
+  services.tailscaleProxy.tailnetDomain = "follow-bigeye.ts.net";
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
@@ -9,6 +10,7 @@
     ./hardware-configuration.nix
     ../../nixos/modules/roles/server.nix
     ../../nixos/modules/storage/zfs-tank.nix
+    ../../nixos/modules/services/container-services
   ];
 
   networking.hostName = "hawknavi";
@@ -54,6 +56,18 @@
     options = [ "zfsutil" ];
   };
 
+  fileSystems."/var/lib/jellyfin/config" = {
+    device = "rpool/services/jellyfin/config";
+    fsType = "zfs";
+    options = [ "zfsutil" ];
+  };
+
+  fileSystems."/var/lib/jellyfin/cache" = {
+    device = "rpool/services/jellyfin/cache";
+    fsType = "zfs";
+    options = [ "zfsutil" ];
+  };
+
   fileSystems."/boot" = lib.mkForce {
     # use id for baremetal 
     device = "/dev/vda1";
@@ -83,6 +97,5 @@
 
   security.sudo.wheelNeedsPassword = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "25.11";
 }
