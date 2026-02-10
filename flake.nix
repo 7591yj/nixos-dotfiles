@@ -22,6 +22,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # secrets
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # apps
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
@@ -48,6 +54,16 @@
       specialArgs = { inherit inputs; };
       modules = [
         ({ ... }: { nixpkgs.config.allowUnfree = true; })
+          ({ pkgs, ... }: {
+            nixpkgs.overlays = [ (final: prev: {
+              inherit (prev.lixPackageSets.stable)
+                nixpkgs-review
+                nix-eval-jobs
+                nix-fast-build
+                colmena;
+            }) ];
+            nix.package = pkgs.lixPackageSets.stable.lix;
+          })
         ./hosts/${hostname}
       ] ++ (if homeProfile != null then [
         homeManagerInput.nixosModules.home-manager
