@@ -21,6 +21,10 @@
       url = "github:AvengeMedia/dms-plugin-registry";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # secrets
     sops-nix = {
@@ -47,7 +51,8 @@
       system ? "x86_64-linux",
       nixpkgsInput ? inputs.nixpkgs,
       homeManagerInput ? inputs.home-manager,
-      homeProfile ? null
+      homeProfile ? null,
+      useStylix ? false
     }:
     nixpkgsInput.lib.nixosSystem {
       inherit system;
@@ -65,7 +70,7 @@
             nix.package = pkgs.lixPackageSets.stable.lix;
           })
         ./hosts/${hostname}
-      ] ++ (if homeProfile != null then [
+      ] ++ (if useStylix then [ inputs.stylix.nixosModules.stylix ] else []) ++ (if homeProfile != null then [
         homeManagerInput.nixosModules.home-manager
         {
           home-manager = {
@@ -87,6 +92,7 @@
     nixosConfigurations = {
       lunarlavie = mkHost {
         hostname = "lunarlavie";
+        useStylix = true;
         homeProfile = {
           user = "u7591yj";
           profile = "u7591yj-lunarlavie";

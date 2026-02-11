@@ -4,14 +4,6 @@ let
   system = pkgs.stdenv.hostPlatform.system;
 in
 {
-  nixpkgs.overlays = [
-    (final: prev: {
-      whitesur-icon-theme = prev.whitesur-icon-theme.override {
-        alternativeIcons = true;
-      };
-    })
-  ];
-
   home.packages = with pkgs; [
     # terminal
     alacritty-graphics

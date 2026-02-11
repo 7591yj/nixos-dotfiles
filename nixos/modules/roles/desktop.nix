@@ -15,6 +15,7 @@
 
     # Desktop base (portals, keyring, polkit, dms)
     ../desktop/base.nix
+    ../desktop/stylix.nix
 
     # Audio/Media
     ../pipewire.nix
