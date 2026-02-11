@@ -27,13 +27,7 @@ input {
             // For example:
             // layout "us,ru"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
-
-            // If this section is empty, niri will fetch xkb settings
-            // from org.freedesktop.locale1. You can control these using
-            // localectl set-x11-keymap.
         }
-
-        // Enable numlock on startup, omitting this setting disables it.
         numlock
     }
 
@@ -41,11 +35,9 @@ input {
     // Omitting settings disables them, or leaves them at their default values.
     // All commented-out settings here are examples, not defaults.
     touchpad {
-        // off
         tap
         dwt
         dwtp
-        // drag false
         // drag-lock
         natural-scroll
         // accel-speed 0.2
@@ -55,7 +47,6 @@ input {
     }
 
     mouse {
-        // off
         natural-scroll
         // accel-speed 0.2
         // accel-profile "flat"
@@ -63,13 +54,9 @@ input {
     }
 
     trackpoint {
-        // off
         // natural-scroll
         // accel-speed 0.2
         // accel-profile "flat"
-        // scroll-method "on-button-down"
-        // scroll-button 273
-        // scroll-button-lock
         // middle-emulation
     }
 
@@ -197,15 +184,6 @@ animations {
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
-// Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
-window-rule {
-    // This regular expression is intentionally made as specific as possible,
-    // since this is the default config, and we want no false positives.
-    // You can get away with just app-id="wezterm" if you want.
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
-}
 window-rule {
     match app-id=r#"^org\.gnome\."#
     draw-border-with-background false
@@ -213,35 +191,41 @@ window-rule {
     clip-to-geometry true
 }
 window-rule {
-    match app-id=r#"^gnome-control-center$"#
+    match app-id=r#"^zen-beta$"#
+    match app-id=r#"^Spotify$"#
+    open-maximized true
+}
+window-rule {
     match app-id=r#"^pavucontrol$"#
     match app-id=r#"^nm-connection-editor$"#
     default-column-width { proportion 0.5; }
     open-floating false
 }
 window-rule {
-    match app-id=r#"^gnome-calculator$"#
     match app-id=r#"^galculator$"#
     match app-id=r#"^blueman-manager$"#
-    match app-id=r#"^org\.gnome\.Nautilus$"#
     match app-id=r#"^org\.telegram\.desktop"#
-    match app-id=r#"^com\.discordapp\.Discord"#
-    match app-id=r#"^xdg-desktop-portal$"#
+    match app-id=r#"^discord$"#
     match app-id=r#"^anki$"#
+    match app-id=r#"^xarchiver$"#
+    match app-id=r#"^xdg-desktop-portal$"#
     open-floating true
 }
 window-rule {
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
     match app-id="Alacritty"
-    match app-id="zen"
-    match app-id="com.mitchellh.ghostty"
-    match app-id="kitty"
+    match app-id=r#"^zen-beta$"#
     draw-border-with-background false
 }
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id="zoom"
     open-floating true
+}
+window-rule {
+    match app-id=r#"^thunar$"#
+    open-floating true
+    default-column-width { fixed 640; }
+    default-window-height { fixed 480; }
 }
 // Open dms windows as floating by default
 window-rule {

@@ -24,7 +24,6 @@
     # kdePackages.kdenlive
 
     # gtk
-    thunar-unwrapped
     celluloid
     loupe
     papers
@@ -32,7 +31,6 @@
     seahorse
 
     # misc
-    gvfs
     proton-pass
     btrfs-assistant
     localsend

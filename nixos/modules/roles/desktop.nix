@@ -21,6 +21,9 @@
     ../pipewire.nix
     ../bluetooth.nix
 
+    # Storage
+    ../storage/gvfs.nix
+
     # Display server - Wayland/Niri
     ../desktop/wayland-niri.nix
 
@@ -28,6 +31,7 @@
     ../packages/desktop.nix
     ../fonts.nix
     ../printing.nix
+    ../thunar.nix
     ../flatpak.nix
     ../tailscale.nix
 

@@ -21,7 +21,7 @@
     ngrok
 
     # finder
-    yazi-unwrapped
+    yazi
     ripgrep
     fd
     fzf

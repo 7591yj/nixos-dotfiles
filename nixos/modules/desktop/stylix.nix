@@ -8,6 +8,7 @@
       };
     })
   ];
+
   programs.dconf.enable = true;
 
   stylix = {
