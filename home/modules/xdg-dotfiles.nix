@@ -24,7 +24,6 @@ in
 
   xdg.configFile = builtins.mapAttrs (_name: subpath: {
     source = createSymlink "${dotfiles}/${subpath}";
-    recursive = true;
   }) configs
   // {
       "starship.toml".source =

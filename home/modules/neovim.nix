@@ -2,6 +2,9 @@
 
 {
   home.packages = with pkgs; [
+    # neovim
+    neovim
+
     # telescope
     ripgrep
     fd
@@ -16,15 +19,6 @@
     nodejs
   ];
 
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-  };
-
-  xdg.configFile."nvim" = {
-    source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/nixos-dotfiles/config/nvim";
-    recursive = true;
-  };
+  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink
+    "${config.home.homeDirectory}/nixos-dotfiles/config/nvim";
 }
