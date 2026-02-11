@@ -29,7 +29,5 @@
 
     # security
     libsecret
-    polkit
-    polkit_gnome
   ];
 }

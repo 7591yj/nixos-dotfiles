@@ -25,7 +25,7 @@
     ../desktop/wayland-niri.nix
 
     # Applications
-    ../packages.nix
+    ../packages/desktop.nix
     ../fonts.nix
     ../printing.nix
     ../flatpak.nix

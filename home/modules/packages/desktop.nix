@@ -1,8 +1,5 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
-let
-  system = pkgs.stdenv.hostPlatform.system;
-in
 {
   home.packages = with pkgs; [
     # terminal
@@ -27,6 +24,7 @@ in
     # kdePackages.kdenlive
 
     # gtk
+    thunar-unwrapped
     celluloid
     loupe
     papers
@@ -34,6 +32,7 @@ in
     seahorse
 
     # misc
+    gvfs
     proton-pass
     btrfs-assistant
     localsend
@@ -46,15 +45,4 @@ in
     whitesur-gtk-theme
     whitesur-icon-theme
   ];
-
-  programs.zen-browser = {
-    enable = true;
-    profiles.default.extensions.packages =
-      with inputs.firefox-addons.packages.${system}; [
-        ublock-origin
-        proton-pass
-        refined-github
-        return-youtube-dislikes
-    ];
-  };
 }

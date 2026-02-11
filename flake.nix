@@ -77,9 +77,6 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = { inherit inputs; };
-            sharedModules = [
-              inputs.zen-browser.homeModules.beta
-            ];
             users.${homeProfile.user} =
               import ./home/profiles/${homeProfile.profile}.nix;
             backupFileExtension = "backup";
