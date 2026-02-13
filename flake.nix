@@ -33,6 +33,10 @@
     };
 
     # apps
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,48 +48,66 @@
     helium-browser.url = "gitlab:invra/helium";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
-  let
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: let
     mkHost = {
       hostname,
       system ? "x86_64-linux",
       nixpkgsInput ? inputs.nixpkgs,
       homeManagerInput ? inputs.home-manager,
       homeProfile ? null,
-      useStylix ? false
+      useStylix ? false,
     }:
-    nixpkgsInput.lib.nixosSystem {
-      inherit system;
-      specialArgs = { inherit inputs; };
-      modules = [
-        ({ ... }: { nixpkgs.config.allowUnfree = true; })
-          ({ pkgs, ... }: {
-            nixpkgs.overlays = [ (final: prev: {
-              inherit (prev.lixPackageSets.stable)
-                nixpkgs-review
-                nix-eval-jobs
-                nix-fast-build
-                colmena;
-            }) ];
-            nix.package = pkgs.lixPackageSets.stable.lix;
-          })
-        ./hosts/${hostname}
-      ] ++ (if useStylix then [ inputs.stylix.nixosModules.stylix ] else []) ++ (if homeProfile != null then [
-        homeManagerInput.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            extraSpecialArgs = { inherit inputs; };
-            users.${homeProfile.user} =
-              import ./home/profiles/${homeProfile.profile}.nix;
-            backupFileExtension = "backup";
-          };
-        }
-      ] else []);
-    };
-  in
-  {
+      nixpkgsInput.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs;};
+        modules =
+          [
+            ({...}: {nixpkgs.config.allowUnfree = true;})
+            ({pkgs, ...}: {
+              nixpkgs.overlays = [
+                (final: prev: {
+                  inherit
+                    (prev.lixPackageSets.stable)
+                    nixpkgs-review
+                    nix-eval-jobs
+                    nix-fast-build
+                    colmena
+                    ;
+                })
+              ];
+              nix.package = pkgs.lixPackageSets.stable.lix;
+            })
+            ./hosts/${hostname}
+          ]
+          ++ (
+            if useStylix
+            then [inputs.stylix.nixosModules.stylix]
+            else []
+          )
+          ++ (
+            if homeProfile != null
+            then [
+              homeManagerInput.nixosModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  extraSpecialArgs = {inherit inputs;};
+                  users.${homeProfile.user} =
+                    import ./home/profiles/${homeProfile.profile}.nix;
+                  backupFileExtension = "backup";
+                };
+              }
+            ]
+            else []
+          );
+      };
+  in {
     nixosConfigurations = {
       lunarlavie = mkHost {
         hostname = "lunarlavie";

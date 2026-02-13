@@ -8,8 +8,9 @@
     ../modules/helium.nix
     ../modules/git.nix
     ../modules/bash.nix
+    ../modules/nvf.nix
+    ../modules/yazi.nix
     ../modules/xdg-dotfiles.nix
-    ../modules/neovim.nix
   ];
 
   home = {
