@@ -1,10 +1,14 @@
-{ config, lib, pkgs, inputs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.dms-shell = {
     enable = true;
     quickshell.package =
-     inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.quickshell;
+      inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.quickshell;
 
     systemd = {
       enable = true;

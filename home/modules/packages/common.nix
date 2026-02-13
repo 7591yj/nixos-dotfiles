@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # version control
     git
@@ -21,12 +19,11 @@
     ngrok
 
     # finder
-    yazi
     ripgrep
     fd
     fzf
 
     # system info
-    fastfetchMinimal
+    fastfetch
   ];
 }

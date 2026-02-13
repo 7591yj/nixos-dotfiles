@@ -1,12 +1,14 @@
-{ config, lib, pkgs, ... }:
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   cfg = config.services.tailscaleProxy;
   hostname = config.networking.hostName;
   certPath = "/var/lib/tailscale-certs";
   fqdn = "${hostname}.${cfg.tailnetDomain}";
-in
-{
+in {
   options.services.tailscaleProxy = {
     tailnetDomain = lib.mkOption {
       type = lib.types.str;
@@ -28,8 +30,8 @@ in
 
   config.systemd.services.tailscale-certs = {
     description = "Fetch Tailscale HTTPS certificates";
-    after = [ "tailscaled.service" ];
-    wants = [ "tailscaled.service" ];
+    after = ["tailscaled.service"];
+    wants = ["tailscaled.service"];
 
     serviceConfig = {
       Type = "oneshot";
@@ -50,11 +52,11 @@ in
       ExecStartPost = "${pkgs.systemd}/bin/systemctl reload-or-restart caddy.service";
     };
 
-    path = [ pkgs.tailscale ];
+    path = [pkgs.tailscale];
   };
 
   config.systemd.timers.tailscale-certs = {
-    wantedBy = [ "timers.target" ];
+    wantedBy = ["timers.target"];
     timerConfig = {
       OnCalendar = "daily";
       Persistent = true;
@@ -66,9 +68,9 @@ in
   ];
 
   config.systemd.services.caddy = {
-    after = [ "tailscale-certs.service" ];
-    wants = [ "tailscale-certs.service" ];
+    after = ["tailscale-certs.service"];
+    wants = ["tailscale-certs.service"];
   };
 
-  config.networking.firewall.trustedInterfaces = [ "tailscale0" ];
+  config.networking.firewall.trustedInterfaces = ["tailscale0"];
 }

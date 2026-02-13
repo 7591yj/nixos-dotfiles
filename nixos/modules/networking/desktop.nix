@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   networking.networkmanager = {
     enable = true;
     wifi.scanRandMacAddress = true;
@@ -11,8 +9,7 @@
     enable = true;
     settings.Resolve = {
       DNSSEC = "false";
-      DNS = [ "1.1.1.1" "8.8.8.8" ];
-      FallbackDNS = [ "9.9.9.9" "8.8.4.4" ];
+      FallbackDNS = ["1.1.1.1" "8.8.8.8"];
     };
   };
 

@@ -1,6 +1,4 @@
-{ config, ... }:
-
-let
+{config, ...}: let
   dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
   createSymlink = path: config.lib.file.mkOutOfStoreSymlink path;
 
@@ -13,8 +11,7 @@ let
     tmux = "tmux";
     zed = "zed";
   };
-in
-{
+in {
   xdg.enable = true;
 
   xdg.userDirs = {
@@ -22,11 +19,13 @@ in
     createDirectories = true;
   };
 
-  xdg.configFile = builtins.mapAttrs (_name: subpath: {
-    source = createSymlink "${dotfiles}/${subpath}";
-  }) configs
-  // {
+  xdg.configFile =
+    builtins.mapAttrs (_name: subpath: {
+      source = createSymlink "${dotfiles}/${subpath}";
+    })
+    configs
+    // {
       "starship.toml".source =
         createSymlink "${dotfiles}/starship.toml";
-  };
+    };
 }

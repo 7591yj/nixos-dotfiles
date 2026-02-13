@@ -1,6 +1,4 @@
-{ lib, ... }:
-
-{
+{lib, ...}: {
   services.tailscaleProxy.tailnetDomain = "follow-bigeye.ts.net";
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -17,66 +15,66 @@
   # get actual for baremetal
   networking.hostId = "8425e349";
 
-  boot.supportedFilesystems = [ "zfs" ];
+  boot.supportedFilesystems = ["zfs"];
 
   boot.zfs.devNodes = "/dev";
-  boot.zfs.extraPools = [ "tank" ];
-  boot.zfs.requestEncryptionCredentials = [ "rpool" "tank" ];
+  boot.zfs.extraPools = ["tank"];
+  boot.zfs.requestEncryptionCredentials = ["rpool" "tank"];
 
   boot.zfs.forceImportRoot = true;
 
   fileSystems."/" = {
     device = "rpool/system/root/nixos";
     fsType = "zfs";
-    options = [ "zfsutil" ];
+    options = ["zfsutil"];
   };
 
   fileSystems."/nix" = {
     device = "rpool/local/nix";
     fsType = "zfs";
-    options = [ "zfsutil" ];
+    options = ["zfsutil"];
   };
 
   fileSystems."/var/log" = {
     device = "rpool/local/log";
     fsType = "zfs";
-    options = [ "zfsutil" ];
+    options = ["zfsutil"];
     neededForBoot = true;
   };
 
   fileSystems."/home" = {
     device = "rpool/user/home";
     fsType = "zfs";
-    options = [ "zfsutil" ];
+    options = ["zfsutil"];
   };
 
   fileSystems."/tank/media" = {
     device = "tank/media";
     fsType = "zfs";
-    options = [ "zfsutil" ];
+    options = ["zfsutil"];
   };
 
   fileSystems."/var/lib/jellyfin/config" = {
     device = "rpool/services/jellyfin/config";
     fsType = "zfs";
-    options = [ "zfsutil" ];
+    options = ["zfsutil"];
   };
 
   fileSystems."/var/lib/jellyfin/cache" = {
     device = "rpool/services/jellyfin/cache";
     fsType = "zfs";
-    options = [ "zfsutil" ];
+    options = ["zfsutil"];
   };
 
   fileSystems."/boot" = lib.mkForce {
-    # use id for baremetal 
+    # use id for baremetal
     device = "/dev/vda1";
     fsType = "vfat";
   };
 
   swapDevices = [
     {
-      # use id for baremetal 
+      # use id for baremetal
       device = "/dev/vda2";
       randomEncryption = true;
     }
@@ -89,10 +87,10 @@
   services.openssh.enable = true;
   services.openssh.settings.PermitRootLogin = "no";
 
-  users.users.root.hashedPassword = "!"; 
+  users.users.root.hashedPassword = "!";
   users.users.u7591yj = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = ["wheel"];
   };
 
   security.sudo.wheelNeedsPassword = true;

@@ -1,5 +1,3 @@
-{ pkgs, ... }:
-
-{
-  home.packages = [ pkgs.helium ];
+{pkgs, ...}: {
+  home.packages = [pkgs.helium];
 }

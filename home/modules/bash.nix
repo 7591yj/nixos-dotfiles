@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.bash = {
     enable = true;
 
@@ -43,7 +41,7 @@
             ;;
         esac
       }
-      
+
       export UV_PYTHON_PREFERENCE=system
 
       eval "$(starship init bash)"

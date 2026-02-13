@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-let
+{pkgs, ...}: let
   defaultNetXml = pkgs.writeText "default-network.xml" ''
     <network>
       <name>default</name>
@@ -16,17 +14,17 @@ let
 in {
   virtualisation.libvirtd = {
     enable = true;
-    qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
+    qemu.vhostUserPackages = with pkgs; [virtiofsd];
   };
   programs.virt-manager.enable = true;
 
-  networking.firewall.trustedInterfaces = [ "virbr0" ];
+  networking.firewall.trustedInterfaces = ["virbr0"];
 
   systemd.services.libvirt-default-net = {
     description = "Libvirt default network";
-    after = [ "libvirtd.service" ];
-    requires = [ "libvirtd.service" ];
-    path = [ pkgs.libvirt pkgs.iptables ];
+    after = ["libvirtd.service"];
+    requires = ["libvirtd.service"];
+    path = [pkgs.libvirt pkgs.iptables];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
@@ -38,9 +36,8 @@ in {
       fi
       virsh net-start default 2>/dev/null || true
     '';
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = ["multi-user.target"];
   };
-
 
   environment.systemPackages = with pkgs; [
     OVMF

@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ../modules/packages/common.nix
     ../modules/git.nix
@@ -15,4 +13,3 @@
     stateVersion = "25.11";
   };
 }
-

@@ -1,7 +1,5 @@
-{ lib, ... }:
-
-{
-  boot.supportedFilesystems = [ "zfs" ];
+{lib, ...}: {
+  boot.supportedFilesystems = ["zfs"];
 
   services.zfs = {
     autoScrub.enable = true;

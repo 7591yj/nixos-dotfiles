@@ -1,6 +1,8 @@
-{ pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   nixpkgs.overlays = [
     (final: prev: {
       whitesur-icon-theme = prev.whitesur-icon-theme.override {
@@ -62,39 +64,46 @@
     targets.gtk.enable = false;
   };
 
-  home-manager.sharedModules = [({ pkgs, lib, config, ... }: {
-    home.file."${config.home.homeDirectory}/.Xresources".force = true;
-    xdg.configFile."gtk-3.0/settings.ini".force = true;
-    xdg.configFile."gtk-4.0/settings.ini".force = true;
-    xdg.configFile."qt5ct/qt5ct.conf".force = true;
-    xdg.configFile."qt6ct/qt6ct.conf".force = true;
+  home-manager.sharedModules = [
+    ({
+      pkgs,
+      lib,
+      config,
+      ...
+    }: {
+      home.file."${config.home.homeDirectory}/.Xresources".force = true;
+      xdg.configFile."gtk-3.0/settings.ini".force = true;
+      xdg.configFile."gtk-4.0/settings.ini".force = true;
+      xdg.configFile."qt5ct/qt5ct.conf".force = true;
+      xdg.configFile."qt6ct/qt6ct.conf".force = true;
 
-    home.sessionVariables = {
-      QT_QPA_PLATFORMTHEME = lib.mkForce "gtk3"; 
-    };
-
-    stylix.targets.gtk.enable = false;
-    gtk = {
-      enable = true;
-      theme = {
-        package = pkgs.whitesur-gtk-theme;
-        name = lib.mkForce "WhiteSur-Dark";
-      };
-      iconTheme = {
-        package = pkgs.whitesur-icon-theme;
-        name = lib.mkForce "WhiteSur-dark";
+      home.sessionVariables = {
+        QT_QPA_PLATFORMTHEME = lib.mkForce "gtk3";
       };
 
-      gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
-      gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
-    };
+      stylix.targets.gtk.enable = false;
+      gtk = {
+        enable = true;
+        theme = {
+          package = pkgs.whitesur-gtk-theme;
+          name = lib.mkForce "WhiteSur-Dark";
+        };
+        iconTheme = {
+          package = pkgs.whitesur-icon-theme;
+          name = lib.mkForce "WhiteSur-dark";
+        };
 
-    dconf.settings."org/gnome/desktop/interface" = {
-      color-scheme = lib.mkForce "prefer-dark";
-      gtk-theme = lib.mkForce "WhiteSur-Dark";
-      icon-theme = lib.mkForce "WhiteSur-dark";
-      cursor-theme = lib.mkForce "WhiteSur-cursors";
-      cursor-size = lib.mkForce (lib.gvariant.mkInt32 24);
-    };
-  })];
+        gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+        gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
+      };
+
+      dconf.settings."org/gnome/desktop/interface" = {
+        color-scheme = lib.mkForce "prefer-dark";
+        gtk-theme = lib.mkForce "WhiteSur-Dark";
+        icon-theme = lib.mkForce "WhiteSur-dark";
+        cursor-theme = lib.mkForce "WhiteSur-cursors";
+        cursor-size = lib.mkForce (lib.gvariant.mkInt32 24);
+      };
+    })
+  ];
 }

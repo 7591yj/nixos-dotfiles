@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   imports = [
     ../modules/packages/common.nix
     ../modules/packages/desktop.nix

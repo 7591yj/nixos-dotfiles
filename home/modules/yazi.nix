@@ -1,6 +1,8 @@
-{ pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   stylix.targets.yazi.enable = true;
 
   programs.yazi = {
@@ -19,7 +21,10 @@
       };
       keymap = {
         mgr.prepend_keymap = [
-          { run = "plugin smart-enter"; on = "<Enter>"; }
+          {
+            run = "plugin smart-enter";
+            on = "<Enter>";
+          }
         ];
       };
       preview = {

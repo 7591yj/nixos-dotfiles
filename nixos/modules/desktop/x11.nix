@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   # X11 display server configuration
   # Placeholder - implement when needed
 
