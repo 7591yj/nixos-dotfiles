@@ -30,4 +30,6 @@
     # security
     libsecret
   ];
+
+  programs.nano.enable = false;
 }

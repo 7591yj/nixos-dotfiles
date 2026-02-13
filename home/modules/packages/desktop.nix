@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # terminal
     alacritty-graphics
@@ -25,6 +23,7 @@
 
     # gtk
     celluloid
+    rhythmbox
     loupe
     papers
     snapshot
@@ -35,6 +34,7 @@
     btrfs-assistant
     localsend
     ffmpegthumbnailer
+    imagemagick
     libopenraw
     claude-code
 
