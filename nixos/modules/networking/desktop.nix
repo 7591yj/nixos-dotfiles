@@ -7,12 +7,13 @@
     dns = "systemd-resolved";
   };
 
-  # Split DNS: local network DNS for general queries,
-  # Tailscale DNS only for Tailscale domains.
   services.resolved = {
     enable = true;
-    dnssec = "allow-downgrade";
-    fallbackDns = [ "1.1.1.1" "8.8.8.8" ];
+    settings.Resolve = {
+      DNSSEC = "false";
+      DNS = [ "1.1.1.1" "8.8.8.8" ];
+      FallbackDNS = [ "9.9.9.9" "8.8.4.4" ];
+    };
   };
 
   # Connectivity check for captive portal detection

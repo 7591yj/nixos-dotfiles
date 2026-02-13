@@ -14,7 +14,7 @@ in
     users.users.root.hashedPassword = "!";
     users.users.${username} = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "libvirtd" ];
+      extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
     };
   };
 }
