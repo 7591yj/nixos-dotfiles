@@ -3,6 +3,7 @@
     ../modules/packages/common.nix
     ../modules/git.nix
     ../modules/bash.nix
+    ../modules/starship.nix
     ../modules/xdg-dotfiles.nix
     ../modules/nvf.nix
   ];

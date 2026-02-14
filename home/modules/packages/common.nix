@@ -5,9 +5,6 @@
     gh
 
     # shell
-    blesh
-    starship
-
     zoxide
     eza
     tmux

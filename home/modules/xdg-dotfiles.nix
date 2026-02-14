@@ -19,13 +19,7 @@ in {
     createDirectories = true;
   };
 
-  xdg.configFile =
-    builtins.mapAttrs (_name: subpath: {
-      source = createSymlink "${dotfiles}/${subpath}";
-    })
-    configs
-    // {
-      "starship.toml".source =
-        createSymlink "${dotfiles}/starship.toml";
-    };
+  xdg.configFile = builtins.mapAttrs (_name: subpath: {
+    source = createSymlink "${dotfiles}/${subpath}";
+  }) configs;
 }

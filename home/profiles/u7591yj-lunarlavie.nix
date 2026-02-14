@@ -6,6 +6,7 @@
     ../modules/helium.nix
     ../modules/git.nix
     ../modules/bash.nix
+    ../modules/starship.nix
     ../modules/nvf.nix
     ../modules/yazi.nix
     ../modules/xdg-dotfiles.nix
