@@ -8,7 +8,6 @@
     alacritty = "alacritty";
     lazygit = "lazygit";
     niri = "niri";
-    tmux = "tmux";
     zed = "zed";
   };
 in {
@@ -19,7 +18,9 @@ in {
     createDirectories = true;
   };
 
-  xdg.configFile = builtins.mapAttrs (_name: subpath: {
-    source = createSymlink "${dotfiles}/${subpath}";
-  }) configs;
+  xdg.configFile =
+    builtins.mapAttrs (_name: subpath: {
+      source = createSymlink "${dotfiles}/${subpath}";
+    })
+    configs;
 }

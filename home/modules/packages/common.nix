@@ -7,7 +7,6 @@
     # shell
     zoxide
     eza
-    tmux
     bat
     tree
     less
