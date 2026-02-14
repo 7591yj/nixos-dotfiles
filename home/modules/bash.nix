@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  home.packages = [pkgs.blesh];
+
   programs.bash = {
     enable = true;
 
@@ -20,6 +22,8 @@
 
     initExtra = ''
       [[ $- != *i* ]] && return
+
+      source -- "$(blesh-share)"/ble.sh --attach=none
 
       nixx() {
         case "$1" in
@@ -49,9 +53,8 @@
 
       fastfetch
 
-      if [[ -f ${pkgs.blesh}/share/blesh/ble.sh ]]; then
-        source ${pkgs.blesh}/share/blesh/ble.sh
-      fi
+      [[ ! ''${BLE_VERSION-} ]] || ble-attach
     '';
   };
+
 }
