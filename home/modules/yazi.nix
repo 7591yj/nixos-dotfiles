@@ -9,6 +9,8 @@
     enable = true;
     enableBashIntegration = true;
 
+    shellWrapperName = "y";
+
     plugins = with pkgs.yaziPlugins; {
       inherit full-border smart-enter mount chmod lazygit;
     };
