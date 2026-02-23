@@ -16,7 +16,6 @@
     discord
 
     # entertainment
-    spotify
     jellyfin-desktop
     steam
     # kdePackages.kdenlive
@@ -32,6 +31,7 @@
     # misc
     proton-pass
     btrfs-assistant
+    valent
     localsend
     ffmpegthumbnailer
     imagemagick
