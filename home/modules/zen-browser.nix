@@ -11,6 +11,24 @@ in {
 
   programs.zen-browser = {
     enable = true;
+    suppressXdgMigrationWarning = true;
+    policies = {
+      AutofillAddressEnabled = false;
+      AutofillCreditCardEnabled = false;
+      DisableFeedbackCommands = true;
+      DisableFirefoxStudies = true;
+      DisablePocket = true;
+      DisableTelemetry = true;
+      DontCheckDefaultBrowser = true;
+      NoDefaultBookmarks = true;
+      OfferToSaveLogins = false;
+      EnableTrackingProtection = {
+        Value = true;
+        Locked = true;
+        Cryptomining = true;
+        Fingerprinting = true;
+      };
+    };
     profiles.default = {
       extensions.packages = with inputs.firefox-addons.packages.${system}; [
         ublock-origin
