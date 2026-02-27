@@ -2,14 +2,10 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }: {
   programs.dms-shell = {
     enable = true;
-    quickshell.package =
-      inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.quickshell;
-
     systemd = {
       enable = true;
       restartIfChanged = true;
@@ -19,7 +15,7 @@
     enableVPN = true;
     enableDynamicTheming = true;
     enableAudioWavelength = true;
-    enableCalendarEvents = true;
+    enableCalendarEvents = false;
 
     plugins = {
       dankBatteryAlerts.enable = true;
@@ -44,8 +40,6 @@
     enable = true;
     compositor.name = "niri";
     configHome = "/home/${config.mySystem.username}";
-    quickshell.package =
-      inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.quickshell;
   };
 
   security.pam.services.dms-greeter.enableGnomeKeyring = true;
