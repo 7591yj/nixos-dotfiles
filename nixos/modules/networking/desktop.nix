@@ -1,8 +1,11 @@
-{...}: {
+{pkgs, ...}: {
   networking.networkmanager = {
     enable = true;
     wifi.scanRandMacAddress = true;
     dns = "systemd-resolved";
+    plugins = with pkgs; [
+      networkmanager-openvpn
+    ];
   };
 
   services.resolved = {
