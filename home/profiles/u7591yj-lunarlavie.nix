@@ -11,6 +11,7 @@
     ../modules/nvf.nix
     ../modules/yazi.nix
     ../modules/xdg-dotfiles.nix
+    ../modules/pwa.nix
   ];
 
   home = {
