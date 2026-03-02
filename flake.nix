@@ -11,6 +11,10 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # de
     dms-plugin-registry = {
@@ -60,6 +64,7 @@
       homeManagerInput ? inputs.home-manager,
       homeProfile ? null,
       useStylix ? false,
+      useDisko ? false,
     }:
       nixpkgsInput.lib.nixosSystem {
         inherit system;
@@ -89,6 +94,14 @@
             else []
           )
           ++ (
+            if useDisko
+            then [
+              inputs.disko.nixosModules.disko
+              ./hosts/${hostname}/disko.nix
+            ]
+            else []
+          )
+          ++ (
             if homeProfile != null
             then [
               homeManagerInput.nixosModules.home-manager
@@ -111,6 +124,7 @@
       lunarlavie = mkHost {
         hostname = "lunarlavie";
         useStylix = true;
+        useDisko = true;
         homeProfile = {
           user = "u7591yj";
           profile = "u7591yj-lunarlavie";
