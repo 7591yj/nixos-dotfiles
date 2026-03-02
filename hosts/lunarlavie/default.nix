@@ -25,6 +25,12 @@
 
   networking.hostName = "lunarlavie";
 
+  sops.secrets.icon = {
+    format = "binary";
+    sopsFile = ../../secrets/icon.png;
+    owner = "u7591yj";
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

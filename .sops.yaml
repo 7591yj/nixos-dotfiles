@@ -1,8 +1,17 @@
 keys:
   - &hawknavi age1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  - &lunarlavie age10fhtsqqkhpte0wndw24tfry7m6kk3zk84cxyxeg0uaz3jyruj93qqt6vzx
+  - &backup age145z0ysqlfmn57e5ummptm54r0hq0grsa0jlpvkusdclfl6yxsytq9d9u9n
 
 creation_rules:
   - path_regex: secrets/secrets\.yaml$
     key_groups:
       - age:
           - *hawknavi
+          - *backup
+
+  - path_regex: secrets/icon\.png$
+    key_groups:
+      - age:
+          - *lunarlavie
+          - *backup

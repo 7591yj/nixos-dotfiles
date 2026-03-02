@@ -5,6 +5,9 @@
     ../nix.nix
     ../users.nix
 
+    # Secrets
+    ../sops.nix
+
     # Networking
     ../networking/desktop.nix
 

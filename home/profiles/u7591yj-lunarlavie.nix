@@ -10,6 +10,7 @@
     ../modules/tmux.nix
     ../modules/nvf.nix
     ../modules/yazi.nix
+    ../modules/fastfetch.nix
     ../modules/xdg-dotfiles.nix
     ../modules/pwa.nix
   ];

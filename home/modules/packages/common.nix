@@ -18,8 +18,5 @@
     ripgrep
     fd
     fzf
-
-    # system info
-    fastfetch
   ];
 }

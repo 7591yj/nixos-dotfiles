@@ -4,7 +4,6 @@
 
   configs = {
     DankMaterialShell = "DankMaterialShell";
-    fastfetch = "fastfetch";
     alacritty = "alacritty";
     lazygit = "lazygit";
     niri = "niri";

@@ -1,3 +1,6 @@
 # Result symlinks
 result
 result-*
+
+# age private key
+.sops.agekey

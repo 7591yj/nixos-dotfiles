@@ -5,8 +5,9 @@
     ../modules/bash.nix
     ../modules/starship.nix
     ../modules/tmux.nix
-    ../modules/xdg-dotfiles.nix
     ../modules/nvf.nix
+    ../modules/fastfetch.nix
+    ../modules/xdg-dotfiles.nix
   ];
 
   home = {
