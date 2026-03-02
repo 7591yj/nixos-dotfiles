@@ -41,7 +41,10 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    helium-browser.url = "gitlab:invra/helium";
+    helium-browser = {
+      url = "gitlab:invra/helium";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
