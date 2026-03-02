@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{osConfig, ...}: {
   imports = [
     ../modules/packages/common.nix
     ../modules/git.nix
@@ -11,8 +11,8 @@
   ];
 
   home = {
-    username = "u7591yj";
-    homeDirectory = "/home/u7591yj";
+    username = osConfig.mySystem.username;
+    homeDirectory = "/home/${osConfig.mySystem.username}";
     stateVersion = "25.11";
   };
 }
