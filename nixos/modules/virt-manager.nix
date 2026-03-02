@@ -1,4 +1,4 @@
-{pkgs, ...}: let
+{config, pkgs, ...}: let
   defaultNetXml = pkgs.writeText "default-network.xml" ''
     <network>
       <name>default</name>
@@ -12,6 +12,8 @@
     </network>
   '';
 in {
+  users.users.${config.mySystem.username}.extraGroups = ["libvirtd"];
+
   virtualisation.libvirtd = {
     enable = true;
     qemu.vhostUserPackages = with pkgs; [virtiofsd];

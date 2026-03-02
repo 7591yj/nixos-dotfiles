@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{config, pkgs, ...}: {
+  users.users.${config.mySystem.username}.extraGroups = ["networkmanager"];
   networking.networkmanager = {
     enable = true;
     wifi.scanRandMacAddress = true;
