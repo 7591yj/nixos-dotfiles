@@ -16,13 +16,13 @@
     discord
 
     # entertainment
+    tauon
     jellyfin-desktop
     steam
     # kdePackages.kdenlive
 
     # gtk
     celluloid
-    rhythmbox
     loupe
     papers
     snapshot
