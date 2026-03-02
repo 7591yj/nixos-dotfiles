@@ -4,3 +4,9 @@ result-*
 
 # age private key
 .sops.agekey
+
+# DMS runtime state and matugen-generated
+config/DankMaterialShell/plugins/.repos/
+config/DankMaterialShell/.changelog-*
+config/DankMaterialShell/zen.css
+config/niri/dms/colors.kdl
