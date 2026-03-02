@@ -25,11 +25,14 @@ in {
         vimAlias = true;
         globals.mapleader = " ";
 
-        clipboard.enable = true;
+        clipboard = {
+          enable = true;
+          providers.wl-copy.enable = true;
+        };
 
         options = {
-          shiftwidth = 4;
-          tabstop = 4;
+          shiftwidth = 2;
+          tabstop = 2;
           autoindent = true;
           signcolumn = "yes";
           splitbelow = true;
@@ -37,6 +40,17 @@ in {
           termguicolors = true;
           updatetime = 50;
           mouse = "a";
+          clipboard = lib.mkForce "unnamedplus";
+          number = true;
+          relativenumber = true;
+          scrolloff = 8;
+          colorcolumn = "80";
+          hlsearch = false;
+          incsearch = true;
+          cursorline = true;
+          backspace = "indent,eol,start";
+          winblend = 10;
+          pumblend = 10;
         };
 
         searchCase = "smart";
@@ -48,10 +62,7 @@ in {
         theme.enable = lib.mkForce false;
 
         # Statusline
-        statusline.lualine = {
-          enable = true;
-          theme = lib.mkForce "Tomorrow";
-        };
+        statusline.lualine.enable = true;
         telescope.enable = true;
         autocomplete.nvim-cmp.enable = true;
 
@@ -89,25 +100,12 @@ in {
           astro.enable = true;
           tailwind.enable = true;
           css.enable = true;
-          html = {
-            enable = true;
-            # superhtml is broken in nixpkgs (sandbox violation)
-            format.enable = false;
-            lsp.enable = false;
-          };
           json.enable = true;
-          rust.enable = true;
           clang.enable = true;
-          zig = {
-            enable = true;
-            # zls is broken in nixpkgs (sandbox violation)
-            lsp.enable = false;
-          };
           go.enable = true;
           lua.enable = true;
           php.enable = true;
           python.enable = true;
-          haskell.enable = true;
           bash.enable = true;
           markdown.enable = true;
           typst.enable = true;
@@ -221,12 +219,6 @@ in {
 
           # Clipboard operations
           {
-            key = "<leader>p";
-            mode = "x";
-            action = "\"_dP";
-            desc = "Paste without overwriting clipboard";
-          }
-          {
             key = "<leader>d";
             mode = "n";
             action = "\"_d";
@@ -237,18 +229,6 @@ in {
             mode = "v";
             action = "\"_d";
             desc = "Delete to void register";
-          }
-          {
-            key = "<leader>y";
-            mode = "n";
-            action = "\"+y";
-            desc = "Yank to system clipboard";
-          }
-          {
-            key = "<leader>y";
-            mode = "v";
-            action = "\"+y";
-            desc = "Yank to system clipboard";
           }
 
           # Disable Ex mode
@@ -341,19 +321,14 @@ in {
         ];
 
         luaConfigPost = ''
-          vim.opt.number = true
-          vim.opt.relativenumber = true
-          vim.opt.scrolloff = 8
-          vim.opt.colorcolumn = "80"
-          vim.opt.hlsearch = false
-          vim.opt.incsearch = true
-          vim.opt.cursorline = true
-          vim.opt.backspace = "indent,eol,start"
-          -- Slight transparency for floating windows
-          vim.o.winblend = 10
-          vim.o.pumblend = 10
+          -- MDX filetype detection
+          vim.filetype.add({ extension = { mdx = "markdown.mdx" } })
+          -- Use prettier instead of prettierd for mdx files
+          local ok, conform = pcall(require, "conform")
+          if ok then
+            conform.formatters_by_ft["markdown.mdx"] = { "prettier" }
+          end
 
-          -- Custom lualine theme (tomorrow-night palette)
           local tn = {
             bg      = "NONE",
             fg      = "#c5c8c6",

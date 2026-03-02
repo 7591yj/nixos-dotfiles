@@ -16,8 +16,6 @@
       gp = "git pull origin main";
       gP = "git push origin main";
 
-      vi = "nvim";
-      vim = "nvim";
     };
 
     initExtra = ''
