@@ -26,24 +26,7 @@
       source -- "$(blesh-share)"/ble.sh --attach=none
 
       nixx() {
-        case "$1" in
-          rebuild)
-            nixos-rebuild --sudo switch --flake "$HOME/nixos-dotfiles#$(hostname)"
-            ;;
-          garbage-save)
-            nix-env --delete-generations +3
-            ;;
-          garbage)
-            nix-collect-garbage -d
-            ;;
-          optimise)
-            nix store optimise
-            ;;
-          *)
-            echo "Usage: nixx {rebuild|garbage|garbage-save|optimise}" >&2
-            return 1
-            ;;
-        esac
+        nixos-rebuild --sudo switch --flake "$HOME/nixos-dotfiles#$(hostname)"
       }
 
       export UV_PYTHON_PREFERENCE=system
