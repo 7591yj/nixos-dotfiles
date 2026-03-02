@@ -4,7 +4,17 @@
     "criticalThreshold": 10
   },
   "dockerManager": {
-    "enabled": true,
+    "enabled": false,
     "terminalApp": "alacritty"
+  },
+  "dmsSessionizer": {
+    "enabled": true,
+    "includeHidden": true,
+    "projectsDir": "~/Developer",
+    "terminal": "alacritty"
+  },
+  "dankKDEConnect": {
+    "enabled": true,
+    "selectedDeviceId": "1c5c5b85_814b_46af_9295_550f1c4fe8de"
   }
 }
