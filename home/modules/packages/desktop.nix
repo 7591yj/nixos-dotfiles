@@ -13,7 +13,7 @@
 
     # communication
     telegram-desktop
-    discord
+    legcord
 
     # entertainment
     tauon
