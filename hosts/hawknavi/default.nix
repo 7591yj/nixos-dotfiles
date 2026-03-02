@@ -1,7 +1,5 @@
 {lib, ...}: {
   services.tailscaleProxy.tailnetDomain = "follow-bigeye.ts.net";
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
 
   imports = [
@@ -83,15 +81,6 @@
   services.zfs.autoScrub.enable = true;
   services.zfs.autoSnapshot.enable = true;
   services.zfs.trim.enable = true;
-
-  services.openssh.enable = true;
-  services.openssh.settings.PermitRootLogin = "no";
-
-  users.users.root.hashedPassword = "!";
-  users.users.u7591yj = {
-    isNormalUser = true;
-    extraGroups = ["wheel"];
-  };
 
   security.sudo.wheelNeedsPassword = true;
 
