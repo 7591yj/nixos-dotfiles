@@ -23,7 +23,7 @@
     initExtra = ''
       [[ $- != *i* ]] && return
 
-      source -- "$(blesh-share)"/ble.sh --attach=none
+      source -- "${pkgs.blesh}/share/blesh/ble.sh" --attach=none
 
       nixx() {
         nixos-rebuild --sudo switch --flake "$HOME/nixos-dotfiles#$(hostname)"
