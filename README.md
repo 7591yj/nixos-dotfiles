@@ -14,7 +14,8 @@ Uses [Lix](https://lix.systems).
 ## Structure
 
 ```
-flake.nix              # mkHost helper, nixosConfigurations
+flake.nix              # flake-parts entrypoint
+flake/parts/           # flake-parts modules (hosts + shared helpers)
 hosts/<name>/          # per-host config, hardware-configuration.nix, optional disko.nix
 nixos/modules/         # NixOS modules (hardware, roles, services, etc.)
 home/

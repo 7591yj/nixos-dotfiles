@@ -3,6 +3,7 @@
     # core
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
+    flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,95 +52,17 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: let
-    mkHost = {
-      hostname,
-      system ? "x86_64-linux",
-      nixpkgsInput ? inputs.nixpkgs,
-      homeManagerInput ? inputs.home-manager,
-      homeProfile ? null,
-      useStylix ? false,
-      useDisko ? false,
-    }:
-      nixpkgsInput.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs;};
-        modules =
-          [
-            ({...}: {nixpkgs.config.allowUnfree = true;})
-            ({pkgs, ...}: {
-              nixpkgs.overlays = [
-                (final: prev: {
-                  inherit
-                    (prev.lixPackageSets.stable)
-                    nixpkgs-review
-                    nix-eval-jobs
-                    nix-fast-build
-                    colmena
-                    ;
-                })
-              ];
-              nix.package = pkgs.lixPackageSets.stable.lix;
-            })
-            ./hosts/${hostname}
-          ]
-          ++ (
-            if useStylix
-            then [inputs.stylix.nixosModules.stylix]
-            else []
-          )
-          ++ (
-            if useDisko
-            then [
-              inputs.disko.nixosModules.disko
-              ./hosts/${hostname}/disko.nix
-            ]
-            else []
-          )
-          ++ (
-            if homeProfile != null
-            then [
-              homeManagerInput.nixosModules.home-manager
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  extraSpecialArgs = {inherit inputs;};
-                  users.${homeProfile.user} =
-                    import ./home/profiles/${homeProfile.profile}.nix;
-                  backupFileExtension = "backup";
-                };
-              }
-            ]
-            else []
-          );
-      };
-  in {
-    nixosConfigurations = {
-      lunarlavie = mkHost {
-        hostname = "lunarlavie";
-        useStylix = true;
-        useDisko = true;
-        homeProfile = {
-          user = "u7591yj";
-          profile = "u7591yj-lunarlavie";
-        };
-      };
+  outputs = inputs@{flake-parts, ...}:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
 
-      hawknavi = mkHost {
-        hostname = "hawknavi";
-        nixpkgsInput = inputs.nixpkgs-stable;
-        homeManagerInput = inputs.home-manager-stable;
-        homeProfile = {
-          user = "u7591yj";
-          profile = "u7591yj-hawknavi";
-        };
-      };
+      imports = [
+        ./flake/parts/lib.nix
+        ./flake/parts/nixos/lunarlavie.nix
+        ./flake/parts/nixos/hawknavi.nix
+      ];
     };
-  };
 }
