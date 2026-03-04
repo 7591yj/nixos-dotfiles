@@ -13,6 +13,7 @@
 
     # communication
     telegram-desktop
+    element-desktop
     legcord
 
     # entertainment
