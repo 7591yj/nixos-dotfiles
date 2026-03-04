@@ -82,7 +82,8 @@
     {
       "id": "brightnessSlider",
       "enabled": true,
-      "width": 50
+      "width": 50,
+      "deviceName": "backlight:intel_backlight"
     },
     {
       "id": "wifi",
@@ -217,8 +218,8 @@
   "launcherLogoBrightness": 0.5,
   "launcherLogoContrast": 1,
   "launcherLogoSizeOffset": -5,
-  "fontFamily": "Inter Variable",
-  "monoFontFamily": "Noto Sans Mono CJK JP",
+  "fontFamily": "PlemolJP35 Console NF Text",
+  "monoFontFamily": "PlemolJP35 Console NF Text",
   "fontWeight": 400,
   "fontScale": 1,
   "notepadUseMonospace": true,

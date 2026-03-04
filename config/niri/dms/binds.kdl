@@ -1,13 +1,14 @@
 binds {
     // === System & Overview ===
-    Mod+D repeat=false { toggle-overview; }
     Mod+Tab repeat=false { toggle-overview; }
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // === Application Launchers ===
-    Mod+T hotkey-overlay-title="Open Terminal" { spawn "alacritty"; }
-    Mod+Z hotkey-overlay-title="Open Browser" { spawn "zen-beta"; }
-    Mod+M hotkey-overlay-title="Open Music" { spawn "spotify"; }
+    Mod+Return hotkey-overlay-title="Open Terminal" { spawn "alacritty"; }
+    Mod+Z { spawn "zen-beta"; }
+    Mod+M { spawn "tauon"; }
+    Mod+T { spawn "Telegram"; }
+    Mod+D { spawn "legcord"; }
     Mod+Space hotkey-overlay-title="Application Launcher" {
         spawn "dms" "ipc" "call" "spotlight" "toggle";
     }

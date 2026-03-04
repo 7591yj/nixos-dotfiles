@@ -70,6 +70,7 @@ window-rule {
 
 window-rule {
     match app-id=r#"^org\.telegram\.desktop"#
+    match app-id=r#"^Element"#
     match app-id=r#"^legcord$"#
     match app-id=r#"^chrome-app.plane.so__-Default$"#
     open-floating true
@@ -81,6 +82,7 @@ window-rule {
 }
 
 window-rule {
+    match app-id=r#"^Element"#
     match app-id=r#"^legcord"#
     match app-id=r#"^chrome-app.plane.so__-Default$"#
     default-column-width { proportion 0.66667; }
