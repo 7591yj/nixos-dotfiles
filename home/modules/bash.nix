@@ -15,7 +15,6 @@
       gA = "git add .";
       gp = "git pull origin main";
       gP = "git push origin main";
-
     };
 
     initExtra = ''
@@ -24,10 +23,8 @@
       source -- "${pkgs.blesh}/share/blesh/ble.sh" --attach=none
 
       nixx() {
-        nixos-rebuild --sudo switch --flake "$HOME/nixos-dotfiles#$(hostname)"
+        nixos-rebuild --sudo switch -L --flake "$HOME/nixos-dotfiles#$(hostname)"
       }
-
-      export UV_PYTHON_PREFERENCE=system
 
       eval "$(starship init bash)"
       eval "$(zoxide init bash)"
@@ -37,5 +34,4 @@
       [[ ! ''${BLE_VERSION-} ]] || ble-attach
     '';
   };
-
 }
