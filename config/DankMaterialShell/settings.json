@@ -405,10 +405,6 @@
       ],
       "showOnLastDisplay": true,
       "leftWidgets": [
-        {
-          "id": "launcherButton",
-          "enabled": true
-        },
         "workspaceSwitcher",
         {
           "id": "music",
