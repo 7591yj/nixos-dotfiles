@@ -10,6 +10,7 @@
     bat
     tree
     less
+    devenv
 
     lazygit
     ngrok

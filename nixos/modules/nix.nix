@@ -5,6 +5,7 @@
       auto-optimise-store = true;
       max-jobs = "auto";
       cores = 0;
+      trusted-users = ["root" "u7591yj"];
       substituters = [
         "https://cache.nixos.org"
         "https://nix-community.cachix.org"
