@@ -32,7 +32,6 @@
     ../packages/desktop.nix
     ../fonts.nix
     ../printing.nix
-    ../thunar.nix
     ../flatpak.nix
     ../tailscale.nix
 

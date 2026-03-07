@@ -10,6 +10,7 @@
     obsidian
     onlyoffice-desktopeditors
     anki-bin
+    sioyek
 
     # communication
     telegram-desktop
@@ -23,6 +24,7 @@
     # kdePackages.kdenlive
 
     # gtk
+    nautilus
     celluloid
     loupe
     papers
