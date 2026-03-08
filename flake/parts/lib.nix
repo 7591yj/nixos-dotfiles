@@ -10,10 +10,10 @@
       useDisko ? false,
     }:
       nixpkgsInput.lib.nixosSystem {
-        inherit system;
         specialArgs = {inherit inputs;};
         modules =
           [
+            {nixpkgs.hostPlatform = system;}
             ({...}: {nixpkgs.config.allowUnfree = true;})
             ({pkgs, ...}: {
               nixpkgs.overlays = [
