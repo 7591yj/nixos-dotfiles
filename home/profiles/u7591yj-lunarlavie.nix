@@ -13,6 +13,9 @@
     ../modules/fastfetch.nix
     ../modules/xdg-dotfiles.nix
     ../modules/pwa.nix
+    ../modules/astra.nix
+    ../modules/t3code.nix
+    ../modules/codex.nix
   ];
 
   home = {

@@ -12,6 +12,7 @@
     ../../nixos/modules/hardware/laptop.nix
 
     # optional features
+    ../../nixos/modules/appimage.nix
     ../../nixos/modules/locale/kanata.nix
     ../../nixos/modules/locale/input-fcitx5.nix
     ../../nixos/modules/virt-manager.nix
