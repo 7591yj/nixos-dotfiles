@@ -62,7 +62,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id=r#"^thunar$"#
+    match app-id=r#"^org.gnome.Nautilus$"#
     open-floating true
     default-column-width { proportion 0.5; }
     default-window-height { proportion 0.5; }

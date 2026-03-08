@@ -5,8 +5,8 @@ binds {
 
     // === Application Launchers ===
     Mod+Return hotkey-overlay-title="Open Terminal" { spawn "alacritty"; }
+    Mod+E { spawn "nautilus"; }
     Mod+Z { spawn "zen-beta"; }
-    Mod+M { spawn "tauon"; }
     Mod+T { spawn "Telegram"; }
     Mod+D { spawn "legcord"; }
     Mod+Space hotkey-overlay-title="Application Launcher" {
