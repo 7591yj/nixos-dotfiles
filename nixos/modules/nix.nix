@@ -1,11 +1,11 @@
-{...}: {
+{config, ...}: {
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
       max-jobs = "auto";
       cores = 0;
-      trusted-users = ["root" "u7591yj"];
+      trusted-users = ["root" config.mySystem.username];
       substituters = [
         "https://cache.nixos.org"
         "https://nix-community.cachix.org"
@@ -23,7 +23,7 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-generations +3";
+      options = "--delete-older-than 7d";
     };
   };
 }
