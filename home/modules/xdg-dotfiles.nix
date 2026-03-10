@@ -1,13 +1,16 @@
 {config, ...}: let
-  dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
+  dotfiles = ../../config;
   createSymlink = path: config.lib.file.mkOutOfStoreSymlink path;
 
-  configs = {
+  mutableConfigs = {
     DankMaterialShell = "DankMaterialShell";
-    alacritty = "alacritty";
-    lazygit = "lazygit";
     niri = "niri";
     zed = "zed";
+  };
+
+  immutableConfigs = {
+    alacritty = "alacritty";
+    lazygit = "lazygit";
   };
 in {
   xdg.enable = true;
@@ -18,8 +21,12 @@ in {
   };
 
   xdg.configFile =
-    builtins.mapAttrs (_name: subpath: {
-      source = createSymlink "${dotfiles}/${subpath}";
-    })
-    configs;
+    (builtins.mapAttrs (_name: subpath: {
+        source = createSymlink "${config.home.homeDirectory}/nixos-dotfiles/config/${subpath}";
+      })
+      mutableConfigs)
+    // (builtins.mapAttrs (_name: subpath: {
+        source = dotfiles + "/${subpath}";
+      })
+      immutableConfigs);
 }
