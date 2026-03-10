@@ -15,7 +15,7 @@ in {
   virtualisation.oci-containers = {
     backend = "podman";
     containers.jellyfin = {
-      image = "docker.io/jellyfin/jellyfin:latest";
+      image = "docker.io/jellyfin/jellyfin:10.11.6";
       autoStart = true;
 
       extraOptions = [
