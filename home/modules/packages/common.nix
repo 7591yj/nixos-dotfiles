@@ -11,6 +11,7 @@
     tree
     less
     devenv
+    direnv
 
     lazygit
     ngrok
