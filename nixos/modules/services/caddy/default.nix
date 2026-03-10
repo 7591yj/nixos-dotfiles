@@ -8,6 +8,24 @@
   hostname = config.networking.hostName;
   certPath = "/var/lib/tailscale-certs";
   fqdn = "${hostname}.${cfg.tailnetDomain}";
+  fetchTailscaleCerts = pkgs.writeShellScript "fetch-tailscale-certs" ''
+    set -euo pipefail
+
+    ${pkgs.coreutils}/bin/install -d -m0700 -o caddy -g caddy ${certPath}
+
+    ${pkgs.tailscale}/bin/tailscale cert \
+      --cert-file ${certPath}/${fqdn}.crt \
+      --key-file ${certPath}/${fqdn}.key \
+      ${fqdn}
+
+    ${pkgs.tailscale}/bin/tailscale cert \
+      --cert-file ${certPath}/jellyfin.${fqdn}.crt \
+      --key-file ${certPath}/jellyfin.${fqdn}.key \
+      jellyfin.${fqdn}
+
+    ${pkgs.coreutils}/bin/chown caddy:caddy ${certPath}/*.crt ${certPath}/*.key
+    ${pkgs.coreutils}/bin/chmod 600 ${certPath}/*.key
+  '';
 in {
   options.services.tailscaleProxy = {
     tailnetDomain = lib.mkOption {
@@ -23,36 +41,27 @@ in {
       extraConfig = ''
         reverse_proxy localhost:8096
 
-        tls ${certPath}/${fqdn}.crt ${certPath}/${fqdn}.key
+        tls ${certPath}/jellyfin.${fqdn}.crt ${certPath}/jellyfin.${fqdn}.key
       '';
     };
   };
 
   config.systemd.services.tailscale-certs = {
     description = "Fetch Tailscale HTTPS certificates";
-    after = ["tailscaled.service"];
-    wants = ["tailscaled.service"];
+    after = [
+      "network-online.target"
+      "tailscaled.service"
+    ];
+    wants = [
+      "network-online.target"
+      "tailscaled.service"
+    ];
 
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = pkgs.writeShellScript "fetch-tailscale-certs" ''
-        ${pkgs.tailscale}/bin/tailscale cert \
-          --cert-file ${certPath}/${fqdn}.crt \
-          --key-file ${certPath}/${fqdn}.key \
-          ${fqdn}
-
-        ${pkgs.tailscale}/bin/tailscale cert \
-          --cert-file ${certPath}/jellyfin.${fqdn}.crt \
-          --key-file ${certPath}/jellyfin.${fqdn}.key \
-          jellyfin.${fqdn}
-
-        chown caddy:caddy ${certPath}/*.crt ${certPath}/*.key
-        chmod 600 ${certPath}/*.key
-      '';
-      ExecStartPost = "${pkgs.systemd}/bin/systemctl reload-or-restart caddy.service";
+      ExecStart = fetchTailscaleCerts;
+      ExecStartPost = "${pkgs.systemd}/bin/systemctl try-reload-or-restart caddy.service";
     };
-
-    path = [pkgs.tailscale];
   };
 
   config.systemd.timers.tailscale-certs = {
