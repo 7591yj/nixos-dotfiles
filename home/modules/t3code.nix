@@ -1,5 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   home.packages = [
-    (pkgs.callPackage ../../pkgs/t3code.nix {})
+    inputs.t3code-nix.packages.${pkgs.system}.default
   ];
 }
