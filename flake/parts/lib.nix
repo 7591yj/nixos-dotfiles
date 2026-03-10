@@ -48,16 +48,16 @@
             if homeProfile != null
             then [
               homeManagerInput.nixosModules.home-manager
-              {
+              ({config, ...}: {
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;
                   extraSpecialArgs = {inherit inputs;};
-                  users.${homeProfile.user} =
-                    import ../../home/profiles/${homeProfile.profile}.nix;
+                  users.${config.mySystem.username} =
+                    import ../../home/profiles/${homeProfile}.nix;
                   backupFileExtension = "backup";
                 };
-              }
+              })
             ]
             else []
           );

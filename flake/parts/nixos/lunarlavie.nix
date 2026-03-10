@@ -3,9 +3,6 @@
     hostname = "lunarlavie";
     useStylix = true;
     useDisko = true;
-    homeProfile = {
-      user = "u7591yj";
-      profile = "u7591yj-lunarlavie";
-    };
+    homeProfile = "u7591yj-lunarlavie";
   };
 }

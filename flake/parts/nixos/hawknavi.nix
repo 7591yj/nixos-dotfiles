@@ -4,9 +4,6 @@
     nixpkgsInput = inputs.nixpkgs-stable;
     homeManagerInput = inputs.home-manager-stable;
     useDisko = true;
-    homeProfile = {
-      user = "u7591yj";
-      profile = "u7591yj-hawknavi";
-    };
+    homeProfile = "u7591yj-hawknavi";
   };
 }

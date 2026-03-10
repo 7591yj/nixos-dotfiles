@@ -1,5 +1,6 @@
 {
   inputs,
+  config,
   lib,
   ...
 }: {
@@ -37,7 +38,7 @@
   sops.secrets.icon = {
     format = "binary";
     sopsFile = ../../secrets/icon.png;
-    owner = "u7591yj";
+    owner = config.mySystem.username;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
