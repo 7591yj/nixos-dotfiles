@@ -1,4 +1,9 @@
-{config, pkgs, ...}: let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   defaultNetXml = pkgs.writeText "default-network.xml" ''
     <network>
       <name>default</name>
@@ -39,6 +44,14 @@ in {
       virsh net-start default 2>/dev/null || true
     '';
     wantedBy = ["multi-user.target"];
+  };
+
+  # libvirt upstream hardcodes /usr/bin/sh which doesn't exist on NixOS
+  systemd.services.virt-secret-init-encryption = {
+    serviceConfig.ExecStart = lib.mkForce [
+      ""
+      "${pkgs.bash}/bin/sh -c 'umask 0077 && (dd if=/dev/random status=none bs=32 count=1 | systemd-creds encrypt --name=secrets-encryption-key - /var/lib/libvirt/secrets/secrets-encryption-key)'"
+    ];
   };
 
   environment.systemPackages = with pkgs; [
