@@ -106,22 +106,17 @@
       "width": 50
     },
     {
-      "id": "nightMode",
-      "enabled": true,
-      "width": 50
-    },
-    {
-      "id": "darkMode",
-      "enabled": true,
-      "width": 50
-    },
-    {
       "id": "builtin_vpn",
       "enabled": true,
       "width": 50
     },
     {
       "id": "idleInhibitor",
+      "enabled": true,
+      "width": 50
+    },
+    {
+      "id": "colorPicker",
       "enabled": true,
       "width": 50
     }
@@ -149,7 +144,7 @@
   "workspaceNameIcons": {},
   "waveProgressEnabled": true,
   "scrollTitleEnabled": true,
-  "audioVisualizerEnabled": true,
+  "audioVisualizerEnabled": false,
   "audioScrollMode": "volume",
   "audioWheelScrollAmount": 5,
   "clockCompactMode": false,
@@ -182,7 +177,9 @@
   "sortAppsAlphabetically": false,
   "appLauncherGridColumns": 4,
   "spotlightCloseNiriOverview": true,
-  "spotlightSectionViewModes": {},
+  "spotlightSectionViewModes": {
+    "apps": "list"
+  },
   "appDrawerSectionViewModes": {},
   "niriOverviewOverlayEnabled": true,
   "dankLauncherV2Size": "compact",
@@ -283,20 +280,20 @@
   "matugenTemplateQt5ct": true,
   "matugenTemplateQt6ct": true,
   "matugenTemplateFirefox": true,
-  "matugenTemplatePywalfox": true,
+  "matugenTemplatePywalfox": false,
   "matugenTemplateZenBrowser": true,
   "matugenTemplateVesktop": true,
   "matugenTemplateEquibop": true,
-  "matugenTemplateGhostty": true,
-  "matugenTemplateKitty": false,
+  "matugenTemplateGhostty": false,
+  "matugenTemplateKitty": true,
   "matugenTemplateFoot": false,
   "matugenTemplateAlacritty": false,
   "matugenTemplateNeovim": true,
-  "matugenTemplateWezterm": true,
+  "matugenTemplateWezterm": false,
   "matugenTemplateDgop": true,
   "matugenTemplateKcolorscheme": true,
   "matugenTemplateVscode": false,
-  "matugenTemplateEmacs": true,
+  "matugenTemplateEmacs": false,
   "showDock": false,
   "dockAutoHide": false,
   "dockSmartAutoHide": true,
@@ -360,7 +357,7 @@
   "osdPosition": 5,
   "osdVolumeEnabled": true,
   "osdMediaVolumeEnabled": true,
-  "osdMediaPlaybackEnabled": true,
+  "osdMediaPlaybackEnabled": false,
   "osdBrightnessEnabled": true,
   "osdIdleInhibitorEnabled": true,
   "osdMicMuteEnabled": true,
@@ -410,7 +407,10 @@
       ],
       "showOnLastDisplay": true,
       "leftWidgets": [
-        "workspaceSwitcher",
+        {
+          "id": "workspaceSwitcher",
+          "enabled": true
+        },
         {
           "id": "music",
           "enabled": true,
