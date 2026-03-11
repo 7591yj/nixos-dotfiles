@@ -5,16 +5,32 @@
   },
   "dockerManager": {
     "enabled": false,
-    "terminalApp": "alacritty"
+    "terminalApp": "kitty"
   },
   "dmsSessionizer": {
     "enabled": true,
     "includeHidden": true,
     "projectsDir": "~/Developer",
-    "terminal": "alacritty"
+    "terminal": "kitty"
   },
   "dankKDEConnect": {
     "enabled": true,
     "selectedDeviceId": "1c5c5b85_814b_46af_9295_550f1c4fe8de"
+  },
+  "dankClight": {
+    "enabled": true
+  },
+  "dankNotepadModule": {
+    "enabled": true
+  },
+  "commandRunner": {
+    "enabled": true,
+    "history": [
+      "dgop",
+      "htop",
+      "shell"
+    ],
+    "terminal": "kitty",
+    "trigger": "$"
   }
 }

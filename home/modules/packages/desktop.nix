@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     # terminal
-    alacritty-graphics
+    kitty
 
     # editor
     zed-editor
@@ -19,6 +19,7 @@
 
     # entertainment
     tauon
+    tidal-hifi
     jellyfin-desktop
     steam
     # kdePackages.kdenlive
@@ -40,10 +41,5 @@
     imagemagick
     libopenraw
     claude-code
-
-    # theme
-    whitesur-cursors
-    whitesur-gtk-theme
-    whitesur-icon-theme
   ];
 }

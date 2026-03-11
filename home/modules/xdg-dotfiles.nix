@@ -4,12 +4,12 @@
 
   mutableConfigs = {
     DankMaterialShell = "DankMaterialShell";
+    kitty = "kitty";
     niri = "niri";
     zed = "zed";
   };
 
   immutableConfigs = {
-    alacritty = "alacritty";
     lazygit = "lazygit";
   };
 in {
@@ -18,6 +18,17 @@ in {
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "image/png" = "org.gnome.Loupe.desktop";
+      "image/jpeg" = "org.gnome.Loupe.desktop";
+      "image/gif" = "org.gnome.Loupe.desktop";
+      "image/webp" = "org.gnome.Loupe.desktop";
+      "image/svg+xml" = "org.gnome.Loupe.desktop";
+    };
   };
 
   xdg.configFile =

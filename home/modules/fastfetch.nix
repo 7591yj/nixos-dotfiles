@@ -5,7 +5,7 @@ in {
     enable = true;
     settings = {
       logo = {
-        type = "sixel";
+        type = "kitty";
         source = "/run/secrets/icon";
         width = 15;
         padding = {
