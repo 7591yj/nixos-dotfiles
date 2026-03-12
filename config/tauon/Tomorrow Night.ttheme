@@ -1,0 +1,137 @@
+#Tauon Music Box theme file
+#Tomorrow Night
+
+
+#-Backgrounds-----
+
+23,25,26         top panel
+29,31,33         tracklist panel
+40,42,46         side panel
+23,25,26         bottom panel
+29,31,33         queue panel
+29,31,33         gallery background
+
+#-Playlist-------
+
+196,200,197      track line
+102,102,102      track time
+102,102,102      track index
+128,161,189      track artist
+178,148,186      track album
+
+240,197,116      track playing
+240,197,116      index playing
+240,197,116      artist playing
+240,197,116      album playing
+240,197,116      time playing
+
+204,102,102      track missing
+
+240,197,116      fav line
+102,102,102      folder line
+196,200,197      folder title
+
+128,161,189,40   playing highlight
+54,58,65,80      select highlight
+178,148,186      gallery highlight
+
+54,58,65         column bar background
+
+#-Bottom panel------
+
+102,102,102      buttons off
+181,189,104      buttons over
+128,161,189      buttons active
+
+196,200,197      playing time
+
+128,161,189      seek bar
+138,189,182      volume bar
+77,77,77,80      seek bg
+77,77,77,80      volume bg
+102,102,102      scroll bar
+
+102,102,102      mode off
+181,189,104      mode over
+128,161,189      mode on
+
+196,200,197      bottom title
+
+#-Top panel---------
+
+255,254,254      tab active text
+196,200,197      tab text
+23,25,26         tab background
+54,58,65         tab over
+54,58,65         tab active background
+
+128,161,189      music vis
+
+23,25,26         window buttons background
+196,200,197      window buttons on
+102,102,102      window buttons icon off
+255,254,254      window buttons icon over
+# window button x on
+# window button x off
+
+
+#-Menu-------------
+
+23,25,26         menu background
+54,58,65         menu highlight
+54,58,65         menu border
+196,200,197      menu text
+102,102,102      menu disable text
+102,102,102      menu icons
+
+#-Dialog box---------
+
+29,31,33         box background
+54,58,65         box border
+
+255,254,254      box title text
+102,102,102      box text label
+
+196,200,197      box text normal
+196,200,197      box sub text
+196,200,197      box input text
+54,58,65         box text border
+
+#                box button text normal
+#                box button text highlight
+40,42,46         box button background normal
+54,58,65         box button background highlight
+54,58,65         box button border
+
+#-Misc--------------
+
+77,77,77,100     window frame
+29,31,33         artist bio background
+196,200,197      artist bio text
+
+#-Side panel--------
+
+255,254,254      title info
+196,200,197      extra info
+54,58,65         art border
+
+#-Mini Mode---------
+
+23,25,26         mini bg
+54,58,65         mini border
+196,200,197      mini text 1
+128,161,189      mini text 2
+
+#-Columns-----------
+
+204,102,102      column-codec
+128,161,189      column-title
+178,148,186      column-album-artist
+138,189,182      column-comment
+240,197,116      column-date
+
+204,102,102      column+codec
+128,161,189      column+title
+178,148,186      column+album-artist
+138,189,182      column+comment
+240,197,116      column+date

@@ -31,6 +31,9 @@ in {
     };
   };
 
+  xdg.dataFile."TauonMusicBox/theme/Tomorrow Night.ttheme".source =
+    createSymlink "${config.home.homeDirectory}/nixos-dotfiles/config/tauon/Tomorrow Night.ttheme";
+
   xdg.configFile =
     (builtins.mapAttrs (_name: subpath: {
         source = createSymlink "${config.home.homeDirectory}/nixos-dotfiles/config/${subpath}";
