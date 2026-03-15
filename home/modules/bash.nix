@@ -63,6 +63,9 @@
       ble-face -s menu_filter_input    fg=16,bg=#f0c674
     }
     blehook complete_load+=my/theme/menu-faces
+
+    ble-import -d integration/fzf-completion
+    ble-import -d integration/fzf-key-bindings
   '';
 
   programs.bash = {
