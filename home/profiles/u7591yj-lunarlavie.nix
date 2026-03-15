@@ -14,7 +14,9 @@
     ../modules/xdg-dotfiles.nix
     ../modules/pwa.nix
     ../modules/astra.nix
+    ../modules/pencil.nix
     ../modules/t3code.nix
+    ../modules/sticker-smith.nix
     ../modules/codex.nix
   ];
 

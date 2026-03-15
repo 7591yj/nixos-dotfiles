@@ -6,10 +6,10 @@
   makeWrapper,
   runCommand,
 }: let
-  version = "0.2.0-beta.1";
+  version = "0.2.0-beta.2";
   src = fetchurl {
     url = "https://github.com/7591yj/sticker-smith/releases/download/v${version}/Sticker.Smith-${version}.AppImage";
-    hash = "sha256-mkXUk9k2sChBZhiVFZfecx+qfp3JoHWvZqvVIDQ9IWg=";
+    hash = "sha256-HINJkJ6mxhb9Z1yuOfgn7LQkR77rJPnyNkgWtm2g9fU=";
   };
   contents = appimageTools.extract {
     pname = "sticker-smith";
