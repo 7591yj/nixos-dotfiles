@@ -8,6 +8,7 @@
       homeProfile ? null,
       useStylix ? false,
       useDisko ? false,
+      extraModules ? [],
     }:
       nixpkgsInput.lib.nixosSystem {
         specialArgs = {inherit inputs;};
@@ -44,6 +45,7 @@
             ]
             else []
           )
+          ++ extraModules
           ++ (
             if homeProfile != null
             then [

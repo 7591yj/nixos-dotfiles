@@ -25,8 +25,9 @@
     # Storage
     ../storage/gvfs.nix
 
-    # Display server - Wayland/Niri
+    # Display server (controlled by mySystem.displayServer)
     ../desktop/wayland-niri.nix
+    ../desktop/x11.nix
 
     # Applications
     ../packages/desktop.nix

@@ -6,6 +6,7 @@
     DankMaterialShell = "DankMaterialShell";
     kitty = "kitty";
     niri = "niri";
+    oxwm = "oxwm";
     zed = "zed";
   };
 

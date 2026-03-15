@@ -12,6 +12,7 @@
     ../modules/yazi.nix
     ../modules/fastfetch.nix
     ../modules/xdg-dotfiles.nix
+    ../modules/picom.nix
     ../modules/pwa.nix
     ../modules/astra.nix
     ../modules/t3code.nix

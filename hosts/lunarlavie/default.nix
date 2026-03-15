@@ -19,6 +19,8 @@
     ../../nixos/modules/virt-manager.nix
   ];
 
+  mySystem.displayServer = "wayland";
+
   nixpkgs.overlays = [
     inputs.helium-browser.overlay
   ];

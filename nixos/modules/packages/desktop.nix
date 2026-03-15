@@ -1,33 +1,42 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    # toolchain
-    diffutils
-    pv
-    duf
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  environment.systemPackages = with pkgs;
+    [
+      # toolchain
+      diffutils
+      pv
+      duf
 
-    # editor
-    neovim
+      # editor
+      neovim
 
-    # network
-    tailscale
-    rsync
-    wget
+      # network
+      tailscale
+      rsync
+      wget
 
-    # archives
-    unzipNLS
-    unrar
-    p7zip
-    file
+      # archives
+      unzipNLS
+      unrar
+      p7zip
+      file
 
-    # usb
-    usbutils
+      # usb
+      usbutils
 
-    # graphics
-    xwayland-satellite
+      # graphics
+      ffmpeg-full
 
-    # security
-    libsecret
-  ];
+      # security
+      libsecret
+    ]
+    ++ lib.optionals (config.mySystem.displayServer == "wayland") [
+      xwayland-satellite
+    ];
 
   programs.nano.enable = false;
 }
