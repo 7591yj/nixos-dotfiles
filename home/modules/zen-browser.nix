@@ -121,14 +121,29 @@ in {
       inherit containers spaces pins;
       search = {
         force = true;
-        default = "ddg";
+        default = "unduck";
         engines = {
-          # NixOS package search — use @nx in the address bar
+          # NixOS package search
           nixos-packages = {
             name = "NixOS Packages";
             urls = [{template = "https://search.nixos.org/packages?query={searchTerms}";}];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = ["@nx"];
+          };
+          unduck = {
+            name = "Unduck";
+            urls = [{template = "https://unduck.link?q={searchTerms}";}];
+          };
+          weblio = {
+            name = "weblio";
+            urls = [{template = "https://www.weblio.jp/content/{searchTerms}";}];
+
+            definedAliases = ["@js"];
+          };
+          kotobank = {
+            name = "コトバンク";
+            urls = [{template = "https://kotobank.jp/search?q={searchTerms}";}];
+            definedAliases = ["@jb"];
           };
         };
       };
