@@ -25,8 +25,8 @@
     # Storage
     ../storage/gvfs.nix
 
-    # Display server - Wayland/Niri
-    ../desktop/wayland-niri.nix
+    # Wayland compositor selection
+    ../desktop/compositors/default.nix
 
     # Applications
     ../packages/desktop.nix

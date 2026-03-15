@@ -14,8 +14,9 @@
     enableSystemMonitoring = true;
     enableVPN = true;
     enableDynamicTheming = true;
-    enableAudioWavelength = true;
+    enableAudioWavelength = false;
     enableCalendarEvents = false;
+    enableClipboardPaste = true;
 
     plugins = {
       dankBatteryAlerts.enable = true;
@@ -38,7 +39,7 @@
 
   services.displayManager.dms-greeter = {
     enable = true;
-    compositor.name = "niri";
+    compositor.name = config.mySystem.desktop.compositor;
     configHome = "/home/${config.mySystem.username}";
   };
 

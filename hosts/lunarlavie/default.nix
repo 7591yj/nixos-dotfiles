@@ -23,6 +23,8 @@
     inputs.helium-browser.overlay
   ];
 
+  mySystem.desktop.compositor = "niri";
+
   networking.hostName = "lunarlavie";
 
   # NOTE: This disk predates disko.
