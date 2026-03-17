@@ -5,13 +5,13 @@
   },
   "dockerManager": {
     "enabled": false,
-    "terminalApp": "kitty"
+    "terminalApp": "alacritty"
   },
   "dmsSessionizer": {
     "enabled": true,
     "includeHidden": true,
     "projectsDir": "~/Developer",
-    "terminal": "kitty"
+    "terminal": "alacritty"
   },
   "dankKDEConnect": {
     "enabled": true,
@@ -27,10 +27,18 @@
     "enabled": true,
     "history": [
       "dgop",
+      "ls -al",
+      "3t",
       "htop",
       "shell"
     ],
-    "terminal": "kitty",
+    "terminal": "alacritty",
     "trigger": "$"
+  },
+  "calculator": {
+    "enabled": true,
+    "trigger": "",
+    "noTrigger": true,
+    "persistHistoryOnFile": false
   }
 }

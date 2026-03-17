@@ -200,11 +200,11 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     // === Screenshots ===
-    XF86Launch1 { screenshot; }
-    Ctrl+XF86Launch1 { screenshot-screen; }
+    XF86Launch1 { spawn "dms" "screenshot" "--no-file"; }
+    Ctrl+XF86Launch1 { spawn "dms" "screenshot" "full" "--no-file"; }
     Alt+XF86Launch1 { screenshot-window; }
-    Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
+    Print { spawn "dms" "screenshot" "--no-file"; }
+    Ctrl+Print { spawn "dms" "screenshot" "full" "--no-file"; }
     Alt+Print { screenshot-window; }
     // === System Controls ===
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
