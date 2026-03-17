@@ -33,10 +33,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # patches pnpmConfigHook for nvf (see flake/nixpkgs-patched/).
+    # remove once upstream nixpkgs fixes the $HOME=/homeless-shelter sandbox issue
+    nixpkgs-patched = {
+      url = "path:./flake/nixpkgs-patched";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # apps
     nvf = {
       url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-patched";
     };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
