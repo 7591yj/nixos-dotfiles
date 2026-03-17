@@ -3,10 +3,10 @@
   fetchurl,
   runCommand,
 }: let
-  version = "0.4.0-beta";
+  version = "0.5.0-beta";
   src = fetchurl {
     url = "https://github.com/Boof2015/astra/releases/download/v${version}/Astra-${version}-Linux.AppImage";
-    hash = "sha256-HACd2jHD6s6HF+CLViVXxm+XmPgqgGmm+ePYFCWShuM=";
+    hash = "sha256-wZEW7r4v5IWtXUJk5Yk1smDESzzMy0I+m3yXjsmUV1E=";
   };
   contents = appimageTools.extract {
     pname = "astra";
