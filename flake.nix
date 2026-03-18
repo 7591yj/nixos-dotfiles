@@ -58,8 +58,14 @@
       url = "gitlab:invra/helium";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    codex-nix.url = "github:SecBear/codex-nix";
-    t3code-nix.url = "github:Sawrz/t3code-nix";
+    codex-nix = {
+      url = "github:SecBear/codex-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    t3code-nix = {
+      url = "github:Sawrz/t3code-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     skills-catalog.url = "path:./skills";
   };
 
