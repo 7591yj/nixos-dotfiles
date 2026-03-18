@@ -60,6 +60,7 @@
     };
     codex-nix.url = "github:SecBear/codex-nix";
     t3code-nix.url = "github:Sawrz/t3code-nix";
+    skills-catalog.url = "path:./skills";
   };
 
   outputs = inputs @ {flake-parts, ...}:

@@ -3,6 +3,7 @@
     hostname = "lunarlavie";
     useStylix = true;
     useDisko = true;
+    useAgentSkills = true;
     homeProfile = "u7591yj-lunarlavie";
   };
 }

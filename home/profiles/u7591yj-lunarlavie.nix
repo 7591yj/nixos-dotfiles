@@ -18,6 +18,7 @@
     ../modules/t3code.nix
     ../modules/sticker-smith.nix
     ../modules/codex.nix
+    ../modules/agent-skills.nix
   ];
 
   home = {

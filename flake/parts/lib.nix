@@ -8,6 +8,7 @@
       homeProfile ? null,
       useStylix ? false,
       useDisko ? false,
+      useAgentSkills ? false,
     }:
       nixpkgsInput.lib.nixosSystem {
         specialArgs = {inherit inputs;};
@@ -56,6 +57,9 @@
                   users.${config.mySystem.username} =
                     import ../../home/profiles/${homeProfile}.nix;
                   backupFileExtension = "backup";
+                  sharedModules = nixpkgsInput.lib.optionals useAgentSkills [
+                    inputs.skills-catalog.homeManagerModules.default
+                  ];
                 };
               })
             ]

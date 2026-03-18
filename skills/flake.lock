@@ -1,0 +1,101 @@
+{
+  "nodes": {
+    "agent-skills-nix": {
+      "inputs": {
+        "home-manager": "home-manager",
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1772640663,
+        "narHash": "sha256-apWnei/2LGgJ247h4WpPQsGooWot4I3CX2PzPsXGx3A=",
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "rev": "0e74b9e4b998807c21ab7ac49d00074aee5df96c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "type": "github"
+      }
+    },
+    "everything-claude-code": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1773733329,
+        "narHash": "sha256-eOWOsxQY3tiP+jVYZIWVgiopjEuJb3d19etfm8dohfc=",
+        "owner": "affaan-m",
+        "repo": "everything-claude-code",
+        "rev": "fce4513d58dc723177045dd7c3a3568d5c016407",
+        "type": "github"
+      },
+      "original": {
+        "owner": "affaan-m",
+        "repo": "everything-claude-code",
+        "type": "github"
+      }
+    },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "agent-skills-nix",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772380461,
+        "narHash": "sha256-O3ukj3Bb3V0Tiy/4LUfLlBpWypJ9P0JeUgsKl2nmZZY=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "f140aa04d7d14f8a50ab27f3691b5766b17ae961",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "nix-best-practices": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1773779888,
+        "narHash": "sha256-esW6OcYg7RsLG2GGZlYFn5bNLYYP5jWSiSqhSKcZUfw=",
+        "owner": "0xbigboss",
+        "repo": "claude-code",
+        "rev": "66b1293be793098c49d25126ec8e6400dbfae22b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0xbigboss",
+        "repo": "claude-code",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1772198003,
+        "narHash": "sha256-I45esRSssFtJ8p/gLHUZ1OUaaTaVLluNkABkk6arQwE=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "dd9b079222d43e1943b6ebd802f04fd959dc8e61",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "agent-skills-nix": "agent-skills-nix",
+        "everything-claude-code": "everything-claude-code",
+        "nix-best-practices": "nix-best-practices"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
