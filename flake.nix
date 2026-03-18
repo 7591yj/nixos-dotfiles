@@ -25,6 +25,7 @@
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
 
     # secrets
@@ -44,6 +45,7 @@
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs-patched";
+      inputs.flake-parts.follows = "flake-parts";
     };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
@@ -61,12 +63,16 @@
     codex-nix = {
       url = "github:SecBear/codex-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
     t3code-nix = {
       url = "github:Sawrz/t3code-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    skills-catalog.url = "path:./skills";
+    skills-catalog = {
+      url = "path:./skills";
+      inputs.agent-skills-nix.inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {flake-parts, ...}:
