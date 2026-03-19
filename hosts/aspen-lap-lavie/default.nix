@@ -25,7 +25,7 @@
 
   mySystem.desktop.compositor = "niri";
 
-  networking.hostName = "lunarlavie";
+  networking.hostName = "aspen-lap-lavie";
 
   # NOTE: This disk predates disko.
   # LUKS and ESP are referenced by UUID so they are not affected by the

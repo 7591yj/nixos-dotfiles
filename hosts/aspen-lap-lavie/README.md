@@ -1,4 +1,4 @@
-# lunarlavie
+# aspen-lap-lavie
 
 Intel-based laptop; NixOS with a desktop role
 

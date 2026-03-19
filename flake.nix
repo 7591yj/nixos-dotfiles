@@ -84,8 +84,8 @@
 
       imports = [
         ./flake/parts/lib.nix
-        ./flake/parts/nixos/lunarlavie.nix
-        ./flake/parts/nixos/hawknavi.nix
+        ./flake/parts/nixos/aspen-lap-lavie.nix
+        ./flake/parts/nixos/juniper-srv-vm.nix
       ];
     };
 }
