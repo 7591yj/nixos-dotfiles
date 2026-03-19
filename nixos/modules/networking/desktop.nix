@@ -1,4 +1,8 @@
-{config, pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   users.users.${config.mySystem.username}.extraGroups = ["networkmanager"];
   networking.networkmanager = {
     enable = true;
@@ -26,4 +30,8 @@
 
   # Disable WiFi power saving to prevent packet loss
   networking.networkmanager.wifi.powersave = false;
+
+  # LocalSend
+  networking.firewall.allowedTCPPorts = [53317];
+  networking.firewall.allowedUDPPorts = [53317];
 }
