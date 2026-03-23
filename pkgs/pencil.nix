@@ -6,7 +6,7 @@
   version = "3.1.1";
   src = fetchurl {
     url = "https://www.pencil.dev/download/Pencil-linux-x86_64.AppImage";
-    hash = "sha256-CVYwQg6s3WifdaQ0hLjlTZ7AF9rMHIzrVoQNgVyqL8Q=";
+    hash = "sha256-dxge3io2hu4eXpQRaeOwILblWZjti9fxmEMd5pWxwnc=";
   };
   contents = appimageTools.extract {
     pname = "pencil";
