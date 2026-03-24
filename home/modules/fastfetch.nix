@@ -23,42 +23,42 @@ in {
         }
         {
           type = "os";
-          key = "os";
+          key = "os  ";
           keyColor = "green";
           format = "{name}";
         }
         {
           type = "kernel";
-          key = "ker";
+          key = "ker ";
           keyColor = "green";
         }
         {
           type = "shell";
-          key = "sh";
+          key = "sh  ";
           keyColor = "blue";
           format = "{pretty-name}";
         }
         {
           type = "wm";
-          key = "wm";
+          key = "wm  ";
           keyColor = "red";
           format = "{pretty-name}";
         }
         {
           type = "cpu";
-          key = "cpu";
+          key = "cpu ";
           keyColor = "yellow";
           format = "{name}";
         }
         {
           type = "memory";
-          key = "ram";
+          key = "ram ";
           keyColor = "yellow";
           format = "{used} / {total}";
         }
         {
           type = "custom";
-          format = "${esc}[33m󰮯  ${esc}[32m󰊠  ${esc}[34m󰊠  ${esc}[31m󰊠  ${esc}[36m󰊠  ${esc}[35m󰊠  ${esc}[37m󰊠  ${esc}[97m󰊠";
+          format = "${esc}[33m󰮯  ${esc}[32m󰊠  ${esc}[34m󰊠  ${esc}[31m󰊠  ${esc}[36m󰊠  ${esc}[35m󰊠  ${esc}[37m󰊠  ${esc}[97m󰊠 ";
         }
       ];
     };
