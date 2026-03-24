@@ -25,7 +25,7 @@
       {
         matches = [{"node.description" = "iFi USB Audio SE Analog Stereo";}];
         actions."update-props" = {
-          "audio.format" = "S32LE";
+          "audio.format" = "S16LE";
           "audio.rate" = 96000;
         };
       }
