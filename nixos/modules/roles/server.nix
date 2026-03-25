@@ -14,6 +14,7 @@
     ../locale/base.nix
 
     # Applications
+    ../packages/common.nix
     ../packages/server.nix
     ../services/smartd.nix
   ];

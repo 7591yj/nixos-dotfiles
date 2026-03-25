@@ -1,23 +1,13 @@
 {osConfig, ...}: {
   imports = [
-    ../modules/packages/common.nix
-    ../modules/packages/desktop.nix
     ../modules/zen-browser.nix
-    ../modules/helium.nix
     ../modules/git.nix
     ../modules/bash.nix
     ../modules/starship.nix
     ../modules/tmux.nix
     ../modules/nvf.nix
     ../modules/yazi.nix
-    ../modules/fastfetch.nix
     ../modules/xdg-dotfiles.nix
-    ../modules/pwa.nix
-    ../modules/astra.nix
-    ../modules/pencil.nix
-    ../modules/t3code.nix
-    ../modules/sticker-smith.nix
-    ../modules/codex.nix
     ../modules/agent-skills.nix
   ];
 

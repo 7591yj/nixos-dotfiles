@@ -29,11 +29,16 @@
     ../desktop/compositors/default.nix
 
     # Applications
+    ../packages/common.nix
     ../packages/desktop.nix
     ../fonts.nix
     ../printing.nix
     ../flatpak.nix
     ../tailscale.nix
+
+    ../desktop/fastfetch.nix
+    ../desktop/mime.nix
+    ../desktop/pwa.nix
 
     # External
     inputs.dms-plugin-registry.modules.default
