@@ -5,7 +5,8 @@
     ../modules/starship.nix
     ../modules/tmux.nix
     ../modules/nvf.nix
-    ../modules/xdg-dotfiles.nix
+    ../modules/lazygit.nix
+    ../modules/xdg-userdirs.nix
   ];
 
   home = {

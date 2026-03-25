@@ -7,8 +7,9 @@
     ../modules/tmux.nix
     ../modules/nvf.nix
     ../modules/yazi.nix
-    ../modules/xdg-dotfiles.nix
     ../modules/agent-skills.nix
+    ../modules/lazygit.nix
+    ../modules/xdg-userdirs.nix
   ];
 
   home = {
