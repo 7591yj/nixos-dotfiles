@@ -1,7 +1,5 @@
 {osConfig, ...}: {
   imports = [
-    ../modules/starship.nix
-    ../modules/tmux.nix
     ../modules/nvf.nix
     ../modules/lazygit.nix
     ../modules/xdg-userdirs.nix

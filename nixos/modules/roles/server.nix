@@ -20,5 +20,8 @@
 
     ../programs/bash.nix
     ../programs/git.nix
+    ../programs/starship/default.nix
+    ../programs/tmux/default.nix
+    ../programs/yazi/default.nix
   ];
 }
