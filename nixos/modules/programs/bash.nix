@@ -1,7 +1,7 @@
-{pkgs, ...}: {
-  home.packages = [pkgs.blesh];
+{pkgs, config, ...}: let
+  u = config.mySystem.username;
 
-  xdg.configFile."blesh/init.sh".text = ''
+  bleshInit = pkgs.writeText "blesh-init.sh" ''
     # Tomorrow Night
     # editing
     ble-face -s region                 fg=231,bg=#373b41
@@ -57,7 +57,6 @@
     # completion
     ble-face -s auto_complete          fg=#969896,bg=254
 
-    # Completion faces are defined at end of core-complete.sh
     function my/theme/menu-faces {
       ble-face -s menu_filter_fixed    bold
       ble-face -s menu_filter_input    fg=16,bg=#f0c674
@@ -67,31 +66,31 @@
     ble-import -d integration/fzf-completion
     ble-import -d integration/fzf-key-bindings
   '';
+in {
+  environment.systemPackages = [ pkgs.blesh ];
+
+  systemd.tmpfiles.rules = [
+    "d  /home/${u}/.config/blesh 0755 ${u} users -"
+    "L+ /home/${u}/.config/blesh/init.sh - - - - ${bleshInit}"
+  ];
 
   programs.bash = {
-    enable = true;
-
     shellAliases = {
-      ls = "eza --color=auto";
-      ll = "eza -al --color=auto";
+      ls   = "eza --color=auto";
+      ll   = "eza -al --color=auto";
       grep = "grep --color=auto";
-
-      lg = "lazygit";
-      gcl = "git clone";
-      gs = "git switch";
-      gA = "git add .";
-      gp = "git pull origin main";
-      gP = "git push origin main";
+      lg   = "lazygit";
+      gcl  = "git clone";
+      gs   = "git switch";
+      gA   = "git add .";
+      gp   = "git pull origin main";
+      gP   = "git push origin main";
     };
 
-    initExtra = ''
-      [[ $- != *i* ]] && return
-
+    interactiveShellInit = ''
       source -- "${pkgs.blesh}/share/blesh/ble.sh" --attach=none
 
-      if [[ $- == *i* ]]; then # in interactive session
-        set -o vi
-      fi
+      set -o vi
 
       nixx() {
         nixos-rebuild --sudo switch -L --flake "$HOME/nixos-dotfiles#$(hostname)"

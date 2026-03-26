@@ -40,6 +40,9 @@
     ../desktop/mime.nix
     ../desktop/pwa.nix
 
+    ../programs/bash.nix
+    ../programs/git.nix
+
     # External
     inputs.dms-plugin-registry.modules.default
   ];

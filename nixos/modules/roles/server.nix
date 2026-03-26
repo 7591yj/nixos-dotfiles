@@ -17,5 +17,8 @@
     ../packages/common.nix
     ../packages/server.nix
     ../services/smartd.nix
+
+    ../programs/bash.nix
+    ../programs/git.nix
   ];
 }

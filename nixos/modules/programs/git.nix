@@ -1,29 +1,27 @@
-{
+{pkgs, ...}: {
   programs.git = {
     enable = true;
-    settings = {
+    config = {
       user = {
         name = "7591yj";
         email = "77034308+7591yj@users.noreply.github.com";
       };
       init.defaultBranch = "main";
       alias = {
-        ci = "commit";
-        sw = "switch";
+        br = "branch";
+        ci = "commit -m ";
         co = "checkout";
-        st = "status";
         lg = "log --oneline --graph --decorate";
+        st = "status";
+        sw = "switch";
       };
-      core.editor = "vim";
+      code.editor = "vim";
       pull.rebase = true;
       push.autoSetupRemote = true;
     };
   };
 
-  programs.gh = {
-    enable = true;
-    settings = {
-      git_protocol = "https";
-    };
-  };
+  environment.systemPackages = [
+    pkgs.gh
+  ];
 }
