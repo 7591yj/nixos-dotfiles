@@ -11,6 +11,6 @@ in {
 
     # Tauon theme
     "d  ${h}/.local/share/TauonMusicBox/theme 0755 ${u} users -"
-    "L+ ${h}/.local/share/TauonMusicBox/theme/Tomorrow Night.ttheme - - - - ${repo}/config/tauon/Tomorrow Night.ttheme"
+    "L+ ${h}/.local/share/TauonMusicBox/theme/tomorrow-night.ttheme - - - - ${repo}/config/tauon/tomorrow-night.ttheme"
   ];
 }
