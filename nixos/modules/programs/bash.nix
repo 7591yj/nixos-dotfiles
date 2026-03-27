@@ -63,6 +63,8 @@
     }
     blehook complete_load+=my/theme/menu-faces
 
+    bleopt exec_errexit_mark=$'\e[38;2;204;102;102m[ble: exit %d]\e[m'
+
     ble-import -d integration/fzf-completion
     ble-import -d integration/fzf-key-bindings
   '';
