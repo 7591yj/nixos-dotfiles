@@ -1,6 +1,5 @@
 {osConfig, ...}: {
   imports = [
-    ../modules/nvf.nix
     ../modules/lazygit.nix
     ../modules/xdg-userdirs.nix
   ];

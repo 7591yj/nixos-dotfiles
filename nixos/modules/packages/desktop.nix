@@ -6,7 +6,6 @@
   environment.systemPackages = with pkgs;
     [
       # developer
-      neovim
       zed-editor
       code-cursor-fhs
       claude-code

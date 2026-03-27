@@ -1,7 +1,6 @@
 {osConfig, ...}: {
   imports = [
     ../modules/zen-browser.nix
-    ../modules/nvf.nix
     ../modules/agent-skills.nix
     ../modules/lazygit.nix
     ../modules/xdg-userdirs.nix

@@ -42,6 +42,7 @@
 
     ../programs/bash.nix
     ../programs/git.nix
+    ../programs/nvf.nix
     ../programs/starship/default.nix
     ../programs/tmux/default.nix
     ../programs/yazi/default.nix
