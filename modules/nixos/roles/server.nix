@@ -2,7 +2,7 @@
   imports = [
     # Core system
     ../boot.nix
-    ../nix.nix
+    ../../shared/nix.nix
     ../users.nix
 
     # Networking
@@ -14,14 +14,14 @@
     ../locale/base.nix
 
     # Applications
-    ../packages/common.nix
+    ../../shared/packages/common.nix
     ../packages/server.nix
     ../services/smartd.nix
 
-    ../programs/bash.nix
-    ../programs/git.nix
-    ../programs/starship/default.nix
-    ../programs/tmux/default.nix
-    ../programs/yazi/default.nix
+    ../../shared/programs/bash.nix
+    ../../shared/programs/git.nix
+    ../../shared/programs/starship/default.nix
+    ../../shared/programs/tmux/default.nix
+    ../../shared/programs/yazi/default.nix
   ];
 }

@@ -6,17 +6,17 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ../../nixos/modules/roles/desktop.nix
+    ../../modules/nixos/roles/desktop.nix
 
     # hardware-specific
-    ../../nixos/modules/hardware/intel.nix
-    ../../nixos/modules/hardware/laptop.nix
+    ../../modules/nixos/hardware/intel.nix
+    ../../modules/nixos/hardware/laptop.nix
 
     # optional features
-    ../../nixos/modules/appimage.nix
-    ../../nixos/modules/locale/kanata.nix
-    ../../nixos/modules/locale/input-fcitx5.nix
-    ../../nixos/modules/virt-manager.nix
+    ../../modules/nixos/appimage.nix
+    ../../modules/nixos/locale/kanata.nix
+    ../../modules/nixos/locale/input-fcitx5.nix
+    ../../modules/nixos/virt-manager.nix
   ];
 
   nixpkgs.overlays = [

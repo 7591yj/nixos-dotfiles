@@ -7,8 +7,8 @@
 
   imports = [
     ./hardware-configuration.nix
-    ../../nixos/modules/roles/server.nix
-    ../../nixos/modules/services/container-services
+    ../../modules/nixos/roles/server.nix
+    ../../modules/nixos/services/container-services
   ];
 
   networking.hostName = "juniper-srv-vm";

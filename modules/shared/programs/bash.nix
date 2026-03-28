@@ -71,11 +71,6 @@
 in {
   environment.systemPackages = [ pkgs.blesh ];
 
-  systemd.tmpfiles.rules = [
-    "d  /home/${u}/.config/blesh 0755 ${u} users -"
-    "L+ /home/${u}/.config/blesh/init.sh - - - - ${bleshInit}"
-  ];
-
   programs.bash = {
     shellAliases = {
       ls   = "eza --color=auto";

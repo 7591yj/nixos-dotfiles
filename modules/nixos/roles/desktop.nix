@@ -2,7 +2,7 @@
   imports = [
     # Core system
     ../boot.nix
-    ../nix.nix
+    ../../shared/nix.nix
     ../users.nix
 
     # Secrets
@@ -29,7 +29,7 @@
     ../desktop/compositors/default.nix
 
     # Applications
-    ../packages/common.nix
+    ../../shared/packages/common.nix
     ../packages/desktop.nix
     ../fonts.nix
     ../printing.nix
@@ -40,12 +40,12 @@
     ../desktop/mime.nix
     ../desktop/pwa.nix
 
-    ../programs/bash.nix
-    ../programs/git.nix
-    ../programs/nvf.nix
-    ../programs/starship/default.nix
-    ../programs/tmux/default.nix
-    ../programs/yazi/default.nix
+    ../../shared/programs/bash.nix
+    ../../shared/programs/git.nix
+    ../../shared/programs/nvf.nix
+    ../../shared/programs/starship/default.nix
+    ../../shared/programs/tmux/default.nix
+    ../../shared/programs/yazi/default.nix
 
     # External
     inputs.dms-plugin-registry.modules.default

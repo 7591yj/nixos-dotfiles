@@ -24,7 +24,7 @@
   programs.agent-skills = {
     enable = true;
     sources.local = {
-      path = "${inputs.self}/skills";
+      path = "${inputs.self}/modules/skills";
     };
     sources.nix-best-practices = {
       path = inputs.skills-catalog.sources.nix-best-practices;

@@ -78,7 +78,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     skills-catalog = {
-      url = "path:./skills";
+      url = "path:./modules/skills";
       inputs.agent-skills-nix.inputs.nixpkgs.follows = "nixpkgs";
     };
   };
