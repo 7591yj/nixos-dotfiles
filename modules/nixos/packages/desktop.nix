@@ -16,7 +16,9 @@
       # productivity
       anki
       logseq
-      onlyoffice-desktopeditors
+      (callPackage ../../../pkgs/onlyoffice-desktopeditors.nix {
+        extraFonts = [ipaexfont];
+      })
 
       # communication
       element-desktop
@@ -50,6 +52,7 @@
       libopenraw
       snapshot
       xwayland-satellite
+      krita
 
       # security
       libsecret
