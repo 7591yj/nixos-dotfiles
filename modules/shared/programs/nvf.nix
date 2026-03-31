@@ -17,6 +17,16 @@
 in {
   imports = [inputs.nvf.nixosModules.default];
 
+  environment.variables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
+
+  environment.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
+
   programs.nvf = {
     enable = true;
     settings = {

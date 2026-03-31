@@ -7,6 +7,8 @@
         email = "77034308+7591yj@users.noreply.github.com";
       };
       init.defaultBranch = "main";
+      core.editor = "nvim";
+      sequence.editor = "nvim";
       alias = {
         br = "branch";
         ci = "commit -m ";
@@ -15,7 +17,6 @@
         st = "status";
         sw = "switch";
       };
-      code.editor = "vim";
       pull.rebase = true;
       push.autoSetupRemote = true;
     };
