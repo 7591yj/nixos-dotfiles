@@ -4,14 +4,14 @@
   repo = "${h}/nixos-dotfiles";
 in {
   systemd.tmpfiles.rules = [
-    "L+ ${h}/.config/DankMaterialShell - - - - ${repo}/config/DankMaterialShell"
-    "L+ ${h}/.config/kitty             - - - - ${repo}/config/kitty"
-    "L+ ${h}/.config/niri              - - - - ${repo}/config/niri"
-    "L+ ${h}/.config/zed               - - - - ${repo}/config/zed"
+    "L+ ${h}/.config/DankMaterialShell - - - - ${repo}/dotfiles/DankMaterialShell"
+    "L+ ${h}/.config/kitty             - - - - ${repo}/dotfiles/kitty"
+    "L+ ${h}/.config/niri              - - - - ${repo}/dotfiles/niri"
+    "L+ ${h}/.config/zed               - - - - ${repo}/dotfiles/zed"
 
     # Tauon theme
     "d  ${h}/.local/share/TauonMusicBox/theme 0755 ${u} users -"
-    "L+ ${h}/.local/share/TauonMusicBox/theme/tomorrow-night.ttheme - - - - ${repo}/config/tauon/tomorrow-night.ttheme"
+    "L+ ${h}/.local/share/TauonMusicBox/theme/tomorrow-night.ttheme - - - - ${repo}/dotfiles/tauon/tomorrow-night.ttheme"
 
   ];
 }

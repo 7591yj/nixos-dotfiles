@@ -5,7 +5,7 @@
       system ? "x86_64-linux",
       nixpkgsInput ? inputs.nixpkgs,
       homeManagerInput ? inputs.home-manager,
-      homeProfile ? null,
+      homePath ? null,
       useStylix ? false,
       useDisko ? false,
       useAgentSkills ? false,
@@ -46,7 +46,7 @@
             else []
           )
           ++ (
-            if homeProfile != null
+            if homePath != null
             then [
               homeManagerInput.nixosModules.home-manager
               ({config, ...}: {
@@ -55,7 +55,7 @@
                   useUserPackages = true;
                   extraSpecialArgs = {inherit inputs;};
                   users.${config.mySystem.username} =
-                    import ../../home/profiles/${homeProfile}.nix;
+                    import ../../homes/${homePath}.nix;
                   backupFileExtension = "backup";
                   sharedModules = nixpkgsInput.lib.optionals useAgentSkills [
                     inputs.skills-catalog.homeManagerModules.default

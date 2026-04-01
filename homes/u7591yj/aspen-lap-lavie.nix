@@ -1,9 +1,9 @@
 {osConfig, ...}: {
   imports = [
-    ../modules/zen-browser.nix
-    ../modules/agent-skills.nix
-    ../modules/lazygit.nix
-    ../modules/xdg-userdirs.nix
+    ../../modules/home-manager/zen-browser.nix
+    ../../modules/home-manager/agent-skills.nix
+    ../../modules/home-manager/lazygit.nix
+    ../../modules/home-manager/xdg-userdirs.nix
   ];
 
   home = {

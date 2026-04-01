@@ -7,15 +7,24 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "agent": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "gpt-5-nano",
+      "enable_thinking": false
+    },
+    "favorite_models": [],
+    "model_parameters": []
+  },
   "telemetry": {
     "diagnostics": false,
     "metrics": false,
   },
 
   "theme": "Tomorrow Night",
-  "buffer_font_family": "PlemolJP Console NF",
+  "buffer_font_family": "PlemolJP35 Console NF",
   "buffer_font_size": 15,
-  "ui_font_family": "PlemolJP Console NF",
+  "ui_font_family": "PlemolJP35 Console NF",
   "ui_font_size": 16,
   "icon_theme": "JetBrains New UI Icons (Dark)",
 

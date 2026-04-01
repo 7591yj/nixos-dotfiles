@@ -4,6 +4,6 @@
     useStylix = true;
     useDisko = true;
     useAgentSkills = true;
-    homeProfile = "u7591yj-aspen-lap-lavie";
+    homePath = "u7591yj/aspen-lap-lavie";
   };
 }
