@@ -20,6 +20,7 @@
 
     ../../shared/programs/bash.nix
     ../../shared/programs/git.nix
+    ../../shared/programs/neovim/default.nix
     ../../shared/programs/starship/default.nix
     ../../shared/programs/tmux/default.nix
     ../../shared/programs/yazi/default.nix
