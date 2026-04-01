@@ -1,19 +1,16 @@
-{pkgs, config, ...}: let
-  u = config.mySystem.username;
-
-  yaziConfig = pkgs.runCommand "yazi-config" {} ''
-    mkdir -p $out
-    cp ${./yazi.toml}    $out/yazi.toml
-    cp ${./keymap.toml}  $out/keymap.toml
-    cp ${./theme.toml}   $out/theme.toml
-    cp ${./init.lua}     $out/init.lua
-  '';
+{
+  pkgs,
+  inputs,
+  ...
+}: let
+  wrapperModule = pkgs.lib.modules.importApply ./module.nix inputs;
+  yaziWrapper = inputs.nix-wrapper-modules.lib.evalPackage [
+    {inherit pkgs;}
+    wrapperModule
+  ];
 in {
   environment.systemPackages = with pkgs; [
-    (pkgs.writeShellScriptBin "y" ''
-      exec ${pkgs.yazi}/bin/yazi "$@"
-    '')
-    yazi
+    yaziWrapper
 
     # yazi plugins
     yaziPlugins.full-border
@@ -22,8 +19,6 @@ in {
     yaziPlugins.chmod
     yaziPlugins.lazygit
   ];
-
-  environment.variables.YAZI_CONFIG_HOME = "${yaziConfig}";
 
   # yazi shell integration
   programs.bash.interactiveShellInit = ''
