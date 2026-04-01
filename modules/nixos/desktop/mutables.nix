@@ -9,10 +9,6 @@ in {
     "L+ ${h}/.config/niri              - - - - ${repo}/config/niri"
     "L+ ${h}/.config/zed               - - - - ${repo}/config/zed"
 
-    # blesh
-    "d  ${h}/.config/blesh 0755 ${u} users -"
-    "L+ ${h}/.config/blesh/init.sh - - - - ${repo}/config/blesh/init.sh"
-
     # Tauon theme
     "d  ${h}/.local/share/TauonMusicBox/theme 0755 ${u} users -"
     "L+ ${h}/.local/share/TauonMusicBox/theme/tomorrow-night.ttheme - - - - ${repo}/config/tauon/tomorrow-night.ttheme"

@@ -4,6 +4,7 @@
   ...
 }: let
   u = config.mySystem.username;
+  bleshInit = builtins.readFile ./blesh/init.sh;
 in {
   environment.systemPackages = [pkgs.blesh];
 
@@ -28,6 +29,7 @@ in {
 
     interactiveShellInit = ''
       source -- "${pkgs.blesh}/share/blesh/ble.sh" --attach=none
+      ${bleshInit}
 
       set -o vi
 
