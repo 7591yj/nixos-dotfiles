@@ -29,6 +29,7 @@ let
           };
           pull.rebase = true;
           push.autoSetupRemote = true;
+          credential.helper = "!gh auth git-credential";
         };
       }
     )
