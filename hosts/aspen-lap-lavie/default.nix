@@ -43,6 +43,8 @@
     owner = config.mySystem.username;
   };
 
+  mySystem.fastfetch.logoPath = config.sops.secrets.icon.path;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

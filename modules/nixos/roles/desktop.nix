@@ -36,7 +36,7 @@
     ../flatpak.nix
     ../tailscale.nix
 
-    ../desktop/fastfetch.nix
+    ../../shared/programs/fastfetch.nix
     ../desktop/mime.nix
     ../desktop/pwa.nix
 
