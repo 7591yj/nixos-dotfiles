@@ -14,7 +14,7 @@ in {
   imports = [wlib.wrapperModules.neovim];
 
   config = {
-    settings.config_directory = ../../../../config/nvim;
+    settings.config_directory = ./config;
     settings.aliases = ["vim" "vi"];
 
     specs.core = with pkgs.vimPlugins; [
