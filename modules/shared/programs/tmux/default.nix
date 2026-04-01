@@ -1,13 +1,13 @@
-{inputs, ...}: {
-  imports = [ inputs.nix-wrapper-modules.nixosModules.tmux ];
-
-  wrappers.tmux = {
-    enable = true;
-    sourceSensible = false;
-    terminal = "xterm-kitty";
-    terminalOverrides = ",xterm-kitty:RGB";
-    modeKeys = "vi";
-    vimVisualKeys = true;
-    configAfter = builtins.readFile ./tmux.conf;
-  };
+{
+  pkgs,
+  inputs,
+  ...
+}: let
+  wrapperModule = pkgs.lib.modules.importApply ./module.nix inputs;
+  tmuxWrapper = inputs.nix-wrapper-modules.lib.evalPackage [
+    {inherit pkgs;}
+    wrapperModule
+  ];
+in {
+  environment.systemPackages = [tmuxWrapper];
 }
