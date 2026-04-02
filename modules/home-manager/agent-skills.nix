@@ -2,7 +2,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   home.packages = [
     (pkgs.writeShellScriptBin "setup-ecc" ''
       set -euo pipefail

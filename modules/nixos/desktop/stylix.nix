@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   nixpkgs.overlays = [
     (final: prev: {
       whitesur-icon-theme = prev.whitesur-icon-theme.override {
@@ -70,29 +71,32 @@
   };
 
   home-manager.sharedModules = [
-    ({
-      lib,
-      config,
-      ...
-    }: {
-      home.file."${config.home.homeDirectory}/.Xresources".force = true;
-      xdg.configFile."gtk-3.0/settings.ini".force = true;
-      xdg.configFile."gtk-3.0/gtk.css".force = true;
-      xdg.configFile."gtk-4.0/settings.ini".force = true;
-      xdg.configFile."qt5ct/qt5ct.conf".force = true;
-      xdg.configFile."qt6ct/qt6ct.conf".force = true;
+    (
+      {
+        lib,
+        config,
+        ...
+      }:
+      {
+        home.file."${config.home.homeDirectory}/.Xresources".force = true;
+        xdg.configFile."gtk-3.0/settings.ini".force = true;
+        xdg.configFile."gtk-3.0/gtk.css".force = true;
+        xdg.configFile."gtk-4.0/settings.ini".force = true;
+        xdg.configFile."qt5ct/qt5ct.conf".force = true;
+        xdg.configFile."qt6ct/qt6ct.conf".force = true;
 
-      home.sessionVariables = {
-        QT_QPA_PLATFORMTHEME = lib.mkForce "gtk3";
-      };
+        home.sessionVariables = {
+          QT_QPA_PLATFORMTHEME = lib.mkForce "gtk3";
+        };
 
-      gtk.gtk4.theme = config.gtk.theme;
+        gtk.gtk4.theme = config.gtk.theme;
 
-      dconf.settings."org/gnome/desktop/interface" = {
-        color-scheme = lib.mkForce "prefer-dark";
-        cursor-theme = lib.mkForce "WhiteSur-cursors";
-        cursor-size = lib.mkForce (lib.gvariant.mkInt32 24);
-      };
-    })
+        dconf.settings."org/gnome/desktop/interface" = {
+          color-scheme = lib.mkForce "prefer-dark";
+          cursor-theme = lib.mkForce "WhiteSur-cursors";
+          cursor-size = lib.mkForce (lib.gvariant.mkInt32 24);
+        };
+      }
+    )
   ];
 }

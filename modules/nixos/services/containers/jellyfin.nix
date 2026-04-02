@@ -2,9 +2,11 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   tailnetDomain = config.services.tailscaleProxy.tailnetDomain;
-in {
+in
+{
   users.users.jellyfin = {
     isSystemUser = true;
     group = "jellyfin";

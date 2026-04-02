@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   xdg.mime.defaultApplications = {
     "image/png" = "org.gnome.Loupe.desktop";
     "image/jpeg" = "org.gnome.Loupe.desktop";

@@ -1,11 +1,18 @@
-{config, ...}: {
+{ config, ... }:
+{
   nix = {
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       auto-optimise-store = true;
       max-jobs = "auto";
       cores = 0;
-      trusted-users = ["root" config.mySystem.username];
+      trusted-users = [
+        "root"
+        config.mySystem.username
+      ];
       substituters = [
         "https://cache.nixos.org"
         "https://nix-community.cachix.org"

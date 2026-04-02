@@ -1,8 +1,10 @@
-inputs: {
+inputs:
+{
   wlib,
   ...
-}: {
-  imports = [wlib.wrapperModules.tmux];
+}:
+{
+  imports = [ wlib.wrapperModules.tmux ];
 
   config = {
     sourceSensible = false;

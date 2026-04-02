@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   # Common desktop functionality shared by all display servers
   imports = [
     ./portals.nix

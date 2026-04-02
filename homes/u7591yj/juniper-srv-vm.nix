@@ -1,4 +1,5 @@
-{osConfig, ...}: {
+{ osConfig, ... }:
+{
   imports = [
     ../../modules/home-manager/lazygit.nix
     ../../modules/home-manager/xdg-userdirs.nix

@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   imports = [
     ../../shared/nix.nix
     ../../shared/packages/common.nix

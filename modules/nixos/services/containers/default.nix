@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   virtualisation.podman = {
     enable = true;
     dockerCompat = false;
@@ -7,7 +8,7 @@
 
   virtualisation.containers.enable = true;
 
-  networking.firewall.trustedInterfaces = ["podman0"];
+  networking.firewall.trustedInterfaces = [ "podman0" ];
 
   environment.systemPackages = with pkgs; [
     podman-compose

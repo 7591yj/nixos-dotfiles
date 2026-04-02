@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     # Core system
     ../boot.nix

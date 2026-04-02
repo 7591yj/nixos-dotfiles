@@ -1,4 +1,5 @@
-{osConfig, ...}: {
+{ osConfig, ... }:
+{
   imports = [
     ../../modules/home-manager/zen-browser.nix
     ../../modules/home-manager/agent-skills.nix

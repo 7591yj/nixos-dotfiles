@@ -2,8 +2,10 @@
   inputs,
   pkgs,
   ...
-}: {
-  environment.systemPackages = with pkgs;
+}:
+{
+  environment.systemPackages =
+    with pkgs;
     [
       # developer
       zed-editor
@@ -17,7 +19,7 @@
       anki
       logseq
       (callPackage ../../../pkgs/onlyoffice-desktopeditors.nix {
-        extraFonts = [ipaexfont];
+        extraFonts = [ ipaexfont ];
       })
 
       # communication
@@ -69,9 +71,9 @@
       unrar
       usbutils
 
-      (callPackage ../../../pkgs/astra.nix {})
-      (callPackage ../../../pkgs/pencil.nix {})
-      (callPackage ../../../pkgs/sticker-smith.nix {})
+      (callPackage ../../../pkgs/astra.nix { })
+      (callPackage ../../../pkgs/pencil.nix { })
+      (callPackage ../../../pkgs/sticker-smith.nix { })
 
       helium
     ]

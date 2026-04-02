@@ -2,13 +2,15 @@
   pkgs,
   inputs,
   ...
-}: let
+}:
+let
   wrapperModule = pkgs.lib.modules.importApply ./module.nix inputs;
   yaziWrapper = inputs.nix-wrapper-modules.lib.evalPackage [
-    {inherit pkgs;}
+    { inherit pkgs; }
     wrapperModule
   ];
-in {
+in
+{
   environment.systemPackages = with pkgs; [
     yaziWrapper
 

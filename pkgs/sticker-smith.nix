@@ -5,7 +5,8 @@
   lib,
   makeWrapper,
   runCommand,
-}: let
+}:
+let
   version = "0.2.1-beta.1";
   src = fetchurl {
     url = "https://github.com/7591yj/sticker-smith/releases/download/v${version}/Sticker.Smith-${version}.AppImage";
@@ -16,9 +17,11 @@
     inherit version src;
   };
 in
-  runCommand "sticker-smith-${version}" {
-    nativeBuildInputs = [makeWrapper];
-  } ''
+runCommand "sticker-smith-${version}"
+  {
+    nativeBuildInputs = [ makeWrapper ];
+  }
+  ''
     mkdir -p $out/bin $out/libexec
 
     # Wrap ffmpeg/ffprobe to clear LD_LIBRARY_PATH set by appimage-run,

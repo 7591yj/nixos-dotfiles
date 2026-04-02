@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.services.tailscaleProxy;
   hostname = config.networking.hostName;
   certPath = "/var/lib/tailscale-certs";
@@ -26,7 +27,8 @@
     ${pkgs.coreutils}/bin/chown caddy:caddy ${certPath}/*.crt ${certPath}/*.key
     ${pkgs.coreutils}/bin/chmod 600 ${certPath}/*.key
   '';
-in {
+in
+{
   options.services.tailscaleProxy = {
     tailnetDomain = lib.mkOption {
       type = lib.types.str;
@@ -65,7 +67,7 @@ in {
   };
 
   config.systemd.timers.tailscale-certs = {
-    wantedBy = ["timers.target"];
+    wantedBy = [ "timers.target" ];
     timerConfig = {
       OnCalendar = "daily";
       Persistent = true;
@@ -77,9 +79,9 @@ in {
   ];
 
   config.systemd.services.caddy = {
-    after = ["tailscale-certs.service"];
-    wants = ["tailscale-certs.service"];
+    after = [ "tailscale-certs.service" ];
+    wants = [ "tailscale-certs.service" ];
   };
 
-  config.networking.firewall.trustedInterfaces = ["tailscale0"];
+  config.networking.firewall.trustedInterfaces = [ "tailscale0" ];
 }

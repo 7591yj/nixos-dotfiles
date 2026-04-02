@@ -2,11 +2,13 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   u = config.mySystem.username;
   bleshInit = builtins.readFile ./blesh/init.sh;
-in {
-  environment.systemPackages = [pkgs.blesh];
+in
+{
+  environment.systemPackages = [ pkgs.blesh ];
 
   programs.direnv = {
     enable = true;

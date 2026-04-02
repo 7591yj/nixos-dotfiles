@@ -1,9 +1,11 @@
-inputs: {
+inputs:
+{
   config,
   wlib,
   pkgs,
   ...
-}: let
+}:
+let
   plugins = with pkgs.yaziPlugins; [
     full-border
     smart-enter
@@ -11,16 +13,17 @@ inputs: {
     chmod
     lazygit
   ];
-in {
-  imports = [wlib.wrapperModules.yazi];
+in
+{
+  imports = [ wlib.wrapperModules.yazi ];
 
   config = {
-    aliases = ["y"];
+    aliases = [ "y" ];
 
     settings = {
       yazi = builtins.fromTOML (builtins.readFile ./yazi.toml);
       keymap = builtins.fromTOML (builtins.readFile ./keymap.toml);
-      theme = {};
+      theme = { };
     };
 
     constructFiles.initLua = {
@@ -31,9 +34,11 @@ in {
 
     drv.postBuild = ''
       mkdir -p ${config.generatedConfig.placeholder}/plugins
-      ${builtins.concatStringsSep "\n" (map (plugin: ''
-        ln -sfn ${plugin} ${config.generatedConfig.placeholder}/plugins/${plugin.pname}
-      '') plugins)}
+      ${builtins.concatStringsSep "\n" (
+        map (plugin: ''
+          ln -sfn ${plugin} ${config.generatedConfig.placeholder}/plugins/${plugin.pname}
+        '') plugins
+      )}
     '';
   };
 }

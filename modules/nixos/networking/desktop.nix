@@ -2,8 +2,9 @@
   config,
   pkgs,
   ...
-}: {
-  users.users.${config.mySystem.username}.extraGroups = ["networkmanager"];
+}:
+{
+  users.users.${config.mySystem.username}.extraGroups = [ "networkmanager" ];
   networking.networkmanager = {
     enable = true;
     wifi.scanRandMacAddress = true;
@@ -17,7 +18,10 @@
     enable = true;
     settings.Resolve = {
       DNSSEC = "false";
-      FallbackDNS = ["1.1.1.1" "8.8.8.8"];
+      FallbackDNS = [
+        "1.1.1.1"
+        "8.8.8.8"
+      ];
     };
   };
 
@@ -32,6 +36,6 @@
   networking.networkmanager.wifi.powersave = false;
 
   # LocalSend
-  networking.firewall.allowedTCPPorts = [53317];
-  networking.firewall.allowedUDPPorts = [53317];
+  networking.firewall.allowedTCPPorts = [ 53317 ];
+  networking.firewall.allowedUDPPorts = [ 53317 ];
 }

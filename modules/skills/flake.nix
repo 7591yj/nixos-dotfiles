@@ -11,15 +11,17 @@
     };
   };
 
-  outputs = {
-    self,
-    agent-skills-nix,
-    nix-best-practices,
-    everything-claude-code,
-    ...
-  }: {
-    homeManagerModules.default = agent-skills-nix.homeManagerModules.default;
-    sources.nix-best-practices = nix-best-practices;
-    sources.everything-claude-code = everything-claude-code;
-  };
+  outputs =
+    {
+      self,
+      agent-skills-nix,
+      nix-best-practices,
+      everything-claude-code,
+      ...
+    }:
+    {
+      homeManagerModules.default = agent-skills-nix.homeManagerModules.default;
+      sources.nix-best-practices = nix-best-practices;
+      sources.everything-claude-code = everything-claude-code;
+    };
 }

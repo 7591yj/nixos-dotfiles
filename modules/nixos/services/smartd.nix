@@ -1,3 +1,4 @@
-{...}: {
+{ ... }:
+{
   services.smartd.enable = true;
 }

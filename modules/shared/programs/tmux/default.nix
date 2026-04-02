@@ -2,12 +2,14 @@
   pkgs,
   inputs,
   ...
-}: let
+}:
+let
   wrapperModule = pkgs.lib.modules.importApply ./module.nix inputs;
   tmuxWrapper = inputs.nix-wrapper-modules.lib.evalPackage [
-    {inherit pkgs;}
+    { inherit pkgs; }
     wrapperModule
   ];
-in {
-  environment.systemPackages = [tmuxWrapper];
+in
+{
+  environment.systemPackages = [ tmuxWrapper ];
 }

@@ -1,4 +1,5 @@
-{inputs, ...}: {
+{ inputs, ... }:
+{
   flake.nixosConfigurations.juniper-srv-vm = inputs.self.lib.mkNixosSystem {
     hostname = "juniper-srv-vm";
     nixpkgsInput = inputs.nixpkgs-stable;
