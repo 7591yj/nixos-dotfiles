@@ -2,7 +2,8 @@
   appimageTools,
   fetchurl,
   runCommand,
-}: let
+}:
+let
   version = "3.1.1";
   src = fetchurl {
     url = "https://www.pencil.dev/download/Pencil-linux-x86_64.AppImage";
@@ -13,12 +14,12 @@
     inherit version src;
   };
 in
-  runCommand "pencil-${version}" {} ''
-    mkdir -p $out/bin
-    cp ${src} $out/bin/pencil
-    chmod +x $out/bin/pencil
-    install -Dm444 ${contents}/pencil.png $out/share/pixmaps/pencil.png
-    install -Dm444 ${contents}/pencil.desktop $out/share/applications/pencil.desktop
-    substituteInPlace $out/share/applications/pencil.desktop \
-      --replace-fail 'Exec=AppRun --no-sandbox %U' 'Exec=pencil'
-  ''
+runCommand "pencil-${version}" { } ''
+  mkdir -p $out/bin
+  cp ${src} $out/bin/pencil
+  chmod +x $out/bin/pencil
+  install -Dm444 ${contents}/pencil.png $out/share/pixmaps/pencil.png
+  install -Dm444 ${contents}/pencil.desktop $out/share/applications/pencil.desktop
+  substituteInPlace $out/share/applications/pencil.desktop \
+    --replace-fail 'Exec=AppRun --no-sandbox %U' 'Exec=pencil'
+''

@@ -42,11 +42,11 @@
             subvolumes = {
               "@" = {
                 mountpoint = "/";
-                mountOptions = ["compress=zstd"];
+                mountOptions = [ "compress=zstd" ];
               };
               "@home" = {
                 mountpoint = "/home";
-                mountOptions = ["compress=zstd"];
+                mountOptions = [ "compress=zstd" ];
               };
               "@nix" = {
                 mountpoint = "/nix";
@@ -61,7 +61,9 @@
 
         swap = {
           size = "16G"; # placeholder; update from `sudo lvdisplay` before reinstall
-          content = {type = "swap";};
+          content = {
+            type = "swap";
+          };
         };
       };
     };

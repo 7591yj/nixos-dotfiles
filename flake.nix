@@ -12,6 +12,10 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    nix-wrapper-modules = {
+      url = "github:BirdeeHub/nix-wrapper-modules";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     disko = {
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,19 +42,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # patches pnpmConfigHook for nvf (see flake/nixpkgs-patched/).
-    # remove once upstream nixpkgs fixes the $HOME=/homeless-shelter sandbox issue
-    nixpkgs-patched = {
-      url = "path:./flake/nixpkgs-patched";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # apps
-    nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs-patched";
-      inputs.flake-parts.follows = "flake-parts";
-    };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -74,13 +66,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     skills-catalog = {
-      url = "path:./skills";
+      url = "path:./modules/skills";
       inputs.agent-skills-nix.inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs @ {flake-parts, ...}:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs =
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
         "aarch64-linux"
