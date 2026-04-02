@@ -1,64 +1,52 @@
 # nixos-dotfiles
 
-Personal NixOS configuration.
+Personal NixOS flake for my machines.
 
-Uses [Lix](https://lix.systems).
+This repo keeps host configs, shared modules, Home Manager profiles, custom packages,
+and a small set of raw dotfiles in one place.
 
 ## Hosts
 
-| Host              | Channel        | Notes                                                     |
-| ----------------- | -------------- | --------------------------------------------------------- |
-| `aspen-lap-lavie` | nixos-unstable | hybrid disko setup; see `hosts/aspen-lap-lavie/README.md` |
-| `juniper-srv-vm`  | nixos-25.11    | used as a vm on top of proxmox                            |
+Building a host:
 
-## Structure
-
-```text
-flake.nix              # flake-parts entrypoint
-flake/parts/           # flake-parts modules (hosts + shared helpers)
-hosts/<name>/          # per-host config, hardware-configuration.nix, optional disko.nix
-nixos/modules/         # NixOS modules (hardware, roles, services, etc.)
-home/
-  modules/             # home-manager modules
-  profiles/            # per-user/host home-manager entrypoints
-config/                # raw dotfiles linked via xdg-dotfiles
-secrets/               # sops-nix encrypted secrets
+```bash
+nix build .#nixosConfigurations.<host>.config.system.build.toplevel
 ```
 
-### Variables
+Applying a host locally:
 
-`mkNixOSSystem` in `flake/parts/lib.nix` manages all the variables for the given
-system.
+> Using `nixx` shorthand is feasible after initial run.
 
-- `hostname`: hostname of the system
-- `system`: system type (defaults to `x86_64-linux`)
-- `nixpkgsInput`: nixpkgs to use (defaults to `unstable`)
-- `homeManagerInput`: home-manager to use (defaults to the master branch)
-- `homeProfile`: filename in `home/profiles` (defaults to `null` (do not use
-  home-manager))
-- `useStylix`: whether to use Stylix (defaults to `false`)
-- `useDisko`: whether to use Disko (defaults to `false`)
+```bash
+sudo nixos-rebuild switch --flake .#<host>
+```
 
-Variables are to be managed in `flake/parts/nixos/<system-name>.nix`.
+### aspen-lap-lavie
 
-### Desktop
+[README](hosts/aspen-lap-lavie/README.md)
 
-`config.mySystem.desktop.compositor` manages the window server to be used on the
-system.
+Intel-based laptop, using `nixos-unstable`.
 
-#### Wayland
+### juniper-srv-vm
 
-- [DankMaterialShell](https://github.com/AvengeMedia/DankMaterialShell)
-- [niri](https://github.om/niri-wm/niri)
+[README](hosts/juniper-srv-vm/README.md)
 
-### Server
+Server VM targeting Proxmox, using `nixos-25.11`.
 
-## Flake Key inputs
+## Layout
 
-| Input          | Purpose                       |
-| -------------- | ----------------------------- |
-| `home-manager` | user environment              |
-| `disko`        | declarative disk partitioning |
-| `sops-nix`     | secrets management            |
-| `stylix`       | system-wide theming           |
-| `nvf`          | Neovim config framework       |
+```text
+flake.nix        # flake entrypoint
+flake/parts/     # host definitions and shared helpers
+hosts/           # per-host NixOS configs
+homes/           # Home Manager profiles
+modules/         # shared NixOS and HM modules
+pkgs/            # custom packages
+dotfiles/        # raw config files
+secrets/         # encrypted secrets
+```
+
+## Notes
+
+- `flake/parts/lib.nix` defines `mkNixosSystem`, the helper used by each host.
+- This configuration makes use of [Lix](https://lix.systems/) rather than flat Nix.
