@@ -5,6 +5,7 @@
     ./keyring.nix
     ./polkit-agent.nix
     ./dms.nix
+    ./integrations/dms-niri.nix
     ./mutables.nix
   ];
 }

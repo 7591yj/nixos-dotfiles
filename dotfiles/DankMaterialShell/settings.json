@@ -106,7 +106,7 @@
       "width": 50
     },
     {
-      "id": "builtin_vpn",
+      "id": "doNotDisturb",
       "enabled": true,
       "width": 50
     },
@@ -116,7 +116,7 @@
       "width": 50
     },
     {
-      "id": "doNotDisturb",
+      "id": "builtin_vpn",
       "enabled": true,
       "width": 50
     },
@@ -266,7 +266,9 @@
   "launchPrefix": "",
   "brightnessDevicePins": {},
   "wifiNetworkPins": {
-    "preferredWifi": ["CHUO-U"]
+    "preferredWifi": [
+      "CHUO-U"
+    ]
   },
   "bluetoothDevicePins": {
     "preferredDevice": [
@@ -420,7 +422,9 @@
       "name": "Main Bar",
       "enabled": true,
       "position": 0,
-      "screenPreferences": ["all"],
+      "screenPreferences": [
+        "all"
+      ],
       "showOnLastDisplay": true,
       "leftWidgets": [
         {
@@ -536,7 +540,9 @@
   "desktopClockY": -1,
   "desktopClockWidth": 280,
   "desktopClockHeight": 180,
-  "desktopClockDisplayPreferences": ["all"],
+  "desktopClockDisplayPreferences": [
+    "all"
+  ],
   "systemMonitorEnabled": false,
   "systemMonitorShowHeader": true,
   "systemMonitorTransparency": 0.8,
@@ -573,7 +579,9 @@
   "systemMonitorY": -1,
   "systemMonitorWidth": 320,
   "systemMonitorHeight": 480,
-  "systemMonitorDisplayPreferences": ["all"],
+  "systemMonitorDisplayPreferences": [
+    "all"
+  ],
   "systemMonitorVariants": [],
   "desktopWidgetPositions": {},
   "desktopWidgetGridSettings": {},
@@ -589,4 +597,3 @@
   "launcherPluginOrder": [],
   "configVersion": 5
 }
-

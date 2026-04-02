@@ -195,11 +195,12 @@ recent-windows {
     }
 }
 
-// Include dms files
+// DMS-managed fragments stay mutable under ~/.config/niri/dms.
+// Static compositor config lives next to this file in the repo.
 // include "dms/colors.kdl"
 include "dms/layout.kdl"
 include "dms/alttab.kdl"
-include "dms/binds.kdl"
-include "dms/outputs.kdl"
 include "dms/cursor.kdl"
-include "dms/windowrules.kdl"
+include "binds.kdl"
+include "outputs.kdl"
+include "windowrules.kdl"
