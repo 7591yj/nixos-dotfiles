@@ -2,7 +2,6 @@
   imports = [
     ../../modules/home-manager/zen-browser.nix
     ../../modules/home-manager/agent-skills.nix
-    ../../modules/home-manager/lazygit.nix
     ../../modules/home-manager/xdg-userdirs.nix
   ];
 
