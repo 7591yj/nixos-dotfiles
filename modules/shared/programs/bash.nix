@@ -1,14 +1,19 @@
 {
+  lib,
   pkgs,
   config,
   ...
 }:
 let
-  u = config.mySystem.username;
   bleshInit = builtins.readFile ./blesh/init.sh;
+  rebuildCommand =
+    if pkgs.stdenv.isDarwin then
+      "darwin-rebuild switch --flake \"$HOME/nixos-dotfiles#$(scutil --get LocalHostName 2>/dev/null || hostname -s)\""
+    else
+      "nixos-rebuild --sudo switch -L --flake \"$HOME/nixos-dotfiles#$(hostname)\"";
 in
 {
-  environment.systemPackages = [ pkgs.blesh ];
+  environment.systemPackages = lib.optionals pkgs.stdenv.isLinux [ pkgs.blesh ];
 
   programs.direnv = {
     enable = true;
@@ -30,13 +35,15 @@ in
     };
 
     interactiveShellInit = ''
-      source -- "${pkgs.blesh}/share/blesh/ble.sh" --attach=none
-      ${bleshInit}
+      ${lib.optionalString pkgs.stdenv.isLinux ''
+        source -- "${pkgs.blesh}/share/blesh/ble.sh" --attach=none
+        ${bleshInit}
+      ''}
 
       set -o vi
 
       nixx() {
-        nixos-rebuild --sudo switch -L --flake "$HOME/nixos-dotfiles#$(hostname)"
+        ${rebuildCommand}
       }
 
       eval "$(starship init bash)"
@@ -44,7 +51,9 @@ in
 
       fastfetch
 
-      [[ ! ''${BLE_VERSION-} ]] || ble-attach
+      ${lib.optionalString pkgs.stdenv.isLinux ''
+        [[ ! ''${BLE_VERSION-} ]] || ble-attach
+      ''}
     '';
   };
 }

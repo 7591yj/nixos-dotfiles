@@ -1,16 +1,9 @@
 {
   config,
-  lib,
   ...
 }:
 {
   services.tailscaleProxy.tailnetDomain = "follow-bigeye.ts.net";
-
-  imports = [
-    ./hardware-configuration.nix
-    ../../modules/nixos/roles/server.nix
-    ../../modules/nixos/services/container-services
-  ];
 
   networking.hostName = "juniper-srv-vm";
   networking.hostId = "8425e349";

@@ -1,8 +1,9 @@
 # nixos-dotfiles
 
-Personal NixOS flake for my machines.
+Personal NixOS and nix-darwin flake for my machines.
 
-This repo keeps host configs, shared modules, Home Manager profiles, custom packages,
+This repo keeps host configs, dendritic flake modules,
+lower-level NixOS/Home Manager/nix-darwin modules, custom packages,
 and a small set of raw dotfiles in one place.
 
 ## Hosts
@@ -21,6 +22,13 @@ Applying a host locally:
 sudo nixos-rebuild switch --flake .#<host>
 ```
 
+For nix-darwin hosts:
+
+```bash
+nix build .#darwinConfigurations.<host>.system
+darwin-rebuild switch --flake .#<host>
+```
+
 ### aspen-lap-lavie
 
 [README](hosts/aspen-lap-lavie/README.md)
@@ -36,17 +44,19 @@ Server VM targeting Proxmox, using `nixos-25.11`.
 ## Layout
 
 ```text
-flake.nix        # flake entrypoint
-flake/parts/     # host definitions and shared helpers
-hosts/           # per-host NixOS configs
-homes/           # Home Manager profiles
-modules/         # shared NixOS and HM modules
-pkgs/            # custom packages
-dotfiles/        # raw config files
-secrets/         # encrypted secrets
+flake.nix                 # flake entrypoint
+flake/modules/            # import-tree-discovered top-level modules
+hosts/                    # host-specific state and templates
+homes/                    # legacy Home Manager profiles kept during migration
+modules/                  # lower-level implementation modules
+pkgs/                     # custom packages
+dotfiles/                 # raw config files
+secrets/                  # encrypted secrets
 ```
 
 ## Notes
 
-- `flake/parts/lib.nix` defines `mkNixosSystem`, the helper used by each host.
+- `flake.nix` now uses `import-tree` once to discover the top-level flake modules.
+- Named lower-level modules live in `config.flake.modules.{nixos,homeManager,darwin}`
+  and are selected by host/user metadata.
 - This configuration makes use of [Lix](https://lix.systems/) rather than flat Nix.

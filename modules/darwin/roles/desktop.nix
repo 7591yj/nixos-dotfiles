@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ../users.nix
     ../../shared/nix.nix
     ../../shared/packages/common.nix
     ../../shared/programs/bash.nix
