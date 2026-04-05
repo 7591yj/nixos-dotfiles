@@ -5,17 +5,17 @@
     system = "x86_64-linux";
     channel = "stable";
     user = "u7591yj";
-    roles = [ "server-role" ];
-    features = [
+    aspects = [
+      "server-role"
       "container-services"
       "disko"
     ];
     stateVersion = "25.11";
     homeStateVersion = "25.11";
     nixosModules = [
-      "juniper-hardware"
-      "juniper-host"
+      ../../../../hosts/juniper-srv-vm/hardware-configuration.nix
+      ../../../../hosts/juniper-srv-vm/default.nix
     ];
-    diskoModule = "juniper-disko";
+    diskoModule = ../../../../hosts/juniper-srv-vm/disko.nix;
   };
 }

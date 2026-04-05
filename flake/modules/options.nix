@@ -19,7 +19,7 @@ in
                 type = types.nullOr types.str;
                 default = null;
               };
-              features = mkOption {
+              aspects = mkOption {
                 type = types.listOf types.str;
                 default = [ ];
               };
@@ -67,11 +67,7 @@ in
               user = mkOption {
                 type = types.str;
               };
-              roles = mkOption {
-                type = types.listOf types.str;
-                default = [ ];
-              };
-              features = mkOption {
+              aspects = mkOption {
                 type = types.listOf types.str;
                 default = [ ];
               };
@@ -82,19 +78,19 @@ in
                 type = types.str;
               };
               nixosModules = mkOption {
-                type = types.listOf types.str;
+                type = types.listOf types.raw;
                 default = [ ];
               };
               darwinModules = mkOption {
-                type = types.listOf types.str;
+                type = types.listOf types.raw;
                 default = [ ];
               };
               homeModules = mkOption {
-                type = types.listOf types.str;
+                type = types.listOf types.raw;
                 default = [ ];
               };
               diskoModule = mkOption {
-                type = types.nullOr types.str;
+                type = types.nullOr types.raw;
                 default = null;
               };
             };
@@ -104,7 +100,7 @@ in
       default = { };
     };
 
-    featureRegistry = mkOption {
+    aspects = mkOption {
       type = types.attrsOf (
         types.submodule {
           options = {
@@ -120,16 +116,20 @@ in
                 "darwin"
               ];
             };
-            nixosModules = mkOption {
+            includes = mkOption {
               type = types.listOf types.str;
+              default = [ ];
+            };
+            nixosModules = mkOption {
+              type = types.listOf types.raw;
               default = [ ];
             };
             darwinModules = mkOption {
-              type = types.listOf types.str;
+              type = types.listOf types.raw;
               default = [ ];
             };
             homeModules = mkOption {
-              type = types.listOf types.str;
+              type = types.listOf types.raw;
               default = [ ];
             };
             homeManagerSharedModules = mkOption {

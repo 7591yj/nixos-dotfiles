@@ -2,7 +2,7 @@
 
 Personal NixOS and nix-darwin flake for my machines.
 
-This repo keeps host configs, dendritic flake modules,
+This repo keeps host configs, dendritic flake-parts modules,
 lower-level NixOS/Home Manager/nix-darwin modules, custom packages,
 and a small set of raw dotfiles in one place.
 
@@ -46,8 +46,8 @@ Server VM targeting Proxmox, using `nixos-25.11`.
 ```text
 flake.nix                 # flake entrypoint
 flake/modules/            # import-tree-discovered top-level modules
+flake/modules/aspects/    # den-style aspect definitions
 hosts/                    # host-specific state and templates
-homes/                    # legacy Home Manager profiles kept during migration
 modules/                  # lower-level implementation modules
 pkgs/                     # custom packages
 dotfiles/                 # raw config files
@@ -57,6 +57,6 @@ secrets/                  # encrypted secrets
 ## Notes
 
 - `flake.nix` now uses `import-tree` once to discover the top-level flake modules.
-- Named lower-level modules live in `config.flake.modules.{nixos,homeManager,darwin}`
-  and are selected by host/user metadata.
+- Hosts and users now select named `repo.aspects`, and those aspects carry
+  the NixOS/Home Manager/nix-darwin modules they apply across classes.
 - This configuration makes use of [Lix](https://lix.systems/) rather than flat Nix.

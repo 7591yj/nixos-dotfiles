@@ -1,6 +1,6 @@
 { ... }:
 {
-  repo.featureRegistry.disko = {
+  repo.aspects.disko = {
     platforms = [ "nixos" ];
   };
 }

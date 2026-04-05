@@ -34,53 +34,42 @@ let
     config.repo.users.${host.user}
     or (throw "Host `${host.hostname}` references unknown user `${host.user}`.");
 
-  resolveFeature =
+  resolveAspect =
     host: name:
     let
-      feature =
-        config.repo.featureRegistry.${name}
-        or (throw "Host `${host.hostname}` references unknown feature `${name}`.");
+      aspect =
+        config.repo.aspects.${name}
+        or (throw "Host `${host.hostname}` references unknown aspect `${name}`.");
     in
-    if builtins.elem host.platform feature.platforms then
-      feature
+    if builtins.elem host.platform aspect.platforms then
+      aspect
     else
-      throw "Feature `${name}` does not support platform `${host.platform}` for host `${host.hostname}`.";
+      throw "Aspect `${name}` does not support platform `${host.platform}` for host `${host.hostname}`.";
 
-  featureNames =
+  aspectNames =
     host: user:
-    lib.unique (host.roles ++ host.features ++ user.features);
+    lib.unique (host.aspects ++ user.aspects);
 
-  featureModulesFor =
-    key: host: user:
+  aspectClosure =
+    host:
+    names:
     let
-      registry =
-        if key == "nixosModules" then
-          config.flake.modules.nixos or { }
-        else if key == "darwinModules" then
-          config.flake.modules.darwin or { }
-        else
-          config.flake.modules.homeManager or { };
-      resolveNamedModule =
+      visit =
         name:
-        registry.${name}
-        or (throw "Lower-level module `${name}` is not registered in flake.modules.${if key == "homeModules" then "homeManager" else lib.removeSuffix "Modules" key}.");
+        let
+          aspect = resolveAspect host name;
+        in
+        [ name ] ++ lib.concatMap visit aspect.includes;
     in
-    lib.concatMap (feature: map resolveNamedModule feature.${key}) (map (resolveFeature host) (featureNames host user));
+    lib.unique (lib.concatMap visit names);
 
-  featureSharedModulesFor =
+  aspectModulesFor =
+    key: host: user:
+    lib.concatMap (name: (resolveAspect host name).${key}) (aspectClosure host (aspectNames host user));
+
+  aspectSharedModulesFor =
     host: user:
-    lib.concatMap (feature: feature.homeManagerSharedModules) (map (resolveFeature host) (featureNames host user));
-
-  namedModulesFor =
-    class: names:
-    let
-      registry = config.flake.modules.${class} or { };
-    in
-    map (
-      name:
-      registry.${name}
-      or (throw "Lower-level module `${name}` is not registered in flake.modules.${class}.")
-    ) names;
+    aspectModulesFor "homeManagerSharedModules" host user;
 
   commonBootstrapModules = host: user: [
     { nixpkgs.hostPlatform = host.system; }
@@ -102,7 +91,7 @@ let
         useUserPackages = true;
         backupFileExtension = "backup";
         extraSpecialArgs = { inherit inputs; };
-        sharedModules = featureSharedModulesFor host user;
+        sharedModules = aspectSharedModulesFor host user;
         users.${user.username} = {
           imports = homeModules;
 
@@ -121,19 +110,19 @@ let
       user = resolveUser host;
       channels = channelInputs host.channel;
       homeModules =
-        namedModulesFor "homeManager" user.homeModules
-        ++ namedModulesFor "homeManager" host.homeModules
-        ++ featureModulesFor "homeModules" host user;
-      nixosModules =
-        namedModulesFor "nixos" host.nixosModules
-        ++ featureModulesFor "nixosModules" host user
-        ++ lib.optionals (builtins.elem "disko" host.features) (
+        user.homeModules
+        ++ host.homeModules
+        ++ aspectModulesFor "homeModules" host user;
+      nixosModules = host.nixosModules ++ aspectModulesFor "nixosModules" host user;
+      nixosModulesWithDisko =
+        nixosModules
+        ++ lib.optionals (builtins.elem "disko" host.aspects) (
           if host.diskoModule == null then
-            throw "Host `${host.hostname}` enables `disko` but does not define `diskoModule`."
+            throw "Host `${host.hostname}` includes `disko` but does not define `diskoModule`."
           else
             [
               inputs.disko.nixosModules.disko
-              (builtins.head (namedModulesFor "nixos" [ host.diskoModule ]))
+              host.diskoModule
             ]
         );
     in
@@ -142,7 +131,7 @@ let
       specialArgs = { inherit inputs; };
       modules =
         commonBootstrapModules host user
-        ++ nixosModules
+        ++ nixosModulesWithDisko
         ++ lib.optionals (homeModules != [ ]) [
           channels.homeManager.nixosModules.home-manager
           (mkHomeManagerModule host user homeModules)
@@ -159,12 +148,12 @@ let
         config.allowUnfree = true;
       };
       homeModules =
-        namedModulesFor "homeManager" user.homeModules
-        ++ namedModulesFor "homeManager" host.homeModules
-        ++ featureModulesFor "homeModules" host user;
+        user.homeModules
+        ++ host.homeModules
+        ++ aspectModulesFor "homeModules" host user;
       darwinModules =
-        namedModulesFor "darwin" host.darwinModules
-        ++ featureModulesFor "darwinModules" host user;
+        host.darwinModules
+        ++ aspectModulesFor "darwinModules" host user;
     in
     inputs.nix-darwin.lib.darwinSystem {
       system = host.system;

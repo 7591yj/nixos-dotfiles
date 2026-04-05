@@ -5,8 +5,8 @@
     system = "x86_64-linux";
     channel = "unstable";
     user = "u7591yj";
-    roles = [ "desktop-role" ];
-    features = [
+    aspects = [
+      "desktop-role"
       "agent-skills"
       "appimage"
       "disko"
@@ -21,9 +21,9 @@
     stateVersion = "25.11";
     homeStateVersion = "25.11";
     nixosModules = [
-      "aspen-hardware"
-      "aspen-host"
+      ../../../../hosts/aspen-lap-lavie/hardware-configuration.nix
+      ../../../../hosts/aspen-lap-lavie/default.nix
     ];
-    diskoModule = "aspen-disko";
+    diskoModule = ../../../../hosts/aspen-lap-lavie/disko.nix;
   };
 }
