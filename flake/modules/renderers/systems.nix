@@ -8,16 +8,8 @@ let
   hosts = lib.filterAttrs (_: host: host.enable) config.repo.hosts;
 
   channelInputs = channel: {
-    nixpkgs =
-      if channel == "stable" then
-        inputs.nixpkgs-stable
-      else
-        inputs.nixpkgs;
-    homeManager =
-      if channel == "stable" then
-        inputs.home-manager-stable
-      else
-        inputs.home-manager;
+    nixpkgs = if channel == "stable" then inputs.nixpkgs-stable else inputs.nixpkgs;
+    homeManager = if channel == "stable" then inputs.home-manager-stable else inputs.home-manager;
   };
 
   defaultHomeDirectory =
@@ -32,27 +24,24 @@ let
   resolveUser =
     host:
     config.repo.users.${host.user}
-    or (throw "Host `${host.hostname}` references unknown user `${host.user}`.");
+      or (throw "Host `${host.hostname}` references unknown user `${host.user}`.");
 
   resolveAspect =
     host: name:
     let
       aspect =
         config.repo.aspects.${name}
-        or (throw "Host `${host.hostname}` references unknown aspect `${name}`.");
+          or (throw "Host `${host.hostname}` references unknown aspect `${name}`.");
     in
     if builtins.elem host.platform aspect.platforms then
       aspect
     else
       throw "Aspect `${name}` does not support platform `${host.platform}` for host `${host.hostname}`.";
 
-  aspectNames =
-    host: user:
-    lib.unique (host.aspects ++ user.aspects);
+  aspectNames = host: user: lib.unique (host.aspects ++ user.aspects);
 
   aspectClosure =
-    host:
-    names:
+    host: names:
     let
       visit =
         name:
@@ -67,9 +56,7 @@ let
     key: host: user:
     lib.concatMap (name: (resolveAspect host name).${key}) (aspectClosure host (aspectNames host user));
 
-  aspectSharedModulesFor =
-    host: user:
-    aspectModulesFor "homeManagerSharedModules" host user;
+  aspectSharedModulesFor = host: user: aspectModulesFor "homeManagerSharedModules" host user;
 
   commonBootstrapModules = host: user: [
     { nixpkgs.hostPlatform = host.system; }
@@ -83,36 +70,31 @@ let
     )
   ];
 
-  mkHomeManagerModule =
-    host: user: homeModules:
-    {
-      home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        backupFileExtension = "backup";
-        extraSpecialArgs = { inherit inputs; };
-        sharedModules = aspectSharedModulesFor host user;
-        users.${user.username} = {
-          imports = homeModules;
+  mkHomeManagerModule = host: user: homeModules: {
+    home-manager = {
+      useGlobalPkgs = true;
+      useUserPackages = true;
+      backupFileExtension = "backup";
+      extraSpecialArgs = { inherit inputs; };
+      sharedModules = aspectSharedModulesFor host user;
+      users.${user.username} = {
+        imports = homeModules;
 
-          home = {
-            username = user.username;
-            homeDirectory = defaultHomeDirectory host user;
-            stateVersion = host.homeStateVersion;
-          };
+        home = {
+          username = user.username;
+          homeDirectory = defaultHomeDirectory host user;
+          stateVersion = host.homeStateVersion;
         };
       };
     };
+  };
 
   mkNixosConfiguration =
     host:
     let
       user = resolveUser host;
       channels = channelInputs host.channel;
-      homeModules =
-        user.homeModules
-        ++ host.homeModules
-        ++ aspectModulesFor "homeModules" host user;
+      homeModules = user.homeModules ++ host.homeModules ++ aspectModulesFor "homeModules" host user;
       nixosModules = host.nixosModules ++ aspectModulesFor "nixosModules" host user;
       nixosModulesWithDisko =
         nixosModules
@@ -147,13 +129,8 @@ let
         system = host.system;
         config.allowUnfree = true;
       };
-      homeModules =
-        user.homeModules
-        ++ host.homeModules
-        ++ aspectModulesFor "homeModules" host user;
-      darwinModules =
-        host.darwinModules
-        ++ aspectModulesFor "darwinModules" host user;
+      homeModules = user.homeModules ++ host.homeModules ++ aspectModulesFor "homeModules" host user;
+      darwinModules = host.darwinModules ++ aspectModulesFor "darwinModules" host user;
     in
     inputs.nix-darwin.lib.darwinSystem {
       system = host.system;
