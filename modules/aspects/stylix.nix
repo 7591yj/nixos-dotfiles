@@ -6,7 +6,7 @@
       {
         imports = [
           inputs.stylix.nixosModules.stylix
-          ../../../modules/nixos/desktop/stylix.nix
+          ../nixos/desktop/stylix.nix
         ];
       }
     ];

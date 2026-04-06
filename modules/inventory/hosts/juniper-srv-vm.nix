@@ -13,9 +13,9 @@
     stateVersion = "25.11";
     homeStateVersion = "25.11";
     nixosModules = [
-      ../../../../hosts/juniper-srv-vm/hardware-configuration.nix
-      ../../../../hosts/juniper-srv-vm/default.nix
+      ../../../hosts/juniper-srv-vm/hardware-configuration.nix
+      ../../../hosts/juniper-srv-vm/default.nix
     ];
-    diskoModule = ../../../../hosts/juniper-srv-vm/disko.nix;
+    diskoModule = ../../../hosts/juniper-srv-vm/disko.nix;
   };
 }

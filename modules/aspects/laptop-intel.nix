@@ -5,8 +5,8 @@
     nixosModules = [
       {
         imports = [
-          ../../../modules/nixos/hardware/intel.nix
-          ../../../modules/nixos/hardware/laptop.nix
+          ../nixos/hardware/intel.nix
+          ../nixos/hardware/laptop.nix
         ];
       }
     ];

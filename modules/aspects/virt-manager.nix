@@ -2,6 +2,6 @@
 {
   repo.aspects.virt-manager = {
     platforms = [ "nixos" ];
-    nixosModules = [ ../../../modules/nixos/virt-manager.nix ];
+    nixosModules = [ ../nixos/virt-manager.nix ];
   };
 }

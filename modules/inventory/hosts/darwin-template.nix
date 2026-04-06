@@ -9,6 +9,6 @@
     aspects = [ "desktop-role" ];
     stateVersion = 6;
     homeStateVersion = "25.11";
-    darwinModules = [ ../../../../hosts/templates/darwin/default.nix ];
+    darwinModules = [ ../../../hosts/templates/darwin/default.nix ];
   };
 }

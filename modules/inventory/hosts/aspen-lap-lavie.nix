@@ -21,9 +21,9 @@
     stateVersion = "25.11";
     homeStateVersion = "25.11";
     nixosModules = [
-      ../../../../hosts/aspen-lap-lavie/hardware-configuration.nix
-      ../../../../hosts/aspen-lap-lavie/default.nix
+      ../../../hosts/aspen-lap-lavie/hardware-configuration.nix
+      ../../../hosts/aspen-lap-lavie/default.nix
     ];
-    diskoModule = ../../../../hosts/aspen-lap-lavie/disko.nix;
+    diskoModule = ../../../hosts/aspen-lap-lavie/disko.nix;
   };
 }

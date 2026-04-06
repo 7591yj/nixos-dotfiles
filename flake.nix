@@ -71,7 +71,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     skills-catalog = {
-      url = "path:./modules/skills";
+      url = "git+file:./?dir=modules/skills";
       inputs.agent-skills-nix.inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -87,7 +87,10 @@
 
       imports = [
         inputs.flake-parts.flakeModules.modules
-        (inputs.import-tree ./flake/modules)
+        ./modules/options.nix
+        (inputs.import-tree ./modules/aspects)
+        (inputs.import-tree ./modules/inventory)
+        (inputs.import-tree ./modules/renderers)
       ];
     };
 }

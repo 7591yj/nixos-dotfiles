@@ -45,10 +45,14 @@ Server VM targeting Proxmox, using `nixos-25.11`.
 
 ```text
 flake.nix                 # flake entrypoint
-flake/modules/            # import-tree-discovered top-level modules
-flake/modules/aspects/    # den-style aspect definitions
+modules/aspects/          # den-style aspect definitions
+modules/inventory/        # hosts and users
+modules/renderers/        # flake outputs renderers
+modules/nixos/            # shared nixos modules
+modules/home-manager/     # shared home-manager modules
+modules/darwin/           # shared nix-darwin modules
+modules/shared/           # cross-platform shared modules
 hosts/                    # host-specific state and templates
-modules/                  # lower-level implementation modules
 pkgs/                     # custom packages
 dotfiles/                 # raw config files
 secrets/                  # encrypted secrets
@@ -56,7 +60,4 @@ secrets/                  # encrypted secrets
 
 ## Notes
 
-- `flake.nix` now uses `import-tree` once to discover the top-level flake modules.
-- Hosts and users now select named `repo.aspects`, and those aspects carry
-  the NixOS/Home Manager/nix-darwin modules they apply across classes.
 - This configuration makes use of [Lix](https://lix.systems/) rather than flat Nix.
