@@ -12,6 +12,11 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    import-tree.url = "github:vic/import-tree";
     nix-wrapper-modules = {
       url = "github:BirdeeHub/nix-wrapper-modules";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -66,7 +71,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     skills-catalog = {
-      url = "path:./modules/skills";
+      url = "git+file:./?dir=modules/skills";
       inputs.agent-skills-nix.inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -77,12 +82,15 @@
       systems = [
         "x86_64-linux"
         "aarch64-linux"
+        "aarch64-darwin"
       ];
 
       imports = [
-        ./flake/parts/lib.nix
-        ./flake/parts/nixos/aspen-lap-lavie.nix
-        ./flake/parts/nixos/juniper-srv-vm.nix
+        inputs.flake-parts.flakeModules.modules
+        ./modules/options.nix
+        (inputs.import-tree ./modules/aspects)
+        (inputs.import-tree ./modules/inventory)
+        (inputs.import-tree ./modules/renderers)
       ];
     };
 }

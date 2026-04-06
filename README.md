@@ -1,8 +1,9 @@
 # nixos-dotfiles
 
-Personal NixOS flake for my machines.
+Personal NixOS and nix-darwin flake for my machines.
 
-This repo keeps host configs, shared modules, Home Manager profiles, custom packages,
+This repo keeps host configs, dendritic flake-parts modules,
+lower-level NixOS/Home Manager/nix-darwin modules, custom packages,
 and a small set of raw dotfiles in one place.
 
 ## Hosts
@@ -21,6 +22,13 @@ Applying a host locally:
 sudo nixos-rebuild switch --flake .#<host>
 ```
 
+For nix-darwin hosts:
+
+```bash
+nix build .#darwinConfigurations.<host>.system
+darwin-rebuild switch --flake .#<host>
+```
+
 ### aspen-lap-lavie
 
 [README](hosts/aspen-lap-lavie/README.md)
@@ -36,17 +44,20 @@ Server VM targeting Proxmox, using `nixos-25.11`.
 ## Layout
 
 ```text
-flake.nix        # flake entrypoint
-flake/parts/     # host definitions and shared helpers
-hosts/           # per-host NixOS configs
-homes/           # Home Manager profiles
-modules/         # shared NixOS and HM modules
-pkgs/            # custom packages
-dotfiles/        # raw config files
-secrets/         # encrypted secrets
+flake.nix                 # flake entrypoint
+modules/aspects/          # den-style aspect definitions
+modules/inventory/        # hosts and users
+modules/renderers/        # flake outputs renderers
+modules/nixos/            # shared nixos modules
+modules/home-manager/     # shared home-manager modules
+modules/darwin/           # shared nix-darwin modules
+modules/shared/           # cross-platform shared modules
+hosts/                    # host-specific state and templates
+pkgs/                     # custom packages
+dotfiles/                 # raw config files
+secrets/                  # encrypted secrets
 ```
 
 ## Notes
 
-- `flake/parts/lib.nix` defines `mkNixosSystem`, the helper used by each host.
 - This configuration makes use of [Lix](https://lix.systems/) rather than flat Nix.

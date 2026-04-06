@@ -1,29 +1,9 @@
 {
-  inputs,
   config,
   lib,
   ...
 }:
 {
-  imports = [
-    ./hardware-configuration.nix
-    ../../modules/nixos/roles/desktop.nix
-
-    # hardware-specific
-    ../../modules/nixos/hardware/intel.nix
-    ../../modules/nixos/hardware/laptop.nix
-
-    # optional features
-    ../../modules/nixos/appimage.nix
-    ../../modules/nixos/locale/kanata.nix
-    ../../modules/nixos/locale/input-fcitx5.nix
-    ../../modules/nixos/virt-manager.nix
-  ];
-
-  nixpkgs.overlays = [
-    inputs.helium-browser.overlay
-  ];
-
   mySystem.desktop.compositor = "niri";
 
   networking.hostName = "aspen-lap-lavie";

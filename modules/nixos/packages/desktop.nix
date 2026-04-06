@@ -10,7 +10,8 @@
       # developer
       zed-editor
       code-cursor-fhs
-      claude-code
+      # remove comment when upstream version fix is in place
+      # claude-code
 
       # terminal
       kitty
