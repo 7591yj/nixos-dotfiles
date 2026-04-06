@@ -6,7 +6,6 @@
     ../../shared/packages/common.nix
     ../../shared/programs/bash.nix
     ../../shared/programs/fastfetch.nix
-    ../../shared/programs/git.nix
     ../../shared/programs/neovim/default.nix
     ../../shared/programs/starship/default.nix
     ../../shared/programs/tmux/default.nix
