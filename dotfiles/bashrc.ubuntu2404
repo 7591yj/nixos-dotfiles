@@ -1,0 +1,75 @@
+# Portable bashrc for a managed Ubuntu 24.04 machine
+
+# Skip non-interactive shells
+case $- in
+  *i*) ;;
+  *) return ;;
+esac
+
+# History
+HISTCONTROL=ignoreboth:erasedups
+HISTSIZE=50000
+HISTFILESIZE=100000
+HISTIGNORE='ls:bg:fg:history:clear:exit'
+shopt -s histappend checkwinsize
+PROMPT_COMMAND='history -a; history -n'
+
+set -o vi
+
+bind 'set show-mode-in-prompt on'
+bind 'set vi-cmd-mode-string \1\e[2 q\2[N]\1\e[0m\2 '
+bind 'set vi-ins-mode-string \1\e[6 q\2[I]\1\e[0m\2 '
+bind 'set keyseq-timeout 20'
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+bind '"\C-p": history-search-backward'
+bind '"\C-n": history-search-forward'
+bind '"\C-l": clear-screen'
+bind -m vi-command '"k": history-search-backward'
+bind -m vi-command '"j": history-search-forward'
+bind -m vi-command '"H": beginning-of-line'
+bind -m vi-command '"L": end-of-line'
+
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+alias grep='grep --color=auto'
+
+if command -v eza >/dev/null 2>&1; then
+  alias ls='eza --color=auto'
+  alias l='eza -al --color=auto'
+elif command -v exa >/dev/null 2>&1; then
+  alias ls='exa --color=auto'
+  alias l='exa -al --color=auto'
+else
+  alias ls='ls --color=auto'
+  alias l='ls -alF --color=auto'
+fi
+
+if command -v lazygit >/dev/null 2>&1; then
+  alias lg='lazygit'
+fi
+
+alias gcl='git clone'
+alias gs='git switch'
+alias gA='git add .'
+alias gp='git pull origin main'
+alias gP='git push origin main'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias c='clear'
+alias h='history'
+
+# Optional init hooks if the machine happens to already have them
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init bash)"
+fi
+
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init bash)"
+fi
+
+if command -v fastfetch >/dev/null 2>&1; then
+  fastfetch
+fi
