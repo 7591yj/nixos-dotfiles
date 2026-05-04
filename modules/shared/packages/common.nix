@@ -26,6 +26,6 @@
 
     # misc
     zoxide
-    ngrok
+    zrok
   ];
 }
