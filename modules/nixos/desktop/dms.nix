@@ -1,14 +1,13 @@
 {
   config,
   inputs,
-  lib,
   pkgs,
   ...
 }:
 {
   programs.dms-shell = {
     enable = true;
-    quickshell.package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.quickshell;
+    quickshell.package = pkgs.quickshell;
     systemd = {
       enable = true;
       restartIfChanged = true;
@@ -19,7 +18,7 @@
     enableDynamicTheming = true;
     enableAudioWavelength = false;
     enableCalendarEvents = false;
-    enableClipboardPaste = true;
+    enableClipboardPaste = false;
 
     plugins = {
       dankBatteryAlerts.enable = true;
@@ -27,18 +26,7 @@
     };
   };
 
-  programs.dsearch = {
-    enable = true;
-    systemd = {
-      enable = true;
-      target = "graphical-session.target";
-    };
-  };
-
-  systemd.user.services.dsearch.serviceConfig.ExecStart = lib.mkForce [
-    ""
-    "${pkgs.dsearch}/bin/dsearch serve --socket"
-  ];
+  environment.systemPackages = [ pkgs.vicinae ];
 
   services.displayManager.dms-greeter = {
     enable = true;

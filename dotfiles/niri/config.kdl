@@ -195,6 +195,8 @@ recent-windows {
     }
 }
 
+spawn-at-startup "vicinae" "server"
+
 // DMS-managed fragments stay mutable under ~/.config/niri/dms.
 // Static compositor config lives next to this file in the repo.
 // include "dms/colors.kdl"

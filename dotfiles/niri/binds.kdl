@@ -10,10 +10,10 @@ binds {
     Mod+T { spawn "Telegram"; }
     Mod+D { spawn "legcord"; }
     Mod+Space hotkey-overlay-title="Application Launcher" {
-        spawn "dms" "ipc" "call" "spotlight" "toggle";
+        spawn "vicinae" "toggle";
     }
     Mod+V hotkey-overlay-title="Clipboard Manager" {
-        spawn "dms" "ipc" "call" "clipboard" "toggle";
+        spawn "vicinae" "vicinae://launch/clipboard/history";
     }
     Ctrl+Shift+Escape hotkey-overlay-title="Task Manager" {
         spawn "dms" "ipc" "call" "processlist" "focusOrToggle";
