@@ -32,11 +32,20 @@
       subdir = ".claude/skills";
       filter.nameRegex = "^nix-best-practices$";
     };
+    sources.pi-config = {
+      path = inputs.skills-catalog.sources.pi-config;
+      subdir = "skills";
+      filter.nameRegex = "^(orchestrator|pdf-reader|reddit|stop-slop)$";
+    };
 
     skills = {
       enableAll = false;
       enable = [
         "nix-best-practices"
+        "orchestrator"
+        "pdf-reader"
+        "reddit"
+        "stop-slop"
       ];
     };
 

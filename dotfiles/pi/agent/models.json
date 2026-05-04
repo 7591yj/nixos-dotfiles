@@ -1,0 +1,25 @@
+{
+  "providers": {
+    "nvidia-nim": {
+      "baseUrl": "https://integrate.api.nvidia.com/v1",
+      "api": "openai-completions",
+      "apiKey": "NVIDIA_API_KEY",
+      "compat": {
+        "supportsDeveloperRole": false,
+        "supportsReasoningEffort": false
+      },
+      "models": [
+        {
+          "id": "moonshotai/kimi-k2.6",
+          "name": "Kimi K2.6 (NVIDIA NIM)",
+          "input": [
+            "text",
+            "image"
+          ],
+          "contextWindow": 262144,
+          "maxTokens": 16384
+        }
+      ]
+    }
+  }
+}
