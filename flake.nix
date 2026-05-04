@@ -57,8 +57,8 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    helium-browser = {
-      url = "gitlab:invra/helium";
+    "helium-browser" = {
+      url = "gitlab:ntgn/helium-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     codex-nix = {
@@ -70,6 +70,7 @@
       url = "github:Sawrz/t3code-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    llm-agents.url = "github:numtide/llm-agents.nix";
     skills-catalog = {
       url = "path:./modules/skills";
       inputs.agent-skills-nix.inputs.nixpkgs.follows = "nixpkgs";

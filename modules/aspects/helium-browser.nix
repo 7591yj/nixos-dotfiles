@@ -1,11 +1,7 @@
 { inputs, ... }:
 {
   repo.aspects.helium-browser = {
-    platforms = [ "nixos" ];
-    nixosModules = [
-      {
-        nixpkgs.overlays = [ inputs.helium-browser.overlay ];
-      }
-    ];
+    homeModules = [ ../home-manager/helium-browser.nix ];
+    nixosModules = [ inputs."helium-browser".nixosModules.helium ];
   };
 }
