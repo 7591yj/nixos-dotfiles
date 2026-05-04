@@ -10,15 +10,14 @@
       # developer
       zed-editor
       code-cursor-fhs
-      # remove comment when upstream version fix is in place
-      # claude-code
+      unityhub
 
       # terminal
       kitty
 
       # productivity
       anki
-      logseq
+      (logseq.override { electron = electron_39; })
       (callPackage ../../../pkgs/onlyoffice-desktopeditors.nix {
         extraFonts = [ ipaexfont ];
       })
@@ -28,6 +27,7 @@
       legcord
       telegram-desktop
       valent
+      zoom-us
 
       # viewer
       loupe
@@ -37,9 +37,11 @@
 
       # media
       celluloid
+      ffmpeg
       jellyfin-desktop
       tauon
       tidal-hifi
+      yt-dlp
 
       # gaming
       steam
@@ -75,12 +77,11 @@
       (callPackage ../../../pkgs/astra.nix { })
       (callPackage ../../../pkgs/pencil.nix { })
       (callPackage ../../../pkgs/sticker-smith.nix { })
-
-      helium
     ]
     ++ [
-      inputs.codex-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
       inputs.t3code-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
+      inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.codex
+      inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.pi
     ];
 
   programs.nano.enable = false;
