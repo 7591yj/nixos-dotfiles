@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -25,6 +26,50 @@
   };
 
   mySystem.fastfetch.logoPath = config.sops.secrets.icon.path;
+
+  # Workaround Intel bl getting stuck during btintel_pcie firmware init
+  systemd.services.intel-bluetooth-pcie-reset = {
+    description = "Reset Intel Bluetooth PCIe controller";
+    before = [ "bluetooth.service" ];
+    requiredBy = [ "bluetooth.service" ];
+    path = [ pkgs.coreutils ];
+
+    serviceConfig = {
+      Type = "oneshot";
+    };
+
+    script = ''
+      if [ -e /sys/bus/pci/devices/0000:00:14.7/remove ]; then
+        echo 1 > /sys/bus/pci/devices/0000:00:14.7/remove
+        sleep 1
+      fi
+
+      echo 1 > /sys/bus/pci/rescan
+      sleep 3
+    '';
+  };
+
+  # BlueZ can start before the recovered controller is fully usable on this
+  # machine. A single delayed restart after boot matches the manual sequence
+  # that makes the adapter appear.
+  systemd.services.intel-bluetooth-bluez-settle = {
+    description = "Restart BlueZ after Intel Bluetooth controller settles";
+    after = [ "bluetooth.service" ];
+    wantedBy = [ "multi-user.target" ];
+    path = [
+      pkgs.coreutils
+      pkgs.systemd
+    ];
+
+    serviceConfig = {
+      Type = "oneshot";
+    };
+
+    script = ''
+      sleep 5
+      systemctl restart bluetooth.service
+    '';
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
