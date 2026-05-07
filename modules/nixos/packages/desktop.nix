@@ -56,7 +56,6 @@
       imagemagick
       libopenraw
       snapshot
-      xwayland-satellite
       krita
 
       # security
