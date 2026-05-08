@@ -6,8 +6,8 @@
   "matugenScheme": "scheme-tonal-spot",
   "runUserMatugenTemplates": true,
   "matugenTargetMonitor": "",
-  "popupTransparency": 1,
-  "dockTransparency": 1,
+  "popupTransparency": 0.82,
+  "dockTransparency": 0.82,
   "widgetBackgroundColor": "sch",
   "widgetColorMode": "default",
   "controlCenterTileColorMode": "primary",
@@ -36,6 +36,12 @@
   "modalAnimationSpeed": 1,
   "modalCustomAnimationDuration": 150,
   "enableRippleEffects": true,
+  "blurEnabled": true,
+  "blurForegroundLayers": true,
+  "blurLayerOutlineOpacity": 0.3,
+  "blurBorderColor": "outline",
+  "blurBorderCustomColor": "#ffffff",
+  "blurBorderOpacity": 0.35,
   "wallpaperFillMode": "Fill",
   "blurredWallpaperLayer": false,
   "blurWallpaperOnOverview": false,
@@ -52,6 +58,9 @@
   "selectedGpuIndex": 0,
   "enabledGpuPciIds": [],
   "showSystemTray": true,
+  "systemTrayIconTintMode": "none",
+  "systemTrayIconTintSaturation": 50,
+  "systemTrayIconTintStrength": 135,
   "showClock": true,
   "showNotificationButton": true,
   "showBattery": true,
@@ -177,12 +186,6 @@
   "greeterEnableFprint": false,
   "greeterEnableU2f": false,
   "greeterWallpaperPath": "",
-  "greeterUse24HourClock": true,
-  "greeterShowSeconds": false,
-  "greeterPadHours12Hour": false,
-  "greeterLockDateFormat": "",
-  "greeterFontFamily": "",
-  "greeterWallpaperFillMode": "",
   "mediaSize": 1,
   "appLauncherViewMode": "list",
   "spotlightModalViewMode": "list",
@@ -273,8 +276,7 @@
   "bluetoothDevicePins": {
     "preferredDevice": [
       "AC:07:75:D6:0E:C7",
-      "F3:45:A6:2E:D9:5B",
-      "C0:00:C0:77:3C:04"
+      "F3:45:A6:2E:D9:5B"
     ]
   },
   "audioInputDevicePins": {},
@@ -289,6 +291,10 @@
   "qtThemingEnabled": false,
   "syncModeWithPortal": true,
   "terminalsAlwaysDark": false,
+  "muxType": "tmux",
+  "muxUseCustomCommand": false,
+  "muxCustomCommand": "",
+  "muxSessionFilter": "",
   "runDmsMatugenTemplates": true,
   "matugenTemplateGtk": true,
   "matugenTemplateNiri": true,
@@ -321,7 +327,7 @@
   "dockSpacing": 4,
   "dockBottomGap": 0,
   "dockMargin": 0,
-  "dockIconSize": 40,
+  "dockIconSize": 32,
   "dockIndicatorStyle": "circle",
   "dockBorderEnabled": true,
   "dockBorderColor": "secondary",
@@ -590,6 +596,13 @@
   "builtInPluginSettings": {
     "dms_settings_search": {
       "trigger": "?"
+    },
+    "dankNotepadModule": {
+      "previewActive": false,
+      "currentFilePath": "notepad-files/untitled-1775063955954.txt",
+      "currentFileExtension": "txt",
+      "sourceContent": "",
+      "updatedAt": 1778213940200
     }
   },
   "clipboardEnterToPaste": false,
