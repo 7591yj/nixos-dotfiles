@@ -1,6 +1,7 @@
 keys:
   - &juniper-srv-vm age1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   - &aspen-lap-lavie age10fhtsqqkhpte0wndw24tfry7m6kk3zk84cxyxeg0uaz3jyruj93qqt6vzx
+  - &cypress-lap-mbp age17mhywhs385xy3uqpvywyuxal270yla4um7tvc80sqqfwrkypmaxscl27rw
   - &backup age145z0ysqlfmn57e5ummptm54r0hq0grsa0jlpvkusdclfl6yxsytq9d9u9n
 
 creation_rules:
@@ -14,4 +15,5 @@ creation_rules:
     key_groups:
       - age:
           - *aspen-lap-lavie
+          - *cypress-lap-mbp
           - *backup
