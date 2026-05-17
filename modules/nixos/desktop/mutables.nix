@@ -8,6 +8,8 @@ in
   systemd.tmpfiles.rules = [
     "L+ ${h}/.config/DankMaterialShell - - - - ${repo}/dotfiles/DankMaterialShell"
     "L+ ${h}/.config/kitty             - - - - ${repo}/dotfiles/kitty"
+    "d  ${h}/.config/ghostty 0755 ${u} users -"
+    "L+ ${h}/.config/ghostty/config.ghostty - - - - ${repo}/dotfiles/ghostty/config.ghostty"
     "L+ ${h}/.config/zed               - - - - ${repo}/dotfiles/zed"
 
     # Pi coding-agent custom providers

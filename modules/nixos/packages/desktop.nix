@@ -14,6 +14,7 @@
 
       # terminal
       kitty
+      ghostty
 
       # productivity
       anki
