@@ -40,8 +40,4 @@ in
     VISUAL = "nvim";
   };
 
-  environment.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-  };
 }

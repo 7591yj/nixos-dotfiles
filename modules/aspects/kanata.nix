@@ -1,7 +1,11 @@
 { ... }:
 {
   repo.aspects.kanata = {
-    platforms = [ "nixos" ];
+    platforms = [
+      "nixos"
+      "darwin"
+    ];
+    darwinModules = [ ../darwin/kanata.nix ];
     nixosModules = [
       {
         boot.kernelModules = [ "uinput" ];

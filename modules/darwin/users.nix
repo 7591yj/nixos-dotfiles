@@ -9,9 +9,12 @@ in
 {
   options.mySystem.username = lib.mkOption {
     type = lib.types.str;
-    default = "u7591yj";
+    default = "7591yj";
     description = "Primary user account name";
   };
 
-  config.users.users.${username}.home = lib.mkDefault "/Users/${username}";
+  config = {
+    system.primaryUser = lib.mkDefault username;
+    users.users.${username}.home = lib.mkDefault "/Users/${username}";
+  };
 }

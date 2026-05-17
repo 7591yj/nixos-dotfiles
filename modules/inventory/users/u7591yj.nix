@@ -1,7 +1,6 @@
 { ... }:
-{
-  repo.users.u7591yj = {
-    username = "u7591yj";
+let
+  common = {
     aspects = [ "userdirs" ];
     homeModules = [
       (
@@ -34,5 +33,14 @@
         }
       )
     ];
+  };
+in
+{
+  repo.users.u7591yj = common // {
+    username = "u7591yj";
+  };
+
+  repo.users."7591yj" = common // {
+    username = "7591yj";
   };
 }
