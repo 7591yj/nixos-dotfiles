@@ -23,6 +23,7 @@
     # nix
     devenv
     direnv
+    nh
 
     # misc
     zoxide

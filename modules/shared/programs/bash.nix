@@ -9,9 +9,19 @@ let
   shellAliases = import ./shell-aliases.nix;
   rebuildCommand =
     if pkgs.stdenv.isDarwin then
-      "darwin-rebuild switch --flake \"$HOME/nixos-dotfiles#$(scutil --get LocalHostName 2>/dev/null || hostname -s)\""
+      "nh darwin switch"
     else
-      "nixos-rebuild --sudo switch -L --flake \"$HOME/nixos-dotfiles#$(hostname)\"";
+      "nh os switch";
+  buildCommand =
+    if pkgs.stdenv.isDarwin then
+      "nh darwin build"
+    else
+      "nh os build";
+  dryRunCommand =
+    if pkgs.stdenv.isDarwin then
+      "nh darwin switch --dry"
+    else
+      "nh os switch --dry";
 in
 {
   environment.systemPackages = lib.optionals pkgs.stdenv.isLinux [ pkgs.blesh ];
@@ -33,8 +43,18 @@ in
 
       set -o vi
 
-      nixx() {
+      export NH_FLAKE="$HOME/nixos-dotfiles"
+
+      nr() {
         ${rebuildCommand}
+      }
+
+      nb() {
+        ${buildCommand}
+      }
+
+      nrd() {
+        ${dryRunCommand}
       }
 
       eval "$(starship init bash)"
