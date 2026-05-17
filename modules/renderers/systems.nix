@@ -135,7 +135,7 @@ let
     inputs.nix-darwin.lib.darwinSystem {
       system = host.system;
       inherit pkgs;
-      specialArgs = { inherit inputs; };
+      specialArgs = { inherit inputs pkgs; };
       modules =
         commonBootstrapModules host user
         ++ darwinModules

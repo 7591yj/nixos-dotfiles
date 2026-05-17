@@ -26,7 +26,7 @@ let
               right = 2;
             };
           };
-          modules = [
+          modules = lib.optionals pkgs.stdenv.isDarwin [ "break" ] ++ [
             "break"
             {
               type = "title";
@@ -77,6 +77,15 @@ let
       }
     )
   ];
+  fastfetchWrapperWithMagick = pkgs.writeShellScriptBin "fastfetch" ''
+    export DYLD_LIBRARY_PATH="${
+      lib.makeLibraryPath [ pkgs.imagemagick ]
+    }''${DYLD_LIBRARY_PATH:+:$DYLD_LIBRARY_PATH}"
+    export DYLD_FALLBACK_LIBRARY_PATH="${
+      lib.makeLibraryPath [ pkgs.imagemagick ]
+    }''${DYLD_FALLBACK_LIBRARY_PATH:+:$DYLD_FALLBACK_LIBRARY_PATH}"
+    exec ${fastfetchWrapper}/bin/fastfetch "$@"
+  '';
 in
 {
   options.mySystem.fastfetch.logoPath = lib.mkOption {
@@ -86,6 +95,8 @@ in
   };
 
   config = {
-    environment.systemPackages = [ fastfetchWrapper ];
+    environment.systemPackages = [
+      (if pkgs.stdenv.isDarwin then fastfetchWrapperWithMagick else fastfetchWrapper)
+    ];
   };
 }

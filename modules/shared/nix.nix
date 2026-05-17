@@ -1,4 +1,9 @@
-{ config, ... }:
+{
+  config,
+  lib,
+  options,
+  ...
+}:
 {
   nix = {
     settings = {
@@ -29,8 +34,17 @@
 
     gc = {
       automatic = true;
-      dates = "weekly";
       options = "--delete-older-than 7d";
+    }
+    // lib.optionalAttrs (options.nix.gc ? interval) {
+      interval = {
+        Weekday = 0;
+        Hour = 0;
+        Minute = 0;
+      };
+    }
+    // lib.optionalAttrs (!(options.nix.gc ? interval) && options.nix.gc ? dates) {
+      dates = "Sun 00:00";
     };
   };
 }

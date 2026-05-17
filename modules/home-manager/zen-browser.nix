@@ -1,10 +1,12 @@
 {
+  lib,
   pkgs,
   inputs,
   ...
 }:
 let
   system = pkgs.stdenv.hostPlatform.system;
+  isDarwin = builtins.match ".*-darwin" system != null;
 in
 {
   imports = [ inputs.zen-browser.homeModules.beta ];
@@ -105,13 +107,16 @@ in
         };
       in
       {
-        extensions.packages = with inputs.firefox-addons.packages.${system}; [
-          ublock-origin
-          proton-pass
-          refined-github
-          return-youtube-dislikes
-          df-youtube
-        ];
+        extensions.packages = lib.optionals (!isDarwin) (
+          with inputs.firefox-addons.packages.${system};
+          [
+            ublock-origin
+            proton-pass
+            refined-github
+            return-youtube-dislikes
+            df-youtube
+          ]
+        );
         settings = {
           # Disable DNS-over-HTTPS so captive portals can
           # intercept DNS and redirect to their login page.
@@ -119,10 +124,19 @@ in
           # Enable Firefox/Zen native captive portal detection
           "network.captive-portal-service.enabled" = true;
           "captivedetect.canonicalURL" = "http://detectportal.firefox.com/canonical.html";
+        }
+        // lib.optionalAttrs isDarwin {
+          "zen.window-sync.enabled" = true;
+          "zen.window-sync.sync-only-pinned-tabs" = true;
         };
         containersForce = true;
         spacesForce = true;
         inherit containers spaces pins;
+      }
+      // lib.optionalAttrs isDarwin {
+        pinsForce = true;
+      }
+      // {
         search = {
           force = true;
           default = "unduck";

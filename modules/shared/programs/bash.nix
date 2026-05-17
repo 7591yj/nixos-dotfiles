@@ -6,6 +6,7 @@
 }:
 let
   bleshInit = builtins.readFile ./blesh/init.sh;
+  shellAliases = import ./shell-aliases.nix;
   rebuildCommand =
     if pkgs.stdenv.isDarwin then
       "darwin-rebuild switch --flake \"$HOME/nixos-dotfiles#$(scutil --get LocalHostName 2>/dev/null || hostname -s)\""
@@ -22,17 +23,7 @@ in
   };
 
   programs.bash = {
-    shellAliases = {
-      ls = "eza --color=auto";
-      ll = "eza -al --color=auto";
-      grep = "grep --color=auto";
-      lg = "lazygit";
-      gcl = "git clone";
-      gs = "git switch";
-      gA = "git add .";
-      gp = "git pull origin main";
-      gP = "git push origin main";
-    };
+    inherit shellAliases;
 
     interactiveShellInit = ''
       ${lib.optionalString pkgs.stdenv.isLinux ''

@@ -72,7 +72,7 @@
     };
     llm-agents.url = "github:numtide/llm-agents.nix";
     skills-catalog = {
-      url = "path:./modules/skills";
+      url = "path:modules/skills";
       inputs.agent-skills-nix.inputs.nixpkgs.follows = "nixpkgs";
     };
   };
