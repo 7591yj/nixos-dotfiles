@@ -7,23 +7,32 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
   "git_panel": {
-    "tree_view": true
+    "dock": "left",
+    "tree_view": true,
   },
   "agent_servers": {
-    "claude-acp": {
+    "pi-acp": {
       "type": "registry"
-    }
+    },
   },
   "agent": {
+    "dock": "right",
     "default_profile": "write",
     "default_model": {
+      "effort": "low",
       "provider": "zed.dev",
-      "model": "gpt-5-nano",
-      "enable_thinking": false
+      "model": "gpt-5.5",
+      "enable_thinking": true,
     },
     "favorite_models": [],
-    "model_parameters": []
+    "model_parameters": [],
   },
   "telemetry": {
     "diagnostics": false,
@@ -45,7 +54,8 @@
   "buffer_font_weight": 400,
 
   "toolbar": { "breadcrumbs": false, "quick_actions": false },
-  "project_panel": { "entry_spacing": "comfortable" },
+  "project_panel": { "dock": "left",
+                     "entry_spacing": "comfortable" },
   "tabs": { "file_icons": true },
 
   "format_on_save": "on",

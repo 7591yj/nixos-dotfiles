@@ -18,7 +18,7 @@
         mkdir -p "$DEST/.codex"
         cp -rn "$ECC/.codex/." "$DEST/.codex/"
       fi
-      echo "Done. Restart Claude Code / Codex in this directory."
+      echo "Done. Restart harnesses in this directory."
     '')
   ];
 
@@ -51,7 +51,7 @@
 
     targets = {
       codex.enable = true;
-      claude.enable = true;
+      agents.enable = true;
     };
   };
 }
