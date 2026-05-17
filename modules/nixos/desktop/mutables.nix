@@ -10,6 +10,13 @@ in
     "L+ ${h}/.config/kitty             - - - - ${repo}/dotfiles/kitty"
     "L+ ${h}/.config/zed               - - - - ${repo}/dotfiles/zed"
 
+    # Pi coding-agent custom providers
+    "d  ${h}/.pi/agent 0755 ${u} users -"
+    "L+ ${h}/.pi/agent/models.json - - - - ${repo}/dotfiles/pi/agent/models.json"
+    "L+ ${h}/.pi/agent/settings.json - - - - ${repo}/dotfiles/pi/agent/settings.json"
+    "L+ ${h}/.pi/agent/extensions - - - - ${repo}/dotfiles/pi/agent/extensions"
+    "L+ ${h}/.pi/agent/themes - - - - ${repo}/dotfiles/pi/agent/themes"
+
     # Keep the static niri entrypoints repo-backed while leaving ~/.config/niri/dms
     # writable for DMS-managed live edits.
     "d  ${h}/.config/niri 0755 ${u} users -"

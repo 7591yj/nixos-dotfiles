@@ -6,14 +6,10 @@
         "extensions/ask-user-question.ts",
         "extensions/bash-guard",
         "extensions/context.ts",
-        "extensions/custom-header.ts",
         "extensions/filechanges",
         "extensions/google-image-search",
-        "extensions/md-link.ts",
-        "extensions/memory.ts",
         "extensions/subagents",
         "extensions/video-extract",
-        "extensions/web-fetch",
         "extensions/web-search",
         "extensions/youtube-search",
         "extensions/zz-read-only-mode.ts"
@@ -21,5 +17,10 @@
       "skills": []
     }
   ],
-  "lastChangelogVersion": "0.72.1"
+  "lastChangelogVersion": "0.74.1",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5",
+  "hideThinkingBlock": false,
+  "defaultThinkingLevel": "low",
+  "theme": "tomorrow-night"
 }

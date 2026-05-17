@@ -13,3 +13,5 @@ config/niri/dms/colors.kdl
 
 # Zed runtime/local state
 /dotfiles/zed/prompts/prompts-library-db.*.mdb/
+
+node_modules/
