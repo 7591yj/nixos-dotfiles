@@ -17,7 +17,7 @@
 
       # productivity
       anki
-      (logseq.override { electron = electron_39; })
+      logseq
       (callPackage ../../../pkgs/onlyoffice-desktopeditors.nix {
         extraFonts = [ ipaexfont ];
       })
