@@ -17,6 +17,17 @@
       "skills": []
     }
   ],
+  "extensions": [
+    "extensions/copy-all.ts",
+    "extensions/custom-header.ts",
+    "extensions/loc.ts",
+    "extensions/md-link.ts",
+    "extensions/pi-code-review",
+    "extensions/pi-simplify",
+    "extensions/usage.ts",
+    "extensions/web-fetch",
+    "extensions/yeet.ts"
+  ],
   "lastChangelogVersion": "0.74.1",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",

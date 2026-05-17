@@ -27,6 +27,26 @@ in
     "zed".source = link "${repo}/dotfiles/zed";
   };
 
+  # pi
+  home.file = {
+    ".pi/agent/models.json" = {
+      source = link "${repo}/dotfiles/pi/agent/models.json";
+      force = true;
+    };
+    ".pi/agent/settings.json" = {
+      source = link "${repo}/dotfiles/pi/agent/settings.json";
+      force = true;
+    };
+    ".pi/agent/extensions" = {
+      source = link "${repo}/dotfiles/pi/agent/extensions";
+      force = true;
+    };
+    ".pi/agent/themes" = {
+      source = link "${repo}/dotfiles/pi/agent/themes";
+      force = true;
+    };
+  };
+
   xdg.dataFile."TauonMusicBox/theme/tomorrow-night.ttheme".source =
     link "${repo}/dotfiles/tauon/tomorrow-night.ttheme";
 }
