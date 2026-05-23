@@ -28,7 +28,7 @@
     "extensions/web-fetch",
     "extensions/yeet.ts"
   ],
-  "lastChangelogVersion": "0.74.1",
+  "lastChangelogVersion": "0.75.3",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
   "hideThinkingBlock": false,

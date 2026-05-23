@@ -15,11 +15,11 @@
       }
       {
         id = "gebbhagfogifgggkldgodflihgfeippi";
-        hash = "sha256-m37J9FfLABlMjEFW7IF06dD9WTRscWkoZ4naDSS3eGs=";
+        hash = "sha256-0ZO+7AY5dcy1AOXPtZ9sSPcj9Wl2RQkE9oOFZq7ESqM=";
       }
       {
         id = "kchgllkpfcggmdaoopkhlkbcokngahlg";
-        hash = "sha256-e9I5rHKPyDtdmMWFL7SnPkZP28C0Hxx7tas+Mx2vyL4=";
+        hash = "sha256-KNAteNPuEbw2HQpbRAnmjoc/5CxO1cBVzc8QpwRoWFc=";
       }
     ];
     extraPolicies = {
