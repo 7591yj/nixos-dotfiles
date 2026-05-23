@@ -8,8 +8,8 @@ inputs:
 
   config = {
     sourceSensible = false;
-    terminal = "xterm-kitty";
-    terminalOverrides = ",xterm-kitty:RGB";
+    terminal = "tmux-256color";
+    terminalOverrides = ",*:RGB";
     modeKeys = "vi";
     vimVisualKeys = true;
     configAfter = builtins.readFile ./tmux.conf;

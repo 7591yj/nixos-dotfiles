@@ -8,9 +8,6 @@ let
     # developer
     zed-editor
 
-    # terminal
-    kitty
-
     # productivity
     logseq
     (pkgs.callPackage ../../../pkgs/typewhisper.nix { })
@@ -62,6 +59,7 @@ in
       "codex"
       "cursor"
       "element"
+      "ghostty"
       "jellyfin-media-player"
       "legcord"
       "omniwm"

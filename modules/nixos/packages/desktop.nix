@@ -13,7 +13,6 @@
       unityhub
 
       # terminal
-      kitty
       ghostty
 
       # productivity

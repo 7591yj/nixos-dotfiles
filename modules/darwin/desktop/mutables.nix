@@ -22,7 +22,7 @@ in
   xdg.enable = true;
 
   xdg.configFile = {
-    "kitty".source = link "${repo}/dotfiles/kitty";
+    "ghostty/config".source = link "${repo}/dotfiles/ghostty/config.ghostty";
     "lazygit".source = link "${repo}/dotfiles/lazygit";
     "zed".source = link "${repo}/dotfiles/zed";
   };
