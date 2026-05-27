@@ -15,3 +15,5 @@ config/niri/dms/colors.kdl
 /dotfiles/zed/prompts/prompts-library-db.*.mdb/
 
 node_modules/
+
+.DS_Store

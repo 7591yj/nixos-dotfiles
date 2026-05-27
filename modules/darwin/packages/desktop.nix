@@ -10,7 +10,6 @@ let
 
     # productivity
     logseq
-    (pkgs.callPackage ../../../pkgs/typewhisper.nix { })
 
     # viewer
     readest
@@ -49,6 +48,9 @@ in
 
   homebrew = {
     enable = true;
+    taps = [
+      "typewhisper/tap"
+    ];
     brews = [
       "mole"
       "pi-coding-agent"
@@ -69,6 +71,7 @@ in
       "t3-code"
       "tailscale-app"
       "telegram"
+      "typewhisper"
       "unity-hub"
       "zoom"
     ];
