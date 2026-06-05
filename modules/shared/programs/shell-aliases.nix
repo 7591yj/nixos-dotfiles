@@ -5,6 +5,7 @@
   tree = "eza --tree --git-ignore";
   grep = "grep --color=auto";
   lg = "lazygit";
+  yy = "yazi";
   gcl = "git clone";
   gs = "git switch";
   gA = "git add .";
