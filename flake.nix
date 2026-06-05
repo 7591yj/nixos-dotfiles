@@ -16,6 +16,7 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     import-tree.url = "github:vic/import-tree";
     nix-wrapper-modules = {
       url = "github:BirdeeHub/nix-wrapper-modules";

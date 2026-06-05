@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -16,5 +17,12 @@ in
   config = {
     system.primaryUser = lib.mkDefault username;
     users.users.${username}.home = lib.mkDefault "/Users/${username}";
+
+    nix-homebrew = {
+      enable = true;
+      user = username;
+      enableRosetta = pkgs.stdenv.hostPlatform.isAarch64;
+      autoMigrate = true;
+    };
   };
 }
