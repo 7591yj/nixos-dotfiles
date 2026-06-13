@@ -18,7 +18,7 @@
     enable = true;
     polarity = "dark";
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tomorrow-night.yaml";
+    base16Scheme = ../../../dotfiles/stylix/themes/tomorrow-night.yaml;
 
     fonts = {
       serif = {
@@ -89,7 +89,6 @@
           QT_QPA_PLATFORMTHEME = lib.mkForce "gtk3";
         };
 
-        gtk.gtk4.theme = config.gtk.theme;
 
         dconf.settings."org/gnome/desktop/interface" = {
           color-scheme = lib.mkForce "prefer-dark";

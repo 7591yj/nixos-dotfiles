@@ -3,17 +3,11 @@
   ...
 }:
 {
-  home-manager.sharedModules = [
-    ({ config, ... }: {
-      gtk.gtk4.theme = config.gtk.theme;
-    })
-  ];
-
   stylix = {
     enable = true;
     polarity = "dark";
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tomorrow-night.yaml";
+    base16Scheme = ../../../dotfiles/stylix/themes/tomorrow-night.yaml;
 
     fonts = {
       serif = {

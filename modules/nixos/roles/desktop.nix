@@ -48,6 +48,6 @@
     ../../shared/programs/yazi/default.nix
 
     # External
-    inputs.dms-plugin-registry.modules.default
+    inputs.dms-plugin-registry.nixosModules.default
   ];
 }
