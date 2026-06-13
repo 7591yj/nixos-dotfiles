@@ -25,6 +25,8 @@ in
       "vi"
     ];
 
+    hosts.ruby.nvim-host.enable = false;
+
     specs.core = with pkgs.vimPlugins; [
       tomorrow-nvim
       telescope-nvim
