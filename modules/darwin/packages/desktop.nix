@@ -49,6 +49,7 @@ in
   homebrew = {
     enable = true;
     taps = [
+      "barutsrb/tap"
       "typewhisper/tap"
     ];
     brews = [
