@@ -1,6 +1,10 @@
 {
   inputs = {
-    agent-skills-nix.url = "github:Kyure-A/agent-skills-nix";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    agent-skills-nix = {
+      url = "github:Kyure-A/agent-skills-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-best-practices = {
       url = "github:0xbigboss/claude-code";
       flake = false;

@@ -33,6 +33,7 @@
         "reddit"
         "stop-slop"
         "impeccable"
+        "linear-local-first-architecture"
       ];
     };
 
