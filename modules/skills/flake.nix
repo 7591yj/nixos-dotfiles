@@ -9,6 +9,10 @@
       url = "github:amosblomqvist/pi-config";
       flake = false;
     };
+    impeccable = {
+      url = "github:pbakaus/impeccable";
+      flake = false;
+    };
   };
 
   outputs =
@@ -17,11 +21,13 @@
       agent-skills-nix,
       nix-best-practices,
       pi-config,
+      impeccable,
       ...
     }:
     {
       homeManagerModules.default = agent-skills-nix.homeManagerModules.default;
       sources.nix-best-practices = nix-best-practices;
       sources.pi-config = pi-config;
+      sources.impeccable = impeccable;
     };
 }

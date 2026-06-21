@@ -18,6 +18,11 @@
       subdir = "skills";
       filter.nameRegex = "^(orchestrator|pdf-reader|reddit|stop-slop)$";
     };
+    sources.impeccable = {
+      path = inputs.skills-catalog.sources.impeccable;
+      subdir = ".pi/skills";
+      filter.nameRegex = "^impeccable$";
+    };
 
     skills = {
       enableAll = false;
@@ -27,6 +32,7 @@
         "pdf-reader"
         "reddit"
         "stop-slop"
+        "impeccable"
       ];
     };
 

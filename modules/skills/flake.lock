@@ -40,6 +40,22 @@
         "type": "github"
       }
     },
+    "impeccable": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1781050079,
+        "narHash": "sha256-tIZdChx0Ia/bdT5xVHPHQ7neBVW4ru8AdxpHlRbgelA=",
+        "owner": "pbakaus",
+        "repo": "impeccable",
+        "rev": "1863a44b23bfcf28e5990c0068a0603995ab1e29",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pbakaus",
+        "repo": "impeccable",
+        "type": "github"
+      }
+    },
     "nix-best-practices": {
       "flake": false,
       "locked": {
@@ -91,6 +107,7 @@
     "root": {
       "inputs": {
         "agent-skills-nix": "agent-skills-nix",
+        "impeccable": "impeccable",
         "nix-best-practices": "nix-best-practices",
         "pi-config": "pi-config"
       }
