@@ -19,22 +19,6 @@
         "type": "github"
       }
     },
-    "everything-claude-code": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1773733329,
-        "narHash": "sha256-eOWOsxQY3tiP+jVYZIWVgiopjEuJb3d19etfm8dohfc=",
-        "owner": "affaan-m",
-        "repo": "everything-claude-code",
-        "rev": "fce4513d58dc723177045dd7c3a3568d5c016407",
-        "type": "github"
-      },
-      "original": {
-        "owner": "affaan-m",
-        "repo": "everything-claude-code",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -107,7 +91,6 @@
     "root": {
       "inputs": {
         "agent-skills-nix": "agent-skills-nix",
-        "everything-claude-code": "everything-claude-code",
         "nix-best-practices": "nix-best-practices",
         "pi-config": "pi-config"
       }
