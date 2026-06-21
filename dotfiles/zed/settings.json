@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "cli_default_open_behavior": "new_window",
   "outline_panel": {
     "dock": "left"
   },
@@ -15,12 +16,12 @@
   },
   "git_panel": {
     "dock": "left",
-    "tree_view": true,
+    "tree_view": true
   },
   "agent_servers": {
     "pi-acp": {
       "type": "registry"
-    },
+    }
   },
   "agent": {
     "dock": "right",
@@ -29,22 +30,30 @@
       "effort": "low",
       "provider": "zed.dev",
       "model": "gpt-5.5",
-      "enable_thinking": true,
+      "enable_thinking": true
     },
     "favorite_models": [],
-    "model_parameters": [],
+    "model_parameters": []
   },
   "telemetry": {
     "diagnostics": false,
-    "metrics": false,
+    "metrics": false
   },
 
-  "theme": "Tomorrow Night",
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Tomorrow Night"
+  },
   "buffer_font_family": "PlemolJP35 Console NF",
   "buffer_font_size": 15,
   "ui_font_family": "PlemolJP35 Console NF",
   "ui_font_size": 16,
-  "icon_theme": "JetBrains New UI Icons (Dark)",
+  "icon_theme": {
+    "mode": "light",
+    "light": "JetBrains New UI Icons (Dark)",
+    "dark": "JetBrains New UI Icons (Dark)"
+  },
 
   // "base_keymap": "JetBrains",
   "vim_mode": true,
@@ -54,10 +63,9 @@
   "buffer_font_weight": 400,
 
   "toolbar": { "breadcrumbs": false, "quick_actions": false },
-  "project_panel": { "dock": "left",
-                     "entry_spacing": "comfortable" },
+  "project_panel": { "dock": "left", "entry_spacing": "comfortable" },
   "tabs": { "file_icons": true },
 
   "format_on_save": "on",
-  "tab_size": 2,
+  "tab_size": 2
 }
