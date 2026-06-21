@@ -89,7 +89,6 @@
           QT_QPA_PLATFORMTHEME = lib.mkForce "gtk3";
         };
 
-
         dconf.settings."org/gnome/desktop/interface" = {
           color-scheme = lib.mkForce "prefer-dark";
           cursor-theme = lib.mkForce "WhiteSur-cursors";

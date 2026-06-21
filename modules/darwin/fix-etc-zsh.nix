@@ -1,8 +1,7 @@
 { lib, pkgs, ... }:
 let
   shellAliases = import ../shared/programs/shell-aliases.nix;
-  rebuildCommand =
-    "sudo darwin-rebuild switch --flake \"$HOME/nixos-dotfiles#$(scutil --get LocalHostName 2>/dev/null || hostname -s)\"";
+  rebuildCommand = "sudo darwin-rebuild switch --flake \"$HOME/nixos-dotfiles#$(scutil --get LocalHostName 2>/dev/null || hostname -s)\"";
 in
 {
   # Robustness pattern for macOS: keep user-facing shell customisation in the
