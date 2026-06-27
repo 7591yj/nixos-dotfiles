@@ -8,21 +8,9 @@ let
   enableBlesh = true;
   bleshInit = builtins.readFile ./blesh/init.sh;
   shellAliases = import ./shell-aliases.nix;
-  rebuildCommand =
-    if pkgs.stdenv.isDarwin then
-      "nh darwin switch"
-    else
-      "nh os switch";
-  buildCommand =
-    if pkgs.stdenv.isDarwin then
-      "nh darwin build"
-    else
-      "nh os build";
-  dryRunCommand =
-    if pkgs.stdenv.isDarwin then
-      "nh darwin switch --dry"
-    else
-      "nh os switch --dry";
+  rebuildCommand = if pkgs.stdenv.isDarwin then "nh darwin switch" else "nh os switch";
+  buildCommand = if pkgs.stdenv.isDarwin then "nh darwin build" else "nh os build";
+  dryRunCommand = if pkgs.stdenv.isDarwin then "nh darwin switch --dry" else "nh os switch --dry";
 in
 {
   nixpkgs.overlays = [

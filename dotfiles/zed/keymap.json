@@ -29,5 +29,5 @@
     "bindings": {
       "ctrl-b": "workspace::ToggleRightDock",
     },
-  },
+  }
 ]

@@ -20,6 +20,7 @@
   "extensions": [
     "extensions/copy-all.ts",
     "extensions/custom-header.ts",
+    "extensions/fallow.ts",
     "extensions/loc.ts",
     "extensions/md-link.ts",
     "extensions/pi-code-review",
@@ -28,10 +29,15 @@
     "extensions/web-fetch",
     "extensions/yeet.ts"
   ],
-  "lastChangelogVersion": "0.75.3",
+  "lastChangelogVersion": "0.79.7",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
   "hideThinkingBlock": false,
-  "defaultThinkingLevel": "low",
-  "theme": "tomorrow-night"
+  "defaultThinkingLevel": "high",
+  "theme": "tomorrow-night",
+  "enabledModels": [
+    "openai-codex/gpt-5.5",
+    "opencode-go/kimi-k2.7-code",
+    "opencode-go/glm-5.2"
+  ]
 }

@@ -63,7 +63,9 @@ let
     (
       { pkgs, ... }:
       {
-        nixpkgs.config.allowUnfree = true;
+        nixpkgs.config = {
+          allowUnfree = true;
+        };
         nix.package = pkgs.lixPackageSets.stable.lix;
         mySystem.username = lib.mkDefault user.username;
       }
@@ -85,6 +87,8 @@ let
           homeDirectory = defaultHomeDirectory host user;
           stateVersion = host.homeStateVersion;
         };
+
+        programs.zsh.dotDir = lib.mkDefault (defaultHomeDirectory host user);
       };
     };
   };
@@ -127,7 +131,9 @@ let
       channels = channelInputs host.channel;
       pkgs = import channels.nixpkgs {
         system = host.system;
-        config.allowUnfree = true;
+        config = {
+          allowUnfree = true;
+        };
       };
       homeModules = user.homeModules ++ host.homeModules ++ aspectModulesFor "homeModules" host user;
       darwinModules = host.darwinModules ++ aspectModulesFor "darwinModules" host user;
@@ -138,6 +144,7 @@ let
       specialArgs = { inherit inputs pkgs; };
       modules =
         commonBootstrapModules host user
+        ++ [ inputs.nix-homebrew.darwinModules.nix-homebrew ]
         ++ darwinModules
         ++ lib.optionals (homeModules != [ ]) [
           channels.homeManager.darwinModules.home-manager

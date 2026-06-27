@@ -3,7 +3,9 @@
     "agent-skills-nix": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1772640663,
@@ -16,22 +18,6 @@
       "original": {
         "owner": "Kyure-A",
         "repo": "agent-skills-nix",
-        "type": "github"
-      }
-    },
-    "everything-claude-code": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1773733329,
-        "narHash": "sha256-eOWOsxQY3tiP+jVYZIWVgiopjEuJb3d19etfm8dohfc=",
-        "owner": "affaan-m",
-        "repo": "everything-claude-code",
-        "rev": "fce4513d58dc723177045dd7c3a3568d5c016407",
-        "type": "github"
-      },
-      "original": {
-        "owner": "affaan-m",
-        "repo": "everything-claude-code",
         "type": "github"
       }
     },
@@ -56,6 +42,22 @@
         "type": "github"
       }
     },
+    "impeccable": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1781050079,
+        "narHash": "sha256-tIZdChx0Ia/bdT5xVHPHQ7neBVW4ru8AdxpHlRbgelA=",
+        "owner": "pbakaus",
+        "repo": "impeccable",
+        "rev": "1863a44b23bfcf28e5990c0068a0603995ab1e29",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pbakaus",
+        "repo": "impeccable",
+        "type": "github"
+      }
+    },
     "nix-best-practices": {
       "flake": false,
       "locked": {
@@ -74,11 +76,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1772198003,
-        "narHash": "sha256-I45esRSssFtJ8p/gLHUZ1OUaaTaVLluNkABkk6arQwE=",
+        "lastModified": 1780749050,
+        "narHash": "sha256-3av0pIjlOWQ6rDbNOmpUSvbNnJkGORQKKjb4LtCZsIY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "dd9b079222d43e1943b6ebd802f04fd959dc8e61",
+        "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
         "type": "github"
       },
       "original": {
@@ -107,8 +109,9 @@
     "root": {
       "inputs": {
         "agent-skills-nix": "agent-skills-nix",
-        "everything-claude-code": "everything-claude-code",
+        "impeccable": "impeccable",
         "nix-best-practices": "nix-best-practices",
+        "nixpkgs": "nixpkgs",
         "pi-config": "pi-config"
       }
     }
