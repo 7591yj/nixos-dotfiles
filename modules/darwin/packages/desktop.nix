@@ -55,11 +55,13 @@ in
     brews = [
       "mole"
       "pi-coding-agent"
+      "opencode"
     ];
     casks = [
       "affinity"
       "anki"
       "codex"
+      "codex-app"
       "cursor"
       "element"
       "ghostty"
