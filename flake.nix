@@ -72,9 +72,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llm-agents.url = "github:numtide/llm-agents.nix";
+    agent-skills-nix = {
+      url = "github:Kyure-A/agent-skills-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     skills-catalog = {
       url = "path:modules/skills";
-      inputs.agent-skills-nix.inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.agent-skills-nix.follows = "agent-skills-nix";
     };
   };
 
