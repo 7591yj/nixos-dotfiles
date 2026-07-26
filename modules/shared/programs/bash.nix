@@ -17,14 +17,20 @@ in
     (final: prev: {
       blesh = prev.blesh.overrideAttrs (oldAttrs: {
         version = "0.4.0-devel3-pinned";
-        nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [ final.gitMinimal ];
-        src = final.fetchgit {
-          url = "https://github.com/akinomyoga/ble.sh.git";
+        src = final.fetchFromGitHub {
+          owner = "akinomyoga";
+          repo = "ble.sh";
           rev = "1a5c451c8baa71439a6be4ea0f92750de35a7620";
           fetchSubmodules = true;
-          leaveDotGit = true;
-          hash = "sha256-76kjbF86qoIAzaDtu7CSTKFYWqcfsZl8piN1hEwZ+LQ=";
+          hash = "sha256-KBBNrEY3CRBCFpLESjfgXPyHCyWDvjH6VIdmnWTNyac=";
         };
+        postPatch = (oldAttrs.postPatch or "") + ''
+          substituteInPlace GNUmakefile \
+            --replace-fail 'ble.pp GNUmakefile | .git $(OUTDIR)' 'ble.pp GNUmakefile | $(OUTDIR)'
+          substituteInPlace ble.pp \
+            --replace-fail '#%[commit_hash = system("git show -s --format=%h")]' '#%[commit_hash = "1a5c451"]' \
+            --replace-fail '#%$ echo "_ble_base_branch=$(git rev-parse --abbrev-ref HEAD)"' '#%$ echo "_ble_base_branch=master"'
+        '';
       });
     })
   ];
