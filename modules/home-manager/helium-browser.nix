@@ -7,7 +7,7 @@
     extensions = [
       {
         id = "ghmbeldphafepmbegfdlkpapadhbakde";
-        hash = "sha256-Xfm9bbdufzfHWhmtYThWL+n2RfVavr3IjxxOTY0P4Ug=";
+        hash = "sha256-LMVNciGP4JCB6OOCYa4PFqylHGJyKCj0ajMQn4jHxnk=";
       }
       {
         id = "hlepfoohegkhhmjieoechaddaejaokhf";
