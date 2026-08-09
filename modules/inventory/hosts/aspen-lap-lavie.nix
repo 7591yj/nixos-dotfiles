@@ -12,7 +12,6 @@
       "disko"
       "helium-browser"
       "input-fcitx5"
-      "kanata"
       "laptop-intel"
       "stylix"
       "virt-manager"

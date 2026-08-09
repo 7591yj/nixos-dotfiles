@@ -33,8 +33,9 @@
           };
         };
 
-        systemd.services.kanata-internal.serviceConfig = {
-          SupplementaryGroups = [
+        systemd.services.kanata-internal = {
+          unitConfig.ConditionPathExists = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
+          serviceConfig.SupplementaryGroups = [
             "input"
             "uinput"
           ];

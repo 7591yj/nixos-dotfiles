@@ -1,7 +1,10 @@
 { ... }:
 let
   common = {
-    aspects = [ "userdirs" ];
+    aspects = [
+      "userdirs"
+      "kanata"
+    ];
     homeModules = [
       (
         { ... }:
