@@ -770,12 +770,12 @@
         "rev": "11f7384af1d0b50fa60ad665841d7c064ed58d8b",
         "revCount": 217,
         "type": "git",
-        "url": "file:./"
+        "url": "file:."
       },
       "original": {
         "dir": "modules/skills",
         "type": "git",
-        "url": "file:./"
+        "url": "file:."
       }
     },
     "sops-nix": {
