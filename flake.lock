@@ -763,14 +763,19 @@
         "pi-config": "pi-config"
       },
       "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-+/EtMfDEm/nwU/p7iz97+ofunTy8tMrJTgwVoEXCOZ0=",
-        "path": "modules/skills",
-        "type": "path"
+        "dir": "modules/skills",
+        "lastModified": 1786238658,
+        "narHash": "sha256-sFJoB18ksIibUN8N2cTuRp54HemTLgiBIR2ZaXPMJzs=",
+        "ref": "refs/heads/main",
+        "rev": "d1f509357f395a09d1432e0e10936bc3a8692ea9",
+        "revCount": 214,
+        "type": "git",
+        "url": "file:./"
       },
       "original": {
-        "path": "modules/skills",
-        "type": "path"
+        "dir": "modules/skills",
+        "type": "git",
+        "url": "file:./"
       }
     },
     "sops-nix": {
