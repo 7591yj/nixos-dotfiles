@@ -17,3 +17,10 @@ creation_rules:
           - *aspen-lap-lavie
           - *cypress-lap-mbp
           - *backup
+
+  - path_regex: secrets/pi\.yaml$
+    key_groups:
+      - age:
+          - *aspen-lap-lavie
+          - *cypress-lap-mbp
+          - *backup

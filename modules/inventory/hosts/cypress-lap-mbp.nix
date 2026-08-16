@@ -7,7 +7,7 @@
     user = "7591yj";
     aspects = [
       "desktop-role"
-      "agent-skills"
+      "agent-environment"
       "stylix"
       "zen-browser"
     ];

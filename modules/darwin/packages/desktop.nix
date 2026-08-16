@@ -5,13 +5,13 @@
 }:
 let
   requestedPackages = with pkgs; [
-    # developer
-    zed-editor
-
     # productivity
-    logseq
+    (logseq.override {
+      electron_39 = electron_41-bin;
+    })
 
     # viewer
+    iina
     readest
 
     # file management
@@ -50,33 +50,33 @@ in
     enable = true;
     taps = [
       "barutsrb/tap"
-      "typewhisper/tap"
     ];
     brews = [
+      "ffmpeg"
       "mole"
-      "pi-coding-agent"
-      "opencode"
     ];
     casks = [
       "affinity"
       "anki"
-      "codex"
-      "codex-app"
-      "cursor"
+      "chatgpt"
       "element"
       "ghostty"
+      "handy"
+      "helium-browser"
       "jellyfin-media-player"
-      "legcord"
+      "discord"
+      "makemkv"
+      "musicbrainz-picard"
       "omniwm"
       "onlyoffice"
+      "orbstack"
+      "proton-drive"
       "raycast"
       "steam"
-      "t3-code"
       "tailscale-app"
       "telegram"
-      "typewhisper"
-      "unity-hub"
-      "zoom"
+      "slack"
+      "zed"
     ];
   };
 }

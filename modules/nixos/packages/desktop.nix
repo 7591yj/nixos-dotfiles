@@ -1,87 +1,75 @@
+{ pkgs, ... }:
 {
-  inputs,
-  pkgs,
-  ...
-}:
-{
-  environment.systemPackages =
-    with pkgs;
-    [
-      # developer
-      zed-editor
-      code-cursor-fhs
-      unityhub
+  environment.systemPackages = with pkgs; [
+    # developer
+    zed-editor
+    unityhub
 
-      # terminal
-      ghostty
+    # terminal
+    ghostty
 
-      # productivity
-      anki
-      logseq
-      (callPackage ../../../pkgs/onlyoffice-desktopeditors.nix {
-        extraFonts = [ ipaexfont ];
-      })
+    # productivity
+    anki
+    logseq
+    (callPackage ../../../pkgs/onlyoffice-desktopeditors.nix {
+      extraFonts = [ ipaexfont ];
+    })
 
-      # communication
-      element-desktop
-      legcord
-      telegram-desktop
-      valent
-      zoom-us
+    # communication
+    element-desktop
+    legcord
+    telegram-desktop
+    valent
+    zoom-us
 
-      # viewer
-      loupe
-      papers
-      readest
-      sioyek
+    # viewer
+    loupe
+    papers
+    readest
+    sioyek
 
-      # media
-      celluloid
-      ffmpeg
-      jellyfin-desktop
-      tauon
-      tidal-hifi
-      yt-dlp
+    # media
+    celluloid
+    ffmpeg
+    jellyfin-desktop
+    tauon
+    tidal-hifi
+    yt-dlp
 
-      # gaming
-      steam
+    # gaming
+    steam
 
-      # file management
-      btrfs-assistant
-      localsend
-      nautilus
+    # file management
+    btrfs-assistant
+    localsend
+    nautilus
 
-      # graphics
-      ffmpegthumbnailer
-      imagemagick
-      libopenraw
-      snapshot
-      krita
+    # graphics
+    ffmpegthumbnailer
+    imagemagick
+    libopenraw
+    snapshot
+    krita
 
-      # security
-      libsecret
-      proton-pass
-      seahorse
+    # security
+    libsecret
+    proton-pass
+    seahorse
 
-      # utils
-      diffutils
-      duf
-      file
-      p7zip
-      pv
-      unzipNLS
-      unrar
-      usbutils
+    # utils
+    diffutils
+    duf
+    file
+    p7zip
+    pv
+    unzipNLS
+    unrar
+    usbutils
 
-      (callPackage ../../../pkgs/astra.nix { })
-      (callPackage ../../../pkgs/pencil.nix { })
-      (callPackage ../../../pkgs/sticker-smith.nix { })
-    ]
-    ++ [
-      inputs.t3code-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
-      inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.codex
-      inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.pi
-    ];
+    (callPackage ../../../pkgs/astra.nix { })
+    (callPackage ../../../pkgs/pencil.nix { })
+    (callPackage ../../../pkgs/sticker-smith.nix { })
+  ];
 
   programs.nano.enable = false;
 }

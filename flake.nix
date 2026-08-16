@@ -62,24 +62,10 @@
       url = "gitlab:ntgn/helium-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    codex-nix = {
-      url = "github:SecBear/codex-nix";
+    agent-environment = {
+      url = "github:7591yj/agent-environment";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-    };
-    t3code-nix = {
-      url = "github:Sawrz/t3code-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    llm-agents.url = "github:numtide/llm-agents.nix";
-    agent-skills-nix = {
-      url = "github:Kyure-A/agent-skills-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    skills-catalog = {
-      url = "git+file:.?dir=modules/skills";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.agent-skills-nix.follows = "agent-skills-nix";
+      inputs.home-manager.follows = "home-manager";
     };
   };
 
