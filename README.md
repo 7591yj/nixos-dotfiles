@@ -1,63 +1,41 @@
 # nixos-dotfiles
 
-Personal NixOS and nix-darwin flake for my machines.
+Personal flake for my NixOS and nix-darwin hosts.
 
-This repo keeps host configs, dendritic flake-parts modules,
-lower-level NixOS/Home Manager/nix-darwin modules, custom packages,
-and a small set of raw dotfiles in one place.
+## Switch
+
+Interactive shells set `NH_FLAKE="$HOME/nixos-dotfiles"`.
+
+```bash
+nr  # nh os switch / nh darwin switch
+nrd # nh os switch --dry / nh darwin switch --dry
+nb  # nh os build / nh darwin build
+```
 
 ## Hosts
 
-Building a host:
+| Host              | Role   | Hardware                     | System             | Channel  | Notes                                                     |
+| ----------------- | ------ | ---------------------------- | ------------------ | -------- | --------------------------------------------------------- |
+| `aspen-lap-lavie` | Laptop | NEC Lavie Sol (Intel 226V)   | NixOS              | unstable | [notes](hosts/aspen-lap-lavie/README.md)                  |
+| `cypress-lap-mbp` | Laptop | Apple MacBook Pro 14' (2023) | nix-darwin         | unstable | -                                                         |
+| `juniper-srv-vm`  | Server | Minisforum N5 NAS (AMD 255)  | Proxmox VM (NixOS) | stable   | Currently stub<br>[notes](hosts/juniper-srv-vm/README.md) |
 
-```bash
-nix build .#nixosConfigurations.<host>.config.system.build.toplevel
-```
-
-Applying a host locally:
-
-> Using `nixx` shorthand is feasible after initial run.
-
-```bash
-sudo nixos-rebuild switch --flake .#<host>
-```
-
-For nix-darwin hosts:
-
-```bash
-nix build .#darwinConfigurations.<host>.system
-darwin-rebuild switch --flake .#<host>
-```
-
-### aspen-lap-lavie
-
-[README](hosts/aspen-lap-lavie/README.md)
-
-Intel-based laptop, using `nixos-unstable`.
-
-### juniper-srv-vm
-
-[README](hosts/juniper-srv-vm/README.md)
-
-Server VM targeting Proxmox, using `nixos-25.11`.
-
-## Layout
+## File Structure
 
 ```text
-flake.nix                 # flake entrypoint
-modules/aspects/          # den-style aspect definitions
-modules/inventory/        # hosts and users
-modules/renderers/        # flake outputs renderers
-modules/nixos/            # shared nixos modules
-modules/home-manager/     # shared home-manager modules
-modules/darwin/           # shared nix-darwin modules
-modules/shared/           # cross-platform shared modules
-hosts/                    # host-specific state and templates
-pkgs/                     # custom packages
-dotfiles/                 # raw config files
-secrets/                  # encrypted secrets
+.
+├── flake.nix              # flake entrypoint
+├── modules/
+│   ├── inventory/         # hosts and users
+│   ├── aspects/           # reusable roles/features
+│   └── renderers/         # builds NixOS and darwin outputs
+├── hosts/                 # host-specific config
+├── pkgs/                  # custom packages
+├── dotfiles/              # raw dotfiles
+└── secrets/               # sops-managed secrets
 ```
 
 ## Notes
 
-- This configuration makes use of [Lix](https://lix.systems/) rather than flat Nix.
+- This flake uses [Lix](https://lix.systems/).
+- [GitHub Actions](.github/workflows/update-flake.yml) automatically updates the flake lock file weekly.
