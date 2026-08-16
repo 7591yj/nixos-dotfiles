@@ -1,7 +1,5 @@
 {
   config,
-  lib,
-  pkgs,
   ...
 }:
 let
@@ -9,20 +7,11 @@ let
   link = config.lib.file.mkOutOfStoreSymlink;
 in
 {
-  home.packages = [
-    pkgs.plemoljp-nf
-  ];
-
-  home.activation.installPlemolFonts = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    run ${pkgs.rsync}/bin/rsync $VERBOSE_ARG -acL --chmod=u+w \
-      ${pkgs.plemoljp-nf}/share/fonts/truetype/plemoljp-nf-35console/*.ttf \
-      "$HOME/Library/Fonts/"
-  '';
-
   xdg.enable = true;
 
   xdg.configFile = {
     "ghostty/config".source = link "${repo}/dotfiles/ghostty/config.ghostty";
+    "ghostty/platform.ghostty".source = link "${repo}/dotfiles/ghostty/platform.darwin.ghostty";
     "lazygit".source = link "${repo}/dotfiles/lazygit";
     "zed".source = link "${repo}/dotfiles/zed";
   };

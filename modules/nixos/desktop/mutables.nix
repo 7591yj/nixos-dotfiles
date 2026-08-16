@@ -8,7 +8,8 @@ in
   systemd.tmpfiles.rules = [
     "L+ ${h}/.config/DankMaterialShell - - - - ${repo}/dotfiles/DankMaterialShell"
     "d  ${h}/.config/ghostty 0755 ${u} users -"
-    "L+ ${h}/.config/ghostty/config.ghostty - - - - ${repo}/dotfiles/ghostty/config.ghostty"
+    "L+ ${h}/.config/ghostty/config.ghostty   - - - - ${repo}/dotfiles/ghostty/config.ghostty"
+    "L+ ${h}/.config/ghostty/platform.ghostty - - - - ${repo}/dotfiles/ghostty/platform.nixos.ghostty"
     "L+ ${h}/.config/zed               - - - - ${repo}/dotfiles/zed"
 
     # Keep the static niri entrypoints repo-backed while leaving ~/.config/niri/dms
@@ -22,6 +23,5 @@ in
     # Tauon theme
     "d  ${h}/.local/share/TauonMusicBox/theme 0755 ${u} users -"
     "L+ ${h}/.local/share/TauonMusicBox/theme/tomorrow-night.ttheme - - - - ${repo}/dotfiles/tauon/tomorrow-night.ttheme"
-
   ];
 }
