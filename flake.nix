@@ -59,7 +59,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     "helium-browser" = {
-      url = "gitlab:ntgn/helium-flake";
+      url = "github:amaanq/helium-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agent-environment = {

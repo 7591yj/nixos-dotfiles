@@ -62,7 +62,6 @@ in
       "element"
       "ghostty"
       "handy"
-      "helium-browser"
       "jellyfin-media-player"
       "discord"
       "makemkv"

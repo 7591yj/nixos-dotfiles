@@ -1,78 +1,34 @@
-{ inputs, ... }:
 {
-  imports = [ inputs."helium-browser".homeModules.helium ];
+  heliumBrowserConfig,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  system = pkgs.stdenv.hostPlatform.system;
+  preferencesJson = builtins.toJSON heliumBrowserConfig.preferences;
+  preferencesDirectory =
+    if pkgs.stdenv.isDarwin then
+      "$HOME/Library/Application Support/net.imput.helium/Default"
+    else
+      "$HOME/.config/net.imput.helium/Default";
+in
+{
+  home.packages = [ inputs."helium-browser".packages.${system}.helium ];
 
-  programs.helium = {
-    enable = true;
-    extensions = [
-      {
-        id = "ghmbeldphafepmbegfdlkpapadhbakde";
-        hash = "sha256-LMVNciGP4JCB6OOCYa4PFqylHGJyKCj0ajMQn4jHxnk=";
-      }
-      {
-        id = "hlepfoohegkhhmjieoechaddaejaokhf";
-        hash = "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=";
-      }
-      {
-        id = "gebbhagfogifgggkldgodflihgfeippi";
-        hash = "sha256-0ZO+7AY5dcy1AOXPtZ9sSPcj9Wl2RQkE9oOFZq7ESqM=";
-      }
-      {
-        id = "kchgllkpfcggmdaoopkhlkbcokngahlg";
-        hash = "sha256-KNAteNPuEbw2HQpbRAnmjoc/5CxO1cBVzc8QpwRoWFc=";
-      }
-    ];
-    extraPolicies = {
-      AutofillAddressEnabled = false;
-      AutofillCreditCardEnabled = false;
-      BrowserSignin = 0;
-      DefaultBrowserSettingEnabled = false;
-      DnsOverHttpsMode = "off";
-      MetricsReportingEnabled = false;
-      PasswordManagerEnabled = false;
-      UserFeedbackAllowed = false;
-      ManagedBookmarks = [
-        {
-          toplevel_name = "Essentials";
-        }
-        {
-          name = "Proton Mail";
-          url = "https://mail.proton.me/";
-        }
-        {
-          name = "Tailscale";
-          url = "https://login.tailscale.com/admin/machines";
-        }
-        {
-          name = "ZUTOMAYO";
-          url = "https://zutomayo.net/";
-        }
-        {
-          name = "Hacker News";
-          url = "https://news.ycombinator.com/";
-        }
-        {
-          name = "NixOS Wiki";
-          url = "https://nixos.wiki/wiki/Main_Page";
-        }
-        {
-          name = "GitHub";
-          url = "https://github.com/";
-        }
-        {
-          name = "Google Docs";
-          url = "https://docs.google.com/";
-        }
-      ];
-    };
-    preferences = {
-      browser.show_home_button = false;
-      bookmark_bar = {
-        show_apps_shortcut = false;
-        show_managed_bookmarks = true;
-        show_on_all_tabs = false;
-        show_tab_groups = false;
-      };
-    };
-  };
+  home.activation.heliumPreferences = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    prefs_dir=${lib.escapeShellArg preferencesDirectory}
+    prefs_file="$prefs_dir/Preferences"
+    nix_prefs=${lib.escapeShellArg preferencesJson}
+
+    run mkdir -p "$prefs_dir"
+
+    if [ -f "$prefs_file" ]; then
+      ${pkgs.jq}/bin/jq -s '.[0] * .[1]' "$prefs_file" - <<< "$nix_prefs" > "$prefs_file.tmp"
+      run mv "$prefs_file.tmp" "$prefs_file"
+    else
+      printf '%s\n' "$nix_prefs" > "$prefs_file"
+    fi
+  '';
 }
