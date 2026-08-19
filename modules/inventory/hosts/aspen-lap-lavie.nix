@@ -11,6 +11,7 @@
       "appimage"
       "disko"
       "helium-browser"
+      "handy"
       "input-fcitx5"
       "laptop-intel"
       "stylix"

@@ -61,7 +61,6 @@ in
       "chatgpt"
       "element"
       "ghostty"
-      "handy"
       "jellyfin-media-player"
       "discord"
       "makemkv"
