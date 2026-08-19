@@ -6,6 +6,7 @@
 let
   requestedPackages = with pkgs; [
     # productivity
+    (callPackage ../../../pkgs/astra.nix { })
     (logseq.override {
       electron_39 = electron_41-bin;
     })
