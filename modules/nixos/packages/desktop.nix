@@ -67,7 +67,7 @@
     usbutils
 
     (callPackage ../../../pkgs/astra.nix { })
-    (callPackage ../../../pkgs/pencil.nix { })
+    (callPackage ../../../pkgs/pen.nix { })
     (callPackage ../../../pkgs/sticker-smith.nix { })
   ];
 
