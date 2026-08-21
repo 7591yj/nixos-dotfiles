@@ -26,7 +26,7 @@ let
               right = 2;
             };
           };
-          modules = lib.optionals pkgs.stdenv.isDarwin [ "break" ] ++ [
+          modules = lib.optionals pkgs.stdenv.hostPlatform.isDarwin [ "break" ] ++ [
             "break"
             {
               type = "title";
@@ -96,7 +96,7 @@ in
 
   config = {
     environment.systemPackages = [
-      (if pkgs.stdenv.isDarwin then fastfetchWrapperWithMagick else fastfetchWrapper)
+      (if pkgs.stdenv.hostPlatform.isDarwin then fastfetchWrapperWithMagick else fastfetchWrapper)
     ];
   };
 }

@@ -25,7 +25,7 @@ in
 
   # yazi shell integration
   programs = lib.mkMerge [
-    (lib.mkIf pkgs.stdenv.isLinux {
+    (lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
       bash.interactiveShellInit = ''
         function y() {
           local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -37,7 +37,7 @@ in
         }
       '';
     })
-    (lib.mkIf pkgs.stdenv.isDarwin {
+    (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
       zsh.interactiveShellInit = ''
         function y() {
           local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd

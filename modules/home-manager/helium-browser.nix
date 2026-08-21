@@ -9,7 +9,7 @@ let
   system = pkgs.stdenv.hostPlatform.system;
   preferencesJson = builtins.toJSON heliumBrowserConfig.preferences;
   preferencesDirectory =
-    if pkgs.stdenv.isDarwin then
+    if pkgs.stdenv.hostPlatform.isDarwin then
       "$HOME/Library/Application Support/net.imput.helium/Default"
     else
       "$HOME/.config/net.imput.helium/Default";

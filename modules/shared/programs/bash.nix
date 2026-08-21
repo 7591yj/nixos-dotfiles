@@ -8,9 +8,10 @@ let
   enableBlesh = true;
   bleshInit = builtins.readFile ./blesh/init.sh;
   shellAliases = import ./shell-aliases.nix;
-  rebuildCommand = if pkgs.stdenv.isDarwin then "nh darwin switch" else "nh os switch";
-  buildCommand = if pkgs.stdenv.isDarwin then "nh darwin build" else "nh os build";
-  dryRunCommand = if pkgs.stdenv.isDarwin then "nh darwin switch --dry" else "nh os switch --dry";
+  rebuildCommand = if pkgs.stdenv.hostPlatform.isDarwin then "nh darwin switch" else "nh os switch";
+  buildCommand = if pkgs.stdenv.hostPlatform.isDarwin then "nh darwin build" else "nh os build";
+  dryRunCommand =
+    if pkgs.stdenv.hostPlatform.isDarwin then "nh darwin switch --dry" else "nh os switch --dry";
 in
 {
   nixpkgs.overlays = [
@@ -35,7 +36,9 @@ in
     })
   ];
 
-  environment.systemPackages = lib.optionals (pkgs.stdenv.isLinux && enableBlesh) [ pkgs.blesh ];
+  environment.systemPackages = lib.optionals (pkgs.stdenv.hostPlatform.isLinux && enableBlesh) [
+    pkgs.blesh
+  ];
 
   programs.direnv = {
     enable = true;
@@ -49,7 +52,7 @@ in
     promptInit = "";
 
     interactiveShellInit = ''
-      ${lib.optionalString (pkgs.stdenv.isLinux && enableBlesh) ''
+      ${lib.optionalString (pkgs.stdenv.hostPlatform.isLinux && enableBlesh) ''
         _blesh_cache_dir="''${XDG_CACHE_HOME:-$HOME/.cache}/blesh"
         _blesh_nix_marker="$_blesh_cache_dir/nix-store-path"
         if [[ ! -r $_blesh_nix_marker ]] || [[ $(< "$_blesh_nix_marker") != "${pkgs.blesh}" ]]; then
@@ -84,7 +87,7 @@ in
 
       fastfetch
 
-      ${lib.optionalString (pkgs.stdenv.isLinux && enableBlesh) ''
+      ${lib.optionalString (pkgs.stdenv.hostPlatform.isLinux && enableBlesh) ''
         [[ ! ''${BLE_VERSION-} ]] || ble-attach
       ''}
 

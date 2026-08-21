@@ -31,7 +31,7 @@ in
     pkgs.prettier
     pkgs.tree-sitter
   ]
-  ++ lib.optionals pkgs.stdenv.isLinux [
+  ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
     pkgs.wl-clipboard
   ];
 
