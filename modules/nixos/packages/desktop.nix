@@ -3,24 +3,24 @@
   environment.systemPackages = with pkgs; [
     # developer
     zed-editor
-    unityhub
 
     # terminal
     ghostty
 
     # productivity
     anki
-    logseq
+    (logseq.override {
+      electron_39 = electron_41-bin;
+    })
     (callPackage ../../../pkgs/onlyoffice-desktopeditors.nix {
       extraFonts = [ ipaexfont ];
     })
 
     # communication
+    discord
     element-desktop
-    legcord
     telegram-desktop
     valent
-    zoom-us
 
     # viewer
     loupe
