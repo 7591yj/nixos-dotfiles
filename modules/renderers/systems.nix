@@ -43,14 +43,23 @@ let
   aspectClosure =
     host: names:
     let
+      dropUntil =
+        name: stack:
+        if builtins.head stack == name then stack else dropUntil name (builtins.tail stack);
       visit =
-        name:
-        let
-          aspect = resolveAspect host name;
-        in
-        [ name ] ++ lib.concatMap visit aspect.includes;
+        stack: name:
+        if builtins.elem name stack then
+          let
+            cycle = dropUntil name stack ++ [ name ];
+          in
+          throw "Aspect dependency cycle: ${lib.concatStringsSep " -> " cycle}."
+        else
+          let
+            aspect = resolveAspect host name;
+          in
+          [ name ] ++ lib.concatMap (visit (stack ++ [ name ])) aspect.includes;
     in
-    lib.unique (lib.concatMap visit names);
+    lib.unique (lib.concatMap (visit [ ]) names);
 
   aspectModulesFor =
     key: host: user:
