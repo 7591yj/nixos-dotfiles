@@ -85,5 +85,11 @@
         (inputs.import-tree ./modules/inventory)
         (inputs.import-tree ./modules/renderers)
       ];
+
+      perSystem =
+        { pkgs, ... }:
+        {
+          formatter = pkgs.nixfmt;
+        };
     };
 }
