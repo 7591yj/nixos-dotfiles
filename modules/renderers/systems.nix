@@ -68,6 +68,8 @@ let
         };
         nix.package = pkgs.lixPackageSets.stable.lix;
         mySystem.username = lib.mkDefault user.username;
+        networking.hostName = lib.mkDefault host.hostname;
+        system.stateVersion = host.stateVersion;
       }
     )
   ];

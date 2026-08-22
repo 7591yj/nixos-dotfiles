@@ -4,8 +4,6 @@
 }:
 {
   services.tailscaleProxy.tailnetDomain = "follow-bigeye.ts.net";
-
-  networking.hostName = "juniper-srv-vm";
   networking.hostId = "8425e349";
 
   boot.supportedFilesystems = [ "zfs" ];
@@ -23,6 +21,4 @@
   ];
 
   security.sudo.wheelNeedsPassword = true;
-
-  system.stateVersion = "25.11";
 }
