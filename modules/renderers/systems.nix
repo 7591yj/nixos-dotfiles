@@ -44,8 +44,7 @@ let
     host: names:
     let
       dropUntil =
-        name: stack:
-        if builtins.head stack == name then stack else dropUntil name (builtins.tail stack);
+        name: stack: if builtins.head stack == name then stack else dropUntil name (builtins.tail stack);
       visit =
         stack: name:
         if builtins.elem name stack then
