@@ -153,14 +153,35 @@ let
           (mkHomeManagerModule host user homeModules)
         ];
     };
+
+  nixosConfigurations = lib.mapAttrs (_: host: mkNixosConfiguration host) (
+    lib.filterAttrs (_: host: host.platform == "nixos") hosts
+  );
+  darwinConfigurations = lib.mapAttrs (_: host: mkDarwinConfiguration host) (
+    lib.filterAttrs (_: host: host.platform == "darwin") hosts
+  );
+
+  toplevelEvalChecks =
+    pkgs: platform: configurations:
+    lib.mapAttrs' (
+      name: configuration:
+      lib.nameValuePair "${platform}-${name}-toplevel" (
+        pkgs.writeText "eval-${platform}-${name}-toplevel" (
+          builtins.unsafeDiscardStringContext configuration.config.system.build.toplevel.drvPath
+        )
+      )
+    ) configurations;
 in
 {
   flake = {
-    nixosConfigurations = lib.mapAttrs (_: host: mkNixosConfiguration host) (
-      lib.filterAttrs (_: host: host.platform == "nixos") hosts
-    );
-    darwinConfigurations = lib.mapAttrs (_: host: mkDarwinConfiguration host) (
-      lib.filterAttrs (_: host: host.platform == "darwin") hosts
-    );
+    inherit nixosConfigurations darwinConfigurations;
   };
+
+  perSystem =
+    { pkgs, ... }:
+    {
+      checks =
+        toplevelEvalChecks pkgs "nixos" nixosConfigurations
+        // toplevelEvalChecks pkgs "darwin" darwinConfigurations;
+    };
 }
