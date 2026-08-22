@@ -104,15 +104,10 @@ let
       nixosModules = host.nixosModules ++ aspectModulesFor "nixosModules" host user;
       nixosModulesWithDisko =
         nixosModules
-        ++ lib.optionals (builtins.elem "disko" host.aspects) (
-          if host.diskoModule == null then
-            throw "Host `${host.hostname}` includes `disko` but does not define `diskoModule`."
-          else
-            [
-              inputs.disko.nixosModules.disko
-              host.diskoModule
-            ]
-        );
+        ++ lib.optionals (host.diskoModule != null) [
+          inputs.disko.nixosModules.disko
+          host.diskoModule
+        ];
     in
     channels.nixpkgs.lib.nixosSystem {
       system = host.system;

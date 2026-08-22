@@ -9,7 +9,6 @@
       "desktop-role"
       "agent-environment"
       "appimage"
-      "disko"
       "helium-browser"
       "handy"
       "input-fcitx5"

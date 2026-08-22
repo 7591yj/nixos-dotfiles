@@ -8,7 +8,6 @@
     aspects = [
       "server-role"
       "container-services"
-      "disko"
     ];
     stateVersion = "25.11";
     homeStateVersion = "25.11";
