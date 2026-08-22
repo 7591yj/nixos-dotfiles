@@ -139,10 +139,6 @@ in
               type = types.listOf types.deferredModule;
               default = [ ];
             };
-            homeManagerSharedModules = mkOption {
-              type = types.listOf types.deferredModule;
-              default = [ ];
-            };
           };
         }
       );

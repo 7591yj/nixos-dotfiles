@@ -65,8 +65,6 @@ let
     key: host: user:
     lib.concatMap (name: (resolveAspect host name).${key}) (aspectClosure host (aspectNames host user));
 
-  aspectSharedModulesFor = host: user: aspectModulesFor "homeManagerSharedModules" host user;
-
   commonBootstrapModules = host: user: [
     { nixpkgs.hostPlatform = host.system; }
     (
@@ -89,7 +87,6 @@ let
       useUserPackages = true;
       backupFileExtension = "backup";
       extraSpecialArgs = { inherit inputs; };
-      sharedModules = aspectSharedModulesFor host user;
       users.${user.username} = {
         imports = homeModules;
 
