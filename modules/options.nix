@@ -24,7 +24,7 @@ in
                 default = [ ];
               };
               homeModules = mkOption {
-                type = types.listOf types.raw;
+                type = types.listOf types.deferredModule;
                 default = [ ];
               };
             };
@@ -55,7 +55,11 @@ in
                 ];
               };
               system = mkOption {
-                type = types.str;
+                type = types.enum [
+                  "x86_64-linux"
+                  "aarch64-linux"
+                  "aarch64-darwin"
+                ];
               };
               channel = mkOption {
                 type = types.enum [
@@ -72,25 +76,28 @@ in
                 default = [ ];
               };
               stateVersion = mkOption {
-                type = types.raw;
+                type = types.oneOf [
+                  types.str
+                  types.int
+                ];
               };
               homeStateVersion = mkOption {
                 type = types.str;
               };
               nixosModules = mkOption {
-                type = types.listOf types.raw;
+                type = types.listOf types.deferredModule;
                 default = [ ];
               };
               darwinModules = mkOption {
-                type = types.listOf types.raw;
+                type = types.listOf types.deferredModule;
                 default = [ ];
               };
               homeModules = mkOption {
-                type = types.listOf types.raw;
+                type = types.listOf types.deferredModule;
                 default = [ ];
               };
               diskoModule = mkOption {
-                type = types.nullOr types.raw;
+                type = types.nullOr types.deferredModule;
                 default = null;
               };
             };
@@ -121,19 +128,19 @@ in
               default = [ ];
             };
             nixosModules = mkOption {
-              type = types.listOf types.raw;
+              type = types.listOf types.deferredModule;
               default = [ ];
             };
             darwinModules = mkOption {
-              type = types.listOf types.raw;
+              type = types.listOf types.deferredModule;
               default = [ ];
             };
             homeModules = mkOption {
-              type = types.listOf types.raw;
+              type = types.listOf types.deferredModule;
               default = [ ];
             };
             homeManagerSharedModules = mkOption {
-              type = types.listOf types.raw;
+              type = types.listOf types.deferredModule;
               default = [ ];
             };
           };
