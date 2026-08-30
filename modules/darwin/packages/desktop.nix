@@ -27,6 +27,7 @@ let
     # utils
     diffutils
     duf
+    ffmpeg
     file
     p7zip
     pv
@@ -52,10 +53,7 @@ in
     taps = [
       "barutsrb/tap"
     ];
-    brews = [
-      "ffmpeg"
-      "mole"
-    ];
+    brews = [ "mole" ];
     casks = [
       "affinity"
       "anki"
