@@ -13,12 +13,10 @@
       restartIfChanged = true;
     };
 
-    enableSystemMonitoring = true;
     enableVPN = true;
     enableDynamicTheming = true;
     enableAudioWavelength = false;
     enableCalendarEvents = false;
-    enableClipboardPaste = false;
 
     plugins = {
       dankBatteryAlerts.enable = true;

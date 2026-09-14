@@ -71,6 +71,7 @@ let
       {
         nixpkgs.config = {
           allowUnfree = true;
+          permittedInsecurePackages = [ "electron-41.10.6" ];
         };
         nix.package = pkgs.lixPackageSets.stable.lix;
         mySystem.username = lib.mkDefault user.username;
@@ -135,6 +136,7 @@ let
         system = host.system;
         config = {
           allowUnfree = true;
+          permittedInsecurePackages = [ "electron-41.10.6" ];
         };
       };
       homeModules = user.homeModules ++ host.homeModules ++ aspectModulesFor "homeModules" host user;
