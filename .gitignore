@@ -10,6 +10,8 @@ config/DankMaterialShell/plugins/.repos/
 config/DankMaterialShell/.changelog-*
 config/DankMaterialShell/zen.css
 config/niri/dms/colors.kdl
+/dotfiles/DankMaterialShell/plugins/.repos/
+/dotfiles/DankMaterialShell/plugins/calculator/
 
 # Zed runtime/local state
 /dotfiles/zed/prompts/prompts-library-db.*.mdb/
