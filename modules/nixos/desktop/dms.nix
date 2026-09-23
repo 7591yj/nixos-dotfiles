@@ -13,15 +13,7 @@
       restartIfChanged = true;
     };
 
-    enableVPN = true;
-    enableDynamicTheming = true;
-    enableAudioWavelength = false;
-    enableCalendarEvents = false;
-
-    plugins = {
-      dankBatteryAlerts.enable = true;
-      dockerManager.enable = true;
-    };
+    plugins.dockerManager.enable = true;
   };
 
   environment.systemPackages = [ pkgs.vicinae ];
