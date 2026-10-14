@@ -7,7 +7,7 @@
 }:
 let
   pname = "pen";
-  version = "1.2.9";
+  version = "1.2.17";
 in
 if stdenvNoCC.hostPlatform.isDarwin then
   stdenvNoCC.mkDerivation {
@@ -15,7 +15,7 @@ if stdenvNoCC.hostPlatform.isDarwin then
 
     src = fetchurl {
       url = "https://www.pen.dev/download/Pen-mac-arm64.dmg";
-      hash = "sha256-tfVoU9jc0kZ39XKWBMQMjAGpBaWTasdXMk6a5BLLf3A=";
+      hash = "sha256-dDxNUcn4DPkp5Urrlly31TZvZJbPxSK3cRqZH74E+Us=";
     };
 
     nativeBuildInputs = [ undmg ];
