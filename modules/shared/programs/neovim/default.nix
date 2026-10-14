@@ -1,43 +1,18 @@
-{
-  pkgs,
-  lib,
-  inputs,
-  ...
-}:
-let
-  wrapperModule = pkgs.lib.modules.importApply ./module.nix inputs;
-  neovimWrapper = inputs.nix-wrapper-modules.lib.evalModule wrapperModule;
-in
+{ pkgs, ... }:
 {
   environment.systemPackages = [
-    (neovimWrapper.config.wrap { inherit pkgs; })
-
-    pkgs.nixd
-    pkgs.nixfmt
-    pkgs.typescript-language-server
-    pkgs.svelte-language-server
-    pkgs.tailwindcss-language-server
-    pkgs.vscode-langservers-extracted
-    pkgs.clang-tools
-    pkgs.gopls
-    pkgs.lua-language-server
-    pkgs.stylua
-    pkgs.phpactor
-    pkgs.pyright
-    pkgs.bash-language-server
-    pkgs.marksman
-    pkgs.tinymist
-    pkgs.yaml-language-server
-    pkgs.prettier
-    pkgs.tree-sitter
-  ]
-  ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
-    pkgs.wl-clipboard
+    (pkgs.neovim.override {
+      viAlias = true;
+      vimAlias = true;
+      withPython3 = false;
+      withNodeJs = false;
+      withRuby = false;
+      configure.customLuaRC = builtins.readFile ./config/init.lua;
+    })
   ];
 
   environment.variables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
   };
-
 }
