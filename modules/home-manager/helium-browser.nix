@@ -1,4 +1,5 @@
 {
+  config,
   heliumBrowserConfig,
   inputs,
   lib,
@@ -10,9 +11,9 @@ let
   preferencesJson = builtins.toJSON heliumBrowserConfig.preferences;
   preferencesDirectory =
     if pkgs.stdenv.hostPlatform.isDarwin then
-      "$HOME/Library/Application Support/net.imput.helium/Default"
+      "${config.home.homeDirectory}/Library/Application Support/net.imput.helium/Default"
     else
-      "$HOME/.config/net.imput.helium/Default";
+      "${config.home.homeDirectory}/.config/net.imput.helium/Default";
 in
 {
   home.packages = [ inputs."helium-browser".packages.${system}.helium ];
