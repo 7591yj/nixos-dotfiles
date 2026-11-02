@@ -5,7 +5,7 @@
   ...
 }:
 {
-  programs.dms-shell = {
+  programs.dux-shell = {
     enable = true;
     quickshell.package = pkgs.quickshell;
     systemd = {
@@ -18,7 +18,7 @@
 
   environment.systemPackages = [ pkgs.vicinae ];
 
-  services.displayManager.dms-greeter = {
+  services.displayManager.dux-greeter = {
     enable = true;
     compositor.name = config.mySystem.desktop.compositor;
     configHome = "/home/${config.mySystem.username}";

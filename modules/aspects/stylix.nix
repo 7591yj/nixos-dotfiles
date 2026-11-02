@@ -5,6 +5,7 @@
       "nixos"
       "darwin"
     ];
+    homeModules = [ { stylix.targets.rofi.enable = false; } ];
     nixosModules = [
       {
         imports = [

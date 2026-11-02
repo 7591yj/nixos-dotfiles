@@ -79,7 +79,6 @@
       ];
 
       imports = [
-        inputs.flake-parts.flakeModules.modules
         ./modules/options.nix
         (inputs.import-tree ./modules/aspects)
         (inputs.import-tree ./modules/inventory)
