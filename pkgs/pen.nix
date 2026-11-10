@@ -15,7 +15,7 @@ if stdenvNoCC.hostPlatform.isDarwin then
 
     src = fetchurl {
       url = "https://www.pen.dev/download/Pen-mac-arm64.dmg";
-      hash = "sha256-dDxNUcn4DPkp5Urrlly31TZvZJbPxSK3cRqZH74E+Us=";
+      hash = "sha256-n8vqy1d660WoPMruhk8G0NgMAoVuWY+5d3bIgGmASK8=";
     };
 
     nativeBuildInputs = [ undmg ];
