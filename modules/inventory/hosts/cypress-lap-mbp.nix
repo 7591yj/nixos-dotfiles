@@ -8,8 +8,8 @@
     aspects = [
       "desktop-role"
       "agent-environment"
-      "handy"
       "helium-browser"
+      "hex"
       "stylix"
       "zen-browser"
     ];

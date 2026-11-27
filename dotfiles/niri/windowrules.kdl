@@ -68,7 +68,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id=r#"^(handy|com\.pais\.handy)$"#
+    match app-id=r#"^anomaly\.hex$"#
     open-floating true
     border { off; }
     focus-ring { off; }

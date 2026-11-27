@@ -10,7 +10,7 @@
       "agent-environment"
       "appimage"
       "helium-browser"
-      "handy"
+      "hex"
       "input-fcitx5"
       "laptop-intel"
       "stylix"

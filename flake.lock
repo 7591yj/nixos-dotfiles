@@ -383,6 +383,30 @@
         "type": "github"
       }
     },
+    "hex": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795753633,
+        "narHash": "sha256-mh9XttVKshYskQnxn928tqqFxGoVnZgiu4YKmPUvw24=",
+        "owner": "anomalyco",
+        "repo": "hex",
+        "rev": "7ae9c033e251cd197f07d8503b7cc647912ef13a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "anomalyco",
+        "ref": "v3.5.2",
+        "repo": "hex",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -652,6 +676,7 @@
         "firefox-addons": "firefox-addons",
         "flake-parts": "flake-parts_2",
         "helium-browser": "helium-browser",
+        "hex": "hex",
         "home-manager": "home-manager",
         "home-manager-stable": "home-manager-stable",
         "import-tree": "import-tree",
