@@ -34,7 +34,7 @@ else
   let
     src = fetchurl {
       url = "https://www.pen.dev/download/Pen-linux-x86_64.AppImage";
-      hash = "sha256-eQVNZcEQmJbvyx0IoPt8IvVzCzZnIbsVkI87muHFHhk=";
+      hash = "sha256-jeXzHuafDQixar7M3WpTiCuRvW4p9b5dCf4IaB7rsNU=";
     };
     contents = appimageTools.extract {
       inherit pname version src;

@@ -7,7 +7,7 @@
 }:
 let
   pname = "astra";
-  version = "0.7.0-beta";
+  version = "0.8.0-beta";
 in
 if stdenvNoCC.hostPlatform.isDarwin then
   stdenvNoCC.mkDerivation {
@@ -15,7 +15,7 @@ if stdenvNoCC.hostPlatform.isDarwin then
 
     src = fetchurl {
       url = "https://github.com/Boof2015/astra/releases/download/v${version}/Astra-${version}-Mac-arm64.dmg";
-      hash = "sha256-8oXPkXLI4W+53PkXTU3ZsDtAQwF8Sw7+9D3TV5AveB0=";
+      hash = "sha256-S9X95nLTF6paRimfXbrs5JVhVlOuhUkHYpj4yafS8FA=";
     };
 
     nativeBuildInputs = [ undmg ];
@@ -42,7 +42,7 @@ else
   let
     src = fetchurl {
       url = "https://github.com/Boof2015/astra/releases/download/v${version}/Astra-${version}-Linux.AppImage";
-      hash = "sha256-aOmVglGg+9HFRvM34WjxuE5DrlqnL7g+hqlWfznPWmQ=";
+      hash = "sha256-ZckQjlpS09t1PpqXYP5L8FR/Aq0tiyMgTbhNJgMwCc8=";
     };
     contents = appimageTools.extract {
       inherit pname version src;
